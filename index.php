@@ -14,3 +14,12 @@ session_start();
 //Подключаем файл настроек
 require_once 'config.php';
 require_once 'core/base/settings/internal_settings.php';
+
+use core\base\exception\RouteException;
+use core\base\controllers\RouteController;
+try {
+    RouteController::getInstance();
+
+} catch (RouteException $exception) {
+
+}

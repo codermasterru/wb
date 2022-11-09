@@ -2,6 +2,8 @@
 
 defined('VG_ACCESS') or die;
 
+
+
 // Путь к шаблонам пользовательской части сайта
 const TEMPLATE = 'template/default';
 
@@ -36,7 +38,25 @@ const USER_ADMIN_CSS_JS = [
 ];
 
 
-//
+use core\base\exception\RouteException;
 
+// Функция автозагрузки
+/**
+ * @throws RouteException
+ */
+function autoloadMainClasses($class_name)
+{
+
+// !!func
+//str_replace - Заменяет все вхождения строки поиска на строку замены
+    $class_name = str_replace('\\', '/', $class_name);
+
+    if (!@include_once $class_name . '.php') {
+        throw  new RouteException('Неверное имя файла для исключения - ' . $class_name);
+    }
+}
+
+// Регистрирует функцию автозагрузки
+spl_autoload_register('autoloadMainClasses');
 
 //
