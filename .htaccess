@@ -1,0 +1,18 @@
+php_flag magic_quotes_gpc Off
+
+# Максимальный размер файла 100 МБ
+php_value upload_max_filesize 100M
+
+# Кодировка
+AddDefaultCharset utf-8
+
+# Индексная дирректория
+DirectoryIndex Index.php
+
+#Включаем модуль Rewrite
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !favicon.ico
+
+RewriteRule ^(.*) index.php

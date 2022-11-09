@@ -13,4 +13,4 @@ session_start();
 
 //Подключаем файл настроек
 require_once 'config.php';
-exit;
+require_once 'core/base/settings/internal_settings.php';
