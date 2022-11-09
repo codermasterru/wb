@@ -2,7 +2,7 @@
 
 namespace core\base\controllers;
 
-class Singletone
+trait Singletone
 {
     static private $_instance;
 
@@ -14,7 +14,10 @@ class Singletone
     {
     }
 
-    static public function getInstance()
+    /**
+     * @return RouteController|Singletone
+     */
+    static public function instance()
     {
         if (self::$_instance instanceof self) {
             return self::$_instance;

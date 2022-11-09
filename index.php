@@ -18,7 +18,7 @@ require_once 'core/base/settings/internal_settings.php';
 use core\base\exception\RouteException;
 use core\base\controllers\RouteController;
 try {
-    RouteController::getInstance();
+    RouteController::instance();
 
 } catch (RouteException $exception) {
 
