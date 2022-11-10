@@ -52,11 +52,35 @@ class RouteController
             if (!$this->routes) throw new RouteException('Сайт находится на техническом обслуживании');
 
             //Если позиция найдена
-            if (strrpos($address_str, $this->routes['admin']['alias']) === strlen(PATH)) {
+            if (strpos($address_str, $this->routes['admin']['alias']) === strlen(PATH)) {
+
                 // Админка
+                $url = explode('/', substr($address_str, strlen(PATH . $this->routes['admin']['alias']) + 1));
+
+                // Если выполнилось то попали на плагин
+                if ($url[0] && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0])) {
+
+
+                    // Иначе попали в административную панель
+                } else{
+
+                }
             } else {
                 //Пользовательская часть
+
+                //Разбиваем  адресную строку  -->  array
+                $url = explode('/', substr($address_str, strlen(PATH)));
+
+                //Определяем нужен ЧПУ или нет --> bool
+                $hrUrl = $this->routes['user']['hrUrl'];
+
+                //Выясняем маршрут
+                $this->controller = $this->routes['user']['path'];
+
+                $route = 'user';
             }
+
+            $this->createRoute($route, $url);
         } else {
             try {
                 throw new \Exception('Некорректная директория сайта');
@@ -85,6 +109,33 @@ class RouteController
             return self::$_instance;
         }
         return self::$_instance = new self;
+    }
+
+    /**
+     * @param $var
+     * @param $arr
+     * @return void
+     */
+    private function createRoute($var, $arr)
+    {
+        $route = [];
+
+        if (!empty($arr[0])) {
+            // Если существует альяс
+            if ($this->routes[$var]['routes'][$arr[0]]) {
+                $route = explode('/', $this->routes[$var]['routes'][$arr[0]]);
+                $this->controller .= ucfirst(route[0] . 'Controller');
+            } else {
+                $this->controller .= ucfirst($arr[0] . 'Controller');
+            }
+        } else {
+            $this->controller .= $this->routes['default']['controller'];
+        }
+
+        $this->inputMethod = $route[1] ?: $this->routes['default']['inputMethod'];
+        $this->outputMethod = $route[2] ?: $this->routes['default']['outputMethod'];
+
+//        exit();
     }
 
 
