@@ -11,23 +11,27 @@ class Settings
     private $routes = [
         'admin' => [
             'alias' => 'admin',
-            'path' => 'core/admin/controllers',
-            'hrUrl' => false
+            'path' => 'core/admin/controllers/',
+            'hrUrl' => false,
+            'routes'=>[
+
+            ]
         ],
         'settings' => [
             'path' => 'core/base/settings/'
         ],
         'plugins' => [
-            'path' => 'core/plugins',
-            'hrUrl' => false,
-            'dir' =>false
+            'dir' =>false,
+            'routes'=>[
+
+            ]
         ],
         'user' => [
             'path' => 'core/user/controllers/',
             'hrUrl' => true,
-//            'routes' => [
+            'routes' => [
 //                'catalog'=>'site/input/output'
-//            ]
+            ]
         ],
         'default' => [
             'controller' => 'IndexController',

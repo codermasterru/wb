@@ -18,7 +18,8 @@ require_once 'core/base/settings/internal_settings.php';
 use core\base\exception\RouteException;
 use core\base\controllers\RouteController;
 try {
-    RouteController::instance();
+    //Метод будет подключать все остальное(выборки  и тд)
+    RouteController::instance()->route();
 
 } catch (RouteException $exception) {
 

@@ -12,9 +12,11 @@ class ShopSettings
     private $baseSettings;
 
     private $routes = [
-        'settings' => [
-            'path' => 'core/base/settings/',
-            'dir'=>'controller'
+        'plugins' => [
+            'dir' => false,
+            'routes' => [
+//                'product' => 'goods'
+            ]
         ]
     ];
 

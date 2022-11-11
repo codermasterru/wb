@@ -39,6 +39,8 @@ class RouteController
             //Перенаправляем на
             $this->redirect(rtrim($address_str, '/'), 301);
         }
+//        //Разбиваем  адресную строку  -->  array
+//        $url = explode('/', substr($address_str, strlen(PATH)));
 
 
         //substr Возвращает подстроку строки string, начинающейся с start символа по счету и длиной length символов.
@@ -50,13 +52,21 @@ class RouteController
 
             if (!$this->routes) throw new RouteException('Сайт находится на техническом обслуживании');
 
-            //Если позиция найдена
-            if (strpos($address_str, $this->routes['admin']['alias']) === strlen(PATH)) {
+            //Разбиваем  адресную строку  -->  array
+            $url = explode('/', substr($address_str, strlen(PATH)));
 
-                $url = explode('/', substr($address_str, strlen(PATH . $this->routes['admin']['alias']) + 1));
+            //Если позиция найдена
+            if ($url[0] && $url[0] === $this->routes['admin']['alias']) {
+
+                array_shift($url);
 
                 // Если выполнилось то попали на плагин
                 if ($url[0] && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0])) {
+
+
+                    echo 'Попали на плагин';
+                    echo '<br>';
+
 
                     $plugin = array_shift($url);
 
@@ -81,7 +91,8 @@ class RouteController
                 } else {
                     //Определяем какой контроллер будет обрабатывать
                     $this->controller = $this->routes['admin']['path'];
-
+                    echo 'Попали на админку';
+                    echo '<br>';
                     // Будет ли ЧПУ
                     $hrUrl = $this->routes['admin']['hrUrl'];
 
@@ -90,8 +101,6 @@ class RouteController
             } else {
                 //Пользовательская часть
 
-                //Разбиваем  адресную строку  -->  array
-                $url = explode('/', substr($address_str, strlen(PATH)));
 
                 //Определяем нужен ЧПУ или нет --> bool
                 $hrUrl = $this->routes['user']['hrUrl'];
@@ -123,13 +132,13 @@ class RouteController
                     if (!$key) {
                         $key = $url[$i];
                         $this->parametrs[$key] = '';
-                    }else{
+                    } else {
                         $this->parametrs[$key] = $url[$i];
                         $key = '';
                     }
                 }
             }
-            exit();
+
         } else {
             try {
                 throw new \Exception('Некорректная директория сайта');
@@ -141,6 +150,10 @@ class RouteController
 
 
     private function redirect(string $rtrim, int $int)
+    {
+    }
+    //Метод будет подключать все остальное(выборки  и тд)
+    public function route()
     {
     }
 
@@ -163,12 +176,13 @@ class RouteController
      * @param $arr
      * @return void
      */
-    private function createRoute($var, $arr) {
+    private function createRoute($var, $arr)
+    {
 
         $route = [];
 
-        if(!empty($arr[0])) {
-            if($this->routes[$var]['routes'][$arr[0]]) {
+        if (!empty($arr[0])) {
+            if ($this->routes[$var]['routes'][$arr[0]]) {
 
                 $route = explode('/', $this->routes[$var]['routes'][$arr[0]]);
 
