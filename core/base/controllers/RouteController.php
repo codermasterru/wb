@@ -54,16 +54,34 @@ class RouteController
             //Если позиция найдена
             if (strpos($address_str, $this->routes['admin']['alias']) === strlen(PATH)) {
 
-                // Админка
                 $url = explode('/', substr($address_str, strlen(PATH . $this->routes['admin']['alias']) + 1));
 
                 // Если выполнилось то попали на плагин
                 if ($url[0] && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0])) {
 
+                    $plugin = array_shift($url);
+
+                    $pluginSettings = $this->routes['settings']['path'] . ucfirst($plugin . 'Settings');
+
+                    if (file_exists($_SERVER['DOCUMENT_ROOT'] . PATH . $pluginSettings . '.php')) {
+
+                        $pluginSettings = str_replace('/', '\\', $pluginSettings);
+
+                        $this->routes = $pluginSettings::get('routes');
+                    }
+                    $dir = $this->routes['plugins']['dir'] ? '/' . $this->routes['plugins']['dir'] . '/' : '/';
+                    $dir = str_ireplace('//', '/',$dir );
+
 
                     // Иначе попали в административную панель
-                } else{
+                } else {
+                    //Определяем какой контроллер будет обрабатывать
+                    $this->controller = $this->routes['admin']['path'];
 
+                    // Будет ли ЧПУ
+                    $hrUrl = $this->routes['admin']['hrUrl'];
+
+                    $route = 'admin';
                 }
             } else {
                 //Пользовательская часть

@@ -11,6 +11,12 @@ class ShopSettings
     static private $_instance;
     private $baseSettings;
 
+    private $routes = [
+        'settings' => [
+            'path' => 'core/base/settings/',
+            'dir'=>'controller'
+        ]
+    ];
 
     private $templateArr = [
         'text' => ['price', 'short'],
