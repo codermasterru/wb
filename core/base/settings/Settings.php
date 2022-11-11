@@ -25,9 +25,9 @@ class Settings
         'user' => [
             'path' => 'core/user/controllers/',
             'hrUrl' => true,
-            'routes' => [
-                'catalog'=>'site/input/output'
-            ]
+//            'routes' => [
+//                'catalog'=>'site/input/output'
+//            ]
         ],
         'default' => [
             'controller' => 'IndexController',

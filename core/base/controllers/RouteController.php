@@ -3,7 +3,6 @@
 namespace core\base\controllers;
 
 use core\base\exception\RouteException;
-use  core\base\settings\ShopSettings;
 use  core\base\settings\Settings;
 
 class RouteController
@@ -67,11 +66,16 @@ class RouteController
 
                         $pluginSettings = str_replace('/', '\\', $pluginSettings);
 
-                        $this->routes = $pluginSettings::get('routes');
+                        $this->routes = Settings::get('routes');
                     }
                     $dir = $this->routes['plugins']['dir'] ? '/' . $this->routes['plugins']['dir'] . '/' : '/';
-                    $dir = str_ireplace('//', '/',$dir );
+                    $dir = str_replace('//', '/', $dir);
 
+                    $this->controller = $this->routes['plugins']['path'] . $plugin . $dir;
+
+                    $hrUrl = $this->routes['plugins']['hrUrl'];
+
+                    $route = 'plugins';
 
                     // Иначе попали в административную панель
                 } else {
@@ -99,6 +103,33 @@ class RouteController
             }
 
             $this->createRoute($route, $url);
+
+            // Если на месте параметров что то есть , то
+            if ($url[1]) {
+
+                $count = count($url);
+                $key = '';
+
+                // Если работаем не с ЧПУ
+                if (!$hrUrl) {
+                    $i = 1;
+                } else {
+                    //Иначе работаем с ЧПУ
+                    $this->parametrs['alias'] = $url[1];
+                    $i = 2;
+                }
+
+                for (; $i < $count; $i++) {
+                    if (!$key) {
+                        $key = $url[$i];
+                        $this->parametrs[$key] = '';
+                    }else{
+                        $this->parametrs[$key] = $url[$i];
+                        $key = '';
+                    }
+                }
+            }
+            exit();
         } else {
             try {
                 throw new \Exception('Некорректная директория сайта');
@@ -118,9 +149,7 @@ class RouteController
     {
     }
 
-    /**
-     * @return RouteController|Singletone
-     */
+
     static public function instance()
     {
         if (self::$_instance instanceof self) {
@@ -134,26 +163,30 @@ class RouteController
      * @param $arr
      * @return void
      */
-    private function createRoute($var, $arr)
-    {
+    private function createRoute($var, $arr) {
+
         $route = [];
 
-        if (!empty($arr[0])) {
-            // Если существует альяс
-            if ($this->routes[$var]['routes'][$arr[0]]) {
+        if(!empty($arr[0])) {
+            if($this->routes[$var]['routes'][$arr[0]]) {
+
                 $route = explode('/', $this->routes[$var]['routes'][$arr[0]]);
-                $this->controller .= ucfirst(route[0] . 'Controller');
+
+                $this->controller .= ucfirst($route[0] . 'Controller');
+
             } else {
+
                 $this->controller .= ucfirst($arr[0] . 'Controller');
+
             }
         } else {
             $this->controller .= $this->routes['default']['controller'];
         }
 
-        $this->inputMethod = $route[1] ?: $this->routes['default']['inputMethod'];
-        $this->outputMethod = $route[2] ?: $this->routes['default']['outputMethod'];
+        $this->inputMethod = $route[1] ? $route[1] : $this->routes['default']['inputMethod'];
+        $this->outputMethod = $route[2] ? $route[2] : $this->routes['default']['outputMethod'];
 
-//        exit();
+        return;
     }
 
 
