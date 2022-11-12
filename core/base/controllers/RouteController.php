@@ -7,21 +7,14 @@ use  core\base\settings\Settings;
 
 class RouteController extends BaseController
 {
-    static private $_instance;
+    use Singletone;
 
     private function __construct()
     {
         //  Получаем адресную строку
         $address_str = $_SERVER['REQUEST_URI'];
 
-        //strrpos — Возвращает позицию последнего вхождения подстроки в строке
-        //strlen strlen — Возвращает длину строки
-        // Если символ / стоит в конце строки и это не корень сайта
-//        if (strrpos($address_str, '/') === strlen($address_str) - 1 &&
-//            strrpos($address_str, '/') !== 0) {
-//            //Перенаправляем на
-//            $this->redirect(rtrim($address_str, '/'), 301);
-//        }
+
         if (strrpos($address_str, '/') === strlen($address_str) - 1
             && strrpos($address_str, '/') !== strlen(PATH) - 1) {
 
@@ -137,20 +130,6 @@ class RouteController extends BaseController
         }
     }
 
-
-    private function __clone()
-    {
-    }
-
-
-    static public function instance()
-    {
-        if (self::$_instance instanceof self) {
-            return self::$_instance;
-        }
-        return self::$_instance = new self;
-    }
-
     /**
      * @param $var
      * @param $arr
@@ -177,10 +156,8 @@ class RouteController extends BaseController
             $this->controller .= $this->routes['default']['controller'];
         }
 
-        $this->inputMethod = $route[1] ? $route[1] : $this->routes['default']['inputMethod'];
-        $this->outputMethod = $route[2] ? $route[2] : $this->routes['default']['outputMethod'];
-
-        return;
+        $this->inputMethod = $route[1] ?: $this->routes['default']['inputMethod'];
+        $this->outputMethod = $route[2] ?: $this->routes['default']['outputMethod'];
     }
 
 

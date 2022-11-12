@@ -2,11 +2,12 @@
 
 namespace core\base\settings;
 
+use core\base\controllers\Singletone;
+
 class Settings
 {
-//use Singletone;
+use Singletone;
 
-    static private $_instance;
 
     private $routes = [
         'admin' => [
@@ -21,6 +22,7 @@ class Settings
             'path' => 'core/base/settings/'
         ],
         'plugins' => [
+            'path' => 'core/plugins/',
             'dir' =>false,
             'routes'=>[
 
@@ -45,28 +47,9 @@ class Settings
         'textarea' => [ 'goods_content']
     ];
 
-
-    private function __construct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
-
     static public function get($property)
     {
         return self::instance()->$property;
-    }
-
-    static public function instance()
-    {
-        if (self::$_instance instanceof self) {
-            return self::$_instance;
-        }
-
-        return self::$_instance = new self;
     }
 
     public function clueProperties($class)

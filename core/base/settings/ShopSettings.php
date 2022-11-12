@@ -3,12 +3,12 @@
 namespace core\base\settings;
 
 use core\base\controllers\Singletone;
-use core\base\settings\Settings;
 
 class ShopSettings
 {
-//    use Singletone;
-    static private $_instance;
+use Singletone;
+
+
     private $baseSettings;
 
     private $routes = [
@@ -25,27 +25,19 @@ class ShopSettings
         'textarea' => ['goods_content']
     ];
 
-    private function __construct()
-    {
-    }
-
-    private function __clone()
-    {
-    }
-
     static public function get($property)
     {
-        return self::instance()->$property;
+        return self::getInstance()->$property;
     }
 
-    static public function instance()
+    static private function getInstance()
     {
         if (self::$_instance instanceof self) {
             return self::$_instance;
         }
-        self::$_instance = new self;
 
-        self::$_instance->baseSettings = Settings::instance();
+
+        self::instance()->baseSettings = Settings::instance();
         $baseProperties = self::$_instance->baseSettings->clueProperties(get_class());
         self::$_instance->setProperty($baseProperties);
         return self::$_instance;
