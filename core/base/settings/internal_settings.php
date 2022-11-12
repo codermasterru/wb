@@ -5,10 +5,10 @@ defined('VG_ACCESS') or die;
 
 
 // Путь к шаблонам пользовательской части сайта
-const TEMPLATE = 'template/default';
+const TEMPLATE = 'template/default/';
 
 //Путь к административной панели сайта
-const ADMIN_TEMPLATES = 'core/admin/views/';
+const ADMIN_TEMPLATE = 'core/admin/views/';
 
 // Если нужно заставить перелогиниться
 const COOKIE_VERSION = '1.0.0';
