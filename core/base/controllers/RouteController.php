@@ -5,7 +5,7 @@ namespace core\base\controllers;
 use core\base\exception\RouteException;
 use  core\base\settings\Settings;
 
-class RouteController extends  BaseController
+class RouteController extends BaseController
 {
     static private $_instance;
 
@@ -17,10 +17,16 @@ class RouteController extends  BaseController
         //strrpos — Возвращает позицию последнего вхождения подстроки в строке
         //strlen strlen — Возвращает длину строки
         // Если символ / стоит в конце строки и это не корень сайта
-        if (strrpos($address_str, '/') === strlen($address_str) - 1 &&
-            strrpos($address_str, '/') !== 0) {
-            //Перенаправляем на
+//        if (strrpos($address_str, '/') === strlen($address_str) - 1 &&
+//            strrpos($address_str, '/') !== 0) {
+//            //Перенаправляем на
+//            $this->redirect(rtrim($address_str, '/'), 301);
+//        }
+        if (strrpos($address_str, '/') === strlen($address_str) - 1
+            && strrpos($address_str, '/') !== strlen(PATH) - 1) {
+
             $this->redirect(rtrim($address_str, '/'), 301);
+
         }
 //        //Разбиваем  адресную строку  -->  array
 //        $url = explode('/', substr($address_str, strlen(PATH)));
@@ -130,12 +136,6 @@ class RouteController extends  BaseController
             }
         }
     }
-
-
-    private function redirect(string $rtrim, int $int)
-    {
-    }
-
 
 
     private function __clone()
