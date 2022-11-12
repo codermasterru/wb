@@ -5,25 +5,8 @@ namespace core\base\controllers;
 use core\base\exception\RouteException;
 use  core\base\settings\Settings;
 
-class RouteController
+class RouteController extends  BaseController
 {
-//    use Singletone;
-    //Роуты??
-    protected $routes;
-
-    //
-    protected $controller;
-
-    // Собирает данные из БД
-    protected $inputMethod;
-
-    // Выводит отображение
-    protected $outputMethod;
-
-    //
-    protected $parametrs;
-
-
     static private $_instance;
 
     private function __construct()
@@ -124,16 +107,16 @@ class RouteController
                     $i = 1;
                 } else {
                     //Иначе работаем с ЧПУ
-                    $this->parametrs['alias'] = $url[1];
+                    $this->parameters['alias'] = $url[1];
                     $i = 2;
                 }
 
                 for (; $i < $count; $i++) {
                     if (!$key) {
                         $key = $url[$i];
-                        $this->parametrs[$key] = '';
+                        $this->parameters[$key] = '';
                     } else {
-                        $this->parametrs[$key] = $url[$i];
+                        $this->parameters[$key] = $url[$i];
                         $key = '';
                     }
                 }
@@ -152,10 +135,7 @@ class RouteController
     private function redirect(string $rtrim, int $int)
     {
     }
-    //Метод будет подключать все остальное(выборки  и тд)
-    public function route()
-    {
-    }
+
 
 
     private function __clone()

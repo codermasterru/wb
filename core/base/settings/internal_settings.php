@@ -51,8 +51,9 @@ function autoloadMainClasses($class_name)
 //str_replace - Заменяет все вхождения строки поиска на строку замены
     $class_name = str_replace('\\', '/', $class_name);
 
-    if (!@include_once $class_name . '.php') {
-        throw  new RouteException('Неверное имя файла для исключения - ' . $class_name);
+    if(!@include_once $class_name.'.php') {
+        echo 'попали в ошибку';
+        throw new RouteException('Не верное имя файла для подключения - '.$class_name);
     }
 }
 
