@@ -1,0 +1,14 @@
+Fault:13-11-2022 13:20:33 - Ошибка подключения к базе данных: 1049 Unknown database 'w'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 21
+
+Fault:13-11-2022 13:42:55 - Ошибка подключения к базе данных: 1045 Access denied for user 'root'@'localhost' (using password: YES)
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 21
+
+Fault:13-11-2022 20:44:22 - Ошибка в SQL запросе: SELECT teachers.id, teachers.name, students.id as s_id, students.name as s_name
+                   FROM teachers
+                   JOIN  stud_teach ON teachers.id = stud_teach.teacher - 1054 Unknown column 'students.id' in 'field list'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 34
+

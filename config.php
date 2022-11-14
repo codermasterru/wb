@@ -12,13 +12,13 @@ const SITE_URL = 'https://wb.ru';
 const PATH = '/';
 
 //Хост
-const H0ST = 'localhost';
+const HOST = 'localhost';
 
 // Логин для БД
 const USER = 'root';
 
 //Пароль для БД
-const PASS = '';
+const PASS = 'root';
 
 //Название БД
 const DB_NAME = 'wb';

@@ -73,7 +73,7 @@ class RouteController extends BaseController
                 } else {
                     //Определяем какой контроллер будет обрабатывать
                     $this->controller = $this->routes['admin']['path'];
-                    echo 'Попали на админку';
+                    echo 'Попали в админку';
                     echo '<br>';
                     // Будет ли ЧПУ
                     $hrUrl = $this->routes['admin']['hrUrl'];

@@ -5,7 +5,7 @@ namespace core\base\exception;
 
 use core\base\controllers\BaseMethods;
 
-class RouteException extends \Exception
+class DbException extends \Exception
 {
     protected $messages;
 
@@ -24,7 +24,8 @@ class RouteException extends \Exception
 
         if ($this->messages[$this->getCode()]) $this->messages = $this->messages[$this->getCode()];
 
-        $this->writeLog($error);
+        $this->writeLog($error, 'db_log.txt');
+
     }
 }
 
