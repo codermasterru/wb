@@ -12,3 +12,11 @@ Fault:13-11-2022 20:44:22 - Ошибка в SQL запросе: SELECT teachers.
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 34
 
+Fault:14-11-2022 7:51:00 - Ошибка подключения к базе данных: 1049 Unknown database 'wb'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 21
+
+Fault:14-11-2022 9:40:20 - Ошибка в SQL запросе: SELECT  FROM teachers    1 - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM teachers    1' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 34
+
