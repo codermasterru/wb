@@ -20,3 +20,15 @@ Fault:14-11-2022 9:40:20 - Ошибка в SQL запросе: SELECT  FROM teac
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 34
 
+Fault:15-11-2022 14:54:52 - Ошибка в SQL запросе: SELECT teachers.id,teachers.name,join_table1.id as j_id,join_table1.name as j_name,join_table2.id as j2_id,join_table2.name as j2_name FROM teachers LEFT JOIN join_table1 ON teachers.id=join_table1.parent_id LEFT JOIN join_table2 ON teachers.id=join_table2.parent_id WHERE teachers.name IN ('masha') AND teachers.surname LIKE 'sergeevna%' AND teachers.fio<>'Andrey' AND teachers.car='Porsche' AND teachers.color NOT IN ('red','blue','black') AND join_table1.name='Sasha' AND join_table2.name<>'Sasha'  ORDER BY 1 DESC,teachers.name DESC 1 - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 34
+
+Fault:15-11-2022 16:40:25 - Ошибка в SQL запросе: SELECT teachers.id,teachers.name,join_table1.id as j_id,join_table1.name as j_name FROM teachers LEFT JOIN join_table1 ON teachers.id=join_table1.parent_id WHERE teachers.name='' AND teachers.surname='' AND teachers.fio='' AND teachers.car='' AND teachers.color='' AND join_table1.name=''  ORDER BY teachers.name DESC LIMIT 1 - 1146 Table 'wb.join_table1' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 34
+
+Fault:15-11-2022 16:42:00 - Ошибка в SQL запросе: SELECT teachers.id,teachers.name,join_table1.id as j_id,join_table1.name as j_name FROM teachers LEFT JOIN join_table1 ON teachers.id=join_table1.parent_id WHERE teachers.name='masha' AND teachers.surname='sergeevna' AND teachers.fio='Andrey' AND teachers.car='Porsche' AND teachers.color='' AND join_table1.name='Sasha'  ORDER BY teachers.name DESC LIMIT 1 - 1146 Table 'wb.join_table1' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 34
+
