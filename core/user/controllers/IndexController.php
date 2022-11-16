@@ -11,7 +11,7 @@ class IndexController extends BaseController
     protected function inputData()
     {
        $this->isPost();
-       exit();
+       //exit();
     }
 
 

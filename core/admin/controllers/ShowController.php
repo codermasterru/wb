@@ -10,7 +10,9 @@ class ShowController extends BaseAdmin
 
         $this->createTableData();
 
-        exit();
+        $this->createData(['fields' =>['content']]);
+
+//        exit();
     }
 
     protected function outputData()

@@ -1,4 +1,2 @@
-Fault:13-11-2022 12:09:55 - Method core\admin\controllers\IndexController::request() does not exist
-file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
-In line 51
+
 
