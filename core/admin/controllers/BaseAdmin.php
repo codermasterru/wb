@@ -14,6 +14,7 @@ abstract class BaseAdmin extends BaseController
 
     protected $table;
     protected $columns;
+    protected $data;
 
     protected $menu;
     protected $title;
@@ -44,6 +45,8 @@ abstract class BaseAdmin extends BaseController
 
     }
 
+
+    // Отправляем  заголовки
     protected function sendNoCacheHeaders()
     {
         header("Last-Modified: " . gmdate("D, d m Y H:i:s") . " GMT");
@@ -59,6 +62,7 @@ abstract class BaseAdmin extends BaseController
         self::inputData();
     }
 
+    // Достали название таблицы
     protected function createTableData()
     {
         if (!$this->table) {
@@ -74,5 +78,20 @@ abstract class BaseAdmin extends BaseController
         if (!$this->columns) new RouteException('Не найдены поля в таблице - ' . $this->table,2);
 
 
+    }
+
+
+
+    protected function createData($arr = [],$add = true){
+
+        $fields = [];
+        $order = [];
+        $order_direction = [];
+
+        if($add){
+
+        }else{
+
+        }
     }
 }

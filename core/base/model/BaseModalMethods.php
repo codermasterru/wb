@@ -281,49 +281,6 @@ abstract class BaseModalMethods
         return $insert_arr;
     }
 
-//    public function showColumns($table)
-//    {
-//
-//        $query = "SHOW COLUMNS FROM $table";
-//        $res = $this->query($query);
-//
-//        $columns = [];
-//
-//        if ($res) {
-//
-//// [
-////           [
-////            [Field] => id
-////            [Type] => int unsigned
-////            [Null] => NO
-////            [Key] => PRI
-////            [Default] =>
-////            [Extra] => auto_increment
-////          ],
-////          [
-////             [Field] => name
-////             [Type] => varchar(255)
-////            [Null] => YES
-////            [Key] =>
-////            [Default] =>
-////            [Extra] =>
-////        ]
-//// ]
-//            foreach ($res as $row) {
-//
-//                $columns[$row['Field']] = $row;
-//                if ($row['Key'] === 'PRI') $columns['id_row'] = $row['Field'];
-//            }
-//
-//        }
-////        echo 'это $columns';
-////        echo '<pre>';
-////        print_r($columns);
-////        echo '</pre>';
-//
-//        return $columns;
-//    }
-
     protected function createUpdate($fields, $files, $except)
     {
 
