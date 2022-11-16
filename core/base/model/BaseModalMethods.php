@@ -5,6 +5,8 @@ namespace core\base\model;
 abstract class BaseModalMethods
 {
 
+    protected $sqlFunc = ['NOW()'];
+
     protected function createFields($set, $table = false)
     {
 
@@ -200,7 +202,6 @@ abstract class BaseModalMethods
 
                         default:
                             continue 2;
-                            break;
                     }
 
                     if (!$item['type']) $join .= 'LEFT JOIN ';
@@ -247,15 +248,13 @@ abstract class BaseModalMethods
 
         if ($fields) {
 
-            $sql_func = ['NOW()'];
-
             foreach ($fields as $row => $value) {
 
                 if ($except && in_array($row, $except)) continue;
 
                 $insert_arr['fields'] .= $row . ',';
 
-                if (in_array($value, $sql_func)) {
+                if (in_array($value, $this->sqlFunc)) {
                     $insert_arr['values'] .= $value . ',';
                 } else {
                     $insert_arr['values'] .= "'" . addslashes($value) . "',";
@@ -280,5 +279,87 @@ abstract class BaseModalMethods
         foreach ($insert_arr as $key => $arr) $insert_arr[$key] = rtrim($arr, ',');
 
         return $insert_arr;
+    }
+
+    public function showColumns($table)
+    {
+
+        $query = "SHOW COLUMNS FROM $table";
+        $res = $this->query($query);
+
+        $columns = [];
+
+        if ($res) {
+
+// [
+//           [
+//            [Field] => id
+//            [Type] => int unsigned
+//            [Null] => NO
+//            [Key] => PRI
+//            [Default] =>
+//            [Extra] => auto_increment
+//          ],
+//          [
+//             [Field] => name
+//             [Type] => varchar(255)
+//            [Null] => YES
+//            [Key] =>
+//            [Default] =>
+//            [Extra] =>
+//        ]
+// ]
+            foreach ($res as $row) {
+
+                $columns[$row['Field']] = $row;
+                if ($row['Key'] === 'PRI') $columns['id_row'] = $row['Field'];
+            }
+
+        }
+//        echo 'это $columns';
+//        echo '<pre>';
+//        print_r($columns);
+//        echo '</pre>';
+
+        return $columns;
+    }
+
+    protected function createUpdate($fields, $files, $except)
+    {
+
+        $update = '';
+
+        if ($fields) {
+
+            foreach ($fields as $row => $value) {
+
+                if ($except && in_array($row, $except)) continue;
+
+                $update .= $row . '=';
+
+                if (in_array($value, $this->sqlFunc)) {
+                    $update .= $value . ',';
+                } elseif ($value === NULL) {
+                    $update .= "NULL" . ',';
+                } else {
+                    $update .= "'" . addslashes($value) . "',";
+                }
+
+            }
+        }
+
+        if ($files) {
+
+            foreach ($files as $row => $file) {
+
+                $update .= $row . '=';
+
+                if (is_array($file)) $update .= "'" . addslashes(json_encode($file)) . "',";
+                else $update .= "'" . addslashes($file) . "',";
+
+            }
+        }
+
+        return rtrim($update, ',');
     }
 }

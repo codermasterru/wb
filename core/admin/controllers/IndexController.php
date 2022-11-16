@@ -15,12 +15,12 @@ class IndexController extends BaseController
 
         $table = 'teachers';
 
-        $files['gallery_img'] = ["red''.jpg", 'blue.jpg', 'black.jpg'];
+        $files['gallery_img'] = ["red''.jpgsdfsfs"];
         $files['img'] = 'main.jpg';
 
-        $res = $db->add($table, [
-            'fields' => ['name' => 'Katrin', 'content' => 'Hello'],
-            'files' => $files
+        $res = $db->delete($table, [
+            'fields' => ['name', 'surname'],
+            'where' => ['id' => 5]
         ]);
 
         exit('id=' . $res['id'] . ' Name = ' . $res['name']);
