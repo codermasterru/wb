@@ -87,7 +87,6 @@ abstract class BaseController
             echo $this->page;
         }
 
-        exit();
     }
 
     protected function render($path = '', $parameters = [])

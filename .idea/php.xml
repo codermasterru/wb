@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
+  <component name="PhpStepFilterConfiguration">
+    <skipped_functions>
+      <skipped_function name="core\admin\controllers\ShowController-&gt;inputData" />
+    </skipped_functions>
+  </component>
 </project>

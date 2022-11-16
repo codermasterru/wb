@@ -6,7 +6,7 @@ use core\base\controllers\Singletone;
 
 class Settings
 {
-use Singletone;
+    use Singletone;
 
 
     private $routes = [
@@ -14,7 +14,7 @@ use Singletone;
             'alias' => 'admin',
             'path' => 'core/admin/controllers/',
             'hrUrl' => false,
-            'routes'=>[
+            'routes' => [
 
             ]
         ],
@@ -23,8 +23,8 @@ use Singletone;
         ],
         'plugins' => [
             'path' => 'core/plugins/',
-            'dir' =>false,
-            'routes'=>[
+            'dir' => false,
+            'routes' => [
 
             ]
         ],
@@ -44,8 +44,10 @@ use Singletone;
 
     private $templateArr = [
         'text' => ['name', 'phone', 'address'],
-        'textarea' => [ 'goods_content']
+        'textarea' => ['goods_content']
     ];
+
+    private $defaultTable = 'teachers';
 
     static public function get($property)
     {

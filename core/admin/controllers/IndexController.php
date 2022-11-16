@@ -4,6 +4,7 @@ namespace core\admin\controllers;
 
 use core\admin\models\Model;
 use core\base\controllers\BaseController;
+use core\base\settings\Settings;
 
 
 class IndexController extends BaseController
@@ -11,56 +12,19 @@ class IndexController extends BaseController
     protected function inputData()
     {
 
-        $db = Model::instance();
+        // Получаем маршруты
+        $redirect = PATH . Settings::get('routes')['admin']['alias'] . '/show';
 
-        $table = 'teachers';
-
-        $files['gallery_img'] = ["red''.jpgsdfsfs"];
-        $files['img'] = 'main.jpg';
-
-        $res = $db->delete($table, [
-            'fields' => ['name', 'surname'],
-            'where' => ['id' => 5]
-        ]);
-
-        exit('id=' . $res['id'] . ' Name = ' . $res['name']);
-
-
+        // Перенаправляем на core/admin/controllers/
+        $this->redirect($redirect);
     }
 }
+
+//'admin' => [
+//    'alias' => 'admin',
+//    'path' => 'core/admin/controllers/',
+//    'hrUrl' => false,
+//    'routes'=>[
 //
-//[
-//    'fields' => ['id', 'name'],
-//    'where' => ['name' => 'masha', 'surname' => 'SELECT name FROM students WHERE id = 1'],
-//    'operand' => ['IN', '<>'],
-//    'condition' => ['AND'],
-//    'order' => ['name'],
-//    'order_direction' => ['DESC'],
-//    'limit' => '1',
-//    'join' => [
-//        [
-//            'table' => 'join_table1',
-//            'fields' => ['id as j_id', 'name as j_name'],
-//            'type' => 'left',
-//            'where' => ['name' => 'Sasha'],
-//            'operand' => ['='],
-//            'condition' => ['OR'],
-//            'on' => [
-//                'table' => 'teachers',
-//                'fields' => ['id', 'parent_id']
-//            ]
-//        ],
-//        'join_table2'=>[
-//            'table' => 'join_table2',
-//            'fields' => ['id as j2_id', 'name as j2_name'],
-//            'type' => 'left',
-//            'where' => ['name' => 'Sasha'],
-//            'operand' => ['<>'],
-//            'condition' => ['AND'],
-//            'on' => [
-//                'table' => 'teachers',
-//                'fields' => ['id', 'parent_id']
-//            ]
-//        ]
 //    ]
-//]
+

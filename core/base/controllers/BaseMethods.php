@@ -46,12 +46,12 @@ trait BaseMethods
             if ($codes[$code]) {
                 header($codes[$code]);
             }
+        }
             if ($http) $redirect = $http;
             else $redirect = $_SERVER['HTTP_REFERER'] ?? PATH;
 
             header("Location: $redirect");
             exit();
-        }
     }
 
     protected function writeLog($message, $file='log.txt', $event= 'Fault'){
