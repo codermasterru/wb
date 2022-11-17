@@ -12,14 +12,12 @@ class ShowController extends BaseAdmin
         $this->exectBase();
 
 
-
         $this->createTableData();
 
         $this->createData();
 
 
-
-         return $this->expansion(get_defined_vars());
+        return $this->expansion(get_defined_vars());
 
 
     }
@@ -89,7 +87,6 @@ class ShowController extends BaseAdmin
         }
 
 
-
         $this->data = $this->model->get($this->table, [
             'fields' => $fields,
             'order' => $order,
@@ -99,9 +96,18 @@ class ShowController extends BaseAdmin
 
     }
 
+
+    // Вывод данных в шаблон
     protected function outputData()
     {
+        $args = func_get_arg(0);
+        $vars = $args ?: [];
 
+        if (!$this->template) $this->template = ADMIN_TEMPLATE .'show';
+
+        $this->content = $this->render($this->template, $vars);
+
+        return parent::outputData();
     }
 
 

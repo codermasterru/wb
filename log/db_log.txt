@@ -1,2 +1,75 @@
 
 
+Fault:17-11-2022 10:43:41 - Ошибка в SQL запросе: SHOW COLUMNS FROM articles - 1146 Table 'wb.articles' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:43:51 - Ошибка в SQL запросе: SHOW COLUMNS FROM
+users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:44:00 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:44:01 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:44:05 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:45:23 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:46:01 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:46:02 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:46:11 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 10:51:45 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:04:52 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:04:58 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:05:22 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:05:25 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:05:59 - Ошибка в SQL запросе: SHOW COLUMN FROM users - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'COLUMN FROM users' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:11:41 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:24:04 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 11:24:16 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

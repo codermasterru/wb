@@ -9,22 +9,25 @@ abstract class BaseController
 {
     use \core\base\controllers\BaseMethods;
 
-    protected $routes;
+    //protected $routes;
 
-    //Вся инфа после сборки методов
+    protected $header;
+    protected $content;
+    protected $footer;
     protected $page;
-    protected $errors;
-    protected $controller;
 
+
+    protected $errors;
+
+
+    protected $controller;
     // Собирает данные из БД
     protected $inputMethod;
-
     // Выводит отображение
     protected $outputMethod;
-
-    //
     protected $parameters;
 
+    protected $template;
     protected $styles;
     protected $scripts;
 
@@ -86,6 +89,7 @@ abstract class BaseController
         } else {
             echo $this->page;
         }
+        exit;
 
     }
 
@@ -96,7 +100,6 @@ abstract class BaseController
 
         // Если путь не пришел то подключим шаблон по умолчанию
         if (!$path) {
-
 
             $class = new \ReflectionClass($this);
 
@@ -123,9 +126,6 @@ abstract class BaseController
         return ob_get_clean();
     }
 
-
-
-
     // Инициализируем скрипты и стили
     protected function init($admin = false)
     {
@@ -143,16 +143,16 @@ abstract class BaseController
             }
         } else {
             if (ADMIN_CSS_JS['styles']) {
-                foreach (USER_CSS_JS['styles'] as $item) {
+                foreach (ADMIN_CSS_JS['styles'] as $item) {
                     $this->styles[] = PATH . ADMIN_TEMPLATE. trim($item, '/');
                 }
             }
 
             if (ADMIN_CSS_JS['scripts']) {
-                foreach (USER_CSS_JS['scripts'] as $item) {
+                foreach (ADMIN_CSS_JS['scripts'] as $item) {
                     $this->scripts[] = PATH . ADMIN_TEMPLATE . trim($item, '/');
                 }
             }
         }
-    }
+     }
 }

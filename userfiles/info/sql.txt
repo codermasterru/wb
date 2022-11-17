@@ -1,9 +1,0 @@
-"SELECT id , name FROM product WHERE parent_id = (SELECT id FROM category)"
-
-Выбрать id, name  в product где parent_id равен (выбрать id в category)
-
-
-SELECT teachers.id, teachers.name, students.id as s_id, students.name as s_name
-FROM teachers
-LEFT JOIN  stud_teach ON teachers.id = stud_teach.teacher
-LEFT JOIN  students ON  stud_teach.studend = students.id

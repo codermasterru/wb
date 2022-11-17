@@ -10,6 +10,8 @@ const TEMPLATE = 'template/default/';
 //Путь к административной панели сайта
 const ADMIN_TEMPLATE = 'core/admin/views/';
 
+const UPLOAD_DIR = 'userfiles/';
+
 // Если нужно заставить перелогиниться
 const COOKIE_VERSION = '1.0.0';
 
@@ -27,14 +29,14 @@ const QTY_LINKS = 3;
 
 //  Путь к админским скриптам и стилям
 const ADMIN_CSS_JS = [
-    'styles' => [],
+    'styles' => ['css/main.css'],
     'scripts' => []
 ];
 
 //  Путь к пользовательским скриптам и стилям
 const USER_CSS_JS = [
-    'styles' => ['css/style.css'],
-    'scripts' => ['js/scripts.js']
+    'styles' => [],
+    'scripts' => []
 ];
 
 
