@@ -47,6 +47,8 @@ class Settings
         'textarea' => ['goods_content']
     ];
 
+    private $expansion = 'core/admin/expansion/';
+
     private $defaultTable = 'teachers';
 
     static public function get($property)

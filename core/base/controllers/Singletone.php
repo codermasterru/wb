@@ -12,14 +12,22 @@ trait Singletone
 
     private function __clone()
     {
+
     }
 
-
-    static public function instance()
-    {
-        if (self::$_instance instanceof self) {
+    static public function instance() {
+        if(self::$_instance instanceof self) {
             return self::$_instance;
         }
-        return self::$_instance = new self;
+
+        self::$_instance = new self;
+
+        if(method_exists(self::$_instance, 'connect')) {
+            self::$_instance->connect();
+        }
+
+        return self::$_instance;
+
     }
+
 }

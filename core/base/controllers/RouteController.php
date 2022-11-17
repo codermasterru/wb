@@ -14,21 +14,16 @@ class RouteController extends BaseController
         //  Получаем адресную строку
         $address_str = $_SERVER['REQUEST_URI'];
 
-
-        if (strrpos($address_str, '/') === strlen($address_str) - 1
-            && strrpos($address_str, '/') !== strlen(PATH) - 1) {
-
-            $this->redirect(rtrim($address_str, '/'), 301);
-
-        }
-//        //Разбиваем  адресную строку  -->  array
-//        $url = explode('/', substr($address_str, strlen(PATH)));
-
-
         //substr Возвращает подстроку строки string, начинающейся с start символа по счету и длиной length символов.
         $path = substr($_SERVER['PHP_SELF'], 0, strpos($_SERVER['PHP_SELF'], 'index.php'));
 
         if ($path === PATH) {
+            if(strrpos($address_str, '/') === strlen($address_str) - 1
+                && strrpos($address_str, '/') !== strlen(PATH) - 1) {
+
+                $this->redirect(rtrim($address_str, '/'), 301);
+
+            }
 
             $this->routes = Settings::get('routes');
 
@@ -122,7 +117,7 @@ class RouteController extends BaseController
             }
 
         } else {
-            throw new RouteException('Некорректная директория сайта',1);
+            throw new RouteException('Некорректная директория сайта', 1);
         }
     }
 

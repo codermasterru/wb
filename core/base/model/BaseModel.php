@@ -5,14 +5,12 @@ namespace core\base\model;
 use core\base\controllers\Singletone;
 use core\base\exception\DbException;
 
-class BaseModel extends BaseModalMethods
+abstract class BaseModel extends BaseModalMethods
 {
-
-    use Singletone;
 
     protected $db;
 
-    private function __construct()
+    protected function connect()
     {
 
         $this->db = @new \mysqli(HOST, USER, PASS, DB_NAME);
