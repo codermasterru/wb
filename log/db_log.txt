@@ -73,3 +73,11 @@ Fault:17-11-2022 11:24:16 - Ошибка в SQL запросе: SHOW COLUMNS FRO
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:17-11-2022 14:25:41 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'wb.users' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-11-2022 15:08:02 - Ошибка в SQL запросе: SHOW COLUMNS FROM edit - 1146 Table 'wb.edit' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

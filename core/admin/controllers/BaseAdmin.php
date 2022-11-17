@@ -36,7 +36,7 @@ abstract class BaseAdmin extends BaseController
 
         // Возвращает таблицу меню
         if (!$this->menu) $this->menu = Settings::get('projectTables');
-        if(!$this->adminPath) $this->adminPath = Settings::get('routes')['admin']['alias'] . '/';
+        if(!$this->adminPath) $this->adminPath = PATH . Settings::get('routes')['admin']['alias'] . '/';
 
         // Отправляем заголовки
         $this->sendNoCacheHeaders();

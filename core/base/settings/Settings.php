@@ -51,6 +51,11 @@ class Settings
 
     private $defaultTable = 'teachers';
 
+    private $projectTables = [
+        'teachers' => ['name'=>'Учителя','img'=>'pages.png' ],
+        'students' => ['name'=>'Ученики']
+    ];
+
     static public function get($property)
     {
         return self::instance()->$property;
