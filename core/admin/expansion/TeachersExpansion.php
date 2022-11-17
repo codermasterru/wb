@@ -9,6 +9,6 @@ class TeachersExpansion
     use Singletone;
 
     public function expansion($args = []){
-
+        $this->title = 'New Title';
     }
 }

@@ -2,7 +2,6 @@
 
 namespace core\base\model;
 
-use core\base\controllers\Singletone;
 use core\base\exception\DbException;
 
 abstract class BaseModel extends BaseModalMethods
