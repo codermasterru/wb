@@ -13,8 +13,9 @@ class AddController extends BaseAdmin
         // Собирает данные
         $this->createTableData();
 
-        //
+        // Создает выходные данные
         $this->createOutputData();
+        $this->model->showForeignKeys($this->table);
     }
 
 

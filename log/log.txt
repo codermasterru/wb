@@ -958,3 +958,15 @@ Fault:18-11-2022 0:55:13 - Отсутствует шаблон - core/admin/view
 file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
 In line 125
 
+Fault:18-11-2022 8:19:26 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 8:19:29 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 8:24:13 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+

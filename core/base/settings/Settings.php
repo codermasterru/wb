@@ -58,8 +58,8 @@ class Settings
 
     private $blockNeedle = [
         'vg-rows'=>[],
-        'vg-img' => [],
-        'vg-content' =>[]
+        'vg-img' => ['id'],
+        'vg-content' =>['content']
     ];
 
     private $translate = [

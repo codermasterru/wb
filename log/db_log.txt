@@ -81,3 +81,33 @@ Fault:17-11-2022 15:08:02 - Ошибка в SQL запросе: SHOW COLUMNS FRO
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:18-11-2022 11:13:17 - Ошибка в SQL запросе: SELECT * FROM  information_schema.KEY_COUMN_USAGE
+                    WHERE TABLE_SHEMA = wb AND TABLE_NAME = articles
+                    CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:18-11-2022 11:14:22 - Ошибка в SQL запросе: SELECT * FROM  information_schema.KEY_COUMN_USAGE
+                    WHERE TABLE_SHEMA = wb AND TABLE_NAME = 'articles'
+                    CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:18-11-2022 11:23:59 - Ошибка в SQL запросе: SELECT * FROM  information_schema.KEY_COULUMN_USAGE
+                    WHERE TABLE_SHEMA = 'wb' AND TABLE_NAME = 'articles'
+                    CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:18-11-2022 11:25:51 - Ошибка в SQL запросе: SELECT * FROM  information_schema.KEY_COULUMN_USAGE
+                    WHERE TABLE_SHEMA = 'wb' AND TABLE_NAME = 'articles' AND
+                    CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1109 Unknown table 'KEY_COULUMN_USAGE' in information_schema
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:18-11-2022 11:26:32 - Ошибка в SQL запросе: SELECT * FROM  information_schema.KEY_COLUMN_USAGE
+                    WHERE TABLE_SHEMA = 'wb' AND TABLE_NAME = 'articles' AND
+                    CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1054 Unknown column 'TABLE_SHEMA' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

@@ -40,11 +40,6 @@ class RouteController extends BaseController
                 // Если выполнилось то попали на плагин
                 if ($url[0] && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0])) {
 
-
-                    echo 'Попали на плагин';
-                    echo '<br>';
-
-
                     $plugin = array_shift($url);
 
                     $pluginSettings = $this->routes['settings']['path'] . ucfirst($plugin . 'Settings');
@@ -68,8 +63,7 @@ class RouteController extends BaseController
                 } else {
                     //Определяем какой контроллер будет обрабатывать
                     $this->controller = $this->routes['admin']['path'];
-                    echo 'Попали в админку';
-                    echo '<br>';
+
                     // Будет ли ЧПУ
                     $hrUrl = $this->routes['admin']['hrUrl'];
 

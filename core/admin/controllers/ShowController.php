@@ -15,9 +15,7 @@ class ShowController extends BaseAdmin
 
         $this->createData();
 
-
         return $this->expansion(get_defined_vars());
-
     }
 
     //Получает данные для вывода из текщей таблицы
@@ -25,7 +23,6 @@ class ShowController extends BaseAdmin
     {
 
         $fields = [];
-
         // Сортировка
         $order = [];
         // Напрвление сортировки

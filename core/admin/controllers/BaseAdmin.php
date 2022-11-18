@@ -21,6 +21,7 @@ abstract class BaseAdmin extends BaseController
     protected $menu;
     protected $title;
     protected $translate;
+    protected $blocks = [];
 
 
     protected function inputData()
@@ -99,8 +100,6 @@ abstract class BaseAdmin extends BaseController
 
     protected function expansion($args = [], $settings = false)
     {
-
-
         $filename = explode('_', $this->table);
         $className = '';
 
@@ -148,14 +147,43 @@ abstract class BaseAdmin extends BaseController
         $this->translate = $settings::get('translate');
 
         if (!$blocks || !is_array($blocks)) {
-            foreach ($this->columns as $name => $item) {
 
+            foreach ($this->columns as $name => $item) {
                 if($name === 'id_row') continue;
 
                 if(!$this->translate[$name]) $this->translate[$name][] = $name;
 
                 $this->blocks[0][] = $name;
+
             }
+
+            return;
         }
+
+        $default = array_keys($blocks)[0];
+
+        foreach ($this->columns as $name => $item) {
+            if($name === 'id_row') continue;
+
+            $insert = false;
+
+            foreach ($blocks as $block => $value) {
+
+                if (!array_key_exists($block, $this->blocks)) $this->blocks[$block] = [];
+
+                if (in_array($name, $value)) {
+                    $this->blocks[$block][] = $name;
+                    $insert = true;
+                    break;
+                }
+            }
+
+            if (!$insert) $this->blocks[$default][] = $name;
+
+            if(!$this->translate[$name]) $this->translate[$name][] = $name;
+        }
+
     }
+
+
 }
