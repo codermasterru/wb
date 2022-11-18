@@ -866,3 +866,95 @@ Fault:17-11-2022 16:04:56 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 58
 
+Fault:17-11-2022 23:25:01 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:17-11-2022 23:25:01 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:17-11-2022 23:52:28 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:17-11-2022 23:52:28 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:04:28 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 0:04:33 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:04:33 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:45:13 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 0:45:34 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:45:34 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:45:37 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 0:50:14 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:50:14 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:50:30 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 0:52:24 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:52:24 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:54:51 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 0:54:52 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:54:52 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:54:54 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:54:54 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:18-11-2022 0:54:55 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+
+Fault:18-11-2022 0:55:13 - Отсутствует шаблон - core/admin/views/add
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 125
+

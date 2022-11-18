@@ -16,10 +16,11 @@ abstract class BaseAdmin extends BaseController
     protected $columns;
     protected $data;
 
-    protected  $adminPath;
+    protected $adminPath;
 
     protected $menu;
     protected $title;
+    protected $translate;
 
 
     protected function inputData()
@@ -36,7 +37,7 @@ abstract class BaseAdmin extends BaseController
 
         // Возвращает таблицу меню
         if (!$this->menu) $this->menu = Settings::get('projectTables');
-        if(!$this->adminPath) $this->adminPath = PATH . Settings::get('routes')['admin']['alias'] . '/';
+        if (!$this->adminPath) $this->adminPath = PATH . Settings::get('routes')['admin']['alias'] . '/';
 
         // Отправляем заголовки
         $this->sendNoCacheHeaders();
@@ -61,13 +62,14 @@ abstract class BaseAdmin extends BaseController
     }
 
     // Достали название таблицы
-    protected function createTableData()
+    protected function createTableData($settings = false)
     {
         if (!$this->table) {
             if ($this->parameters) {
                 $this->table = array_keys($this->parameters)[0];
             } else {
-                $this->table = Settings::get('defaultTable');
+                if (!$settings) $settings = Settings::instance();
+                $this->table = $settings::get('defaultTable');
             }
         }
 
@@ -80,7 +82,16 @@ abstract class BaseAdmin extends BaseController
 
     protected function outputData()
     {
-        $this->header = $this->render(ADMIN_TEMPLATE .'include/header' );
+        if (!$this->content) {
+            $args = func_get_arg(0);
+            $vars = $args ?: [];
+
+//            if (!$this->template) $this->template = ADMIN_TEMPLATE . 'show';
+
+            $this->content = $this->render($this->template, $vars);
+        }
+
+        $this->header = $this->render(ADMIN_TEMPLATE . 'include/header');
         $this->footer = $this->render(ADMIN_TEMPLATE . 'include/footer');
 
         return $this->render(ADMIN_TEMPLATE . 'layout/default');
@@ -115,7 +126,7 @@ abstract class BaseAdmin extends BaseController
                 $exp->$name = &$this->$name;
             }
 
-        return    $exp->expansion($args);
+            return $exp->expansion($args);
 
         } else {
 
@@ -127,5 +138,24 @@ abstract class BaseAdmin extends BaseController
         }
 
         return false;
+    }
+
+    protected function createOutputData($settings = false)
+    {
+        if (!$settings) $settings = Settings::instance();
+
+        $blocks = $settings::get('blockNeedle');
+        $this->translate = $settings::get('translate');
+
+        if (!$blocks || !is_array($blocks)) {
+            foreach ($this->columns as $name => $item) {
+
+                if($name === 'id_row') continue;
+
+                if(!$this->translate[$name]) $this->translate[$name][] = $name;
+
+                $this->blocks[0][] = $name;
+            }
+        }
     }
 }

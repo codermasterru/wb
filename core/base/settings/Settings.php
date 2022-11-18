@@ -56,6 +56,16 @@ class Settings
         'students' => ['name'=>'Ученики']
     ];
 
+    private $blockNeedle = [
+        'vg-rows'=>[],
+        'vg-img' => [],
+        'vg-content' =>[]
+    ];
+
+    private $translate = [
+        'name' =>['Название', 'Не более 100 символов']
+    ];
+
     static public function get($property)
     {
         return self::instance()->$property;
