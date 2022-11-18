@@ -2,6 +2,8 @@
 
 namespace core\admin\controllers;
 
+use core\base\settings\Settings;
+
 class AddController extends BaseAdmin
 {
 
@@ -15,10 +17,14 @@ class AddController extends BaseAdmin
 
         // Создает выходные данные
         $this->createOutputData();
-        $this->model->showForeignKeys($this->table);
+
+        $this->createForeignData();
     }
 
-
+    protected function createForeignData($settings=false)
+    {
+        if(!$settings) $settings = Settings::instance();
+    }
 
 
 }

@@ -66,6 +66,8 @@ class Settings
         'name' =>['Название', 'Не более 100 символов']
     ];
 
+    private $
+
     static public function get($property)
     {
         return self::instance()->$property;
