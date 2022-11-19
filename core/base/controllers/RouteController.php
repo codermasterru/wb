@@ -14,6 +14,10 @@ class RouteController extends BaseController
         //  Получаем адресную строку
         $address_str = $_SERVER['REQUEST_URI'];
 
+        if($_SERVER['QUERY_STRING']) {
+            $address_str = substr($address_str, 0, strpos($address_str, $_SERVER['QUERY_STRING']) - 1);
+        }
+
         //substr Возвращает подстроку строки string, начинающейся с start символа по счету и длиной length символов.
         $path = substr($_SERVER['PHP_SELF'], 0, strpos($_SERVER['PHP_SELF'], 'index.php'));
 
