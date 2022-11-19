@@ -52,24 +52,28 @@ class Settings
     private $defaultTable = 'articles';
 
     private $projectTables = [
-        'teachers' => ['name'=>'Учителя','img'=>'pages.png' ],
-        'students' => ['name'=>'Ученики']
+        'teachers' => ['name' => 'Учителя', 'img' => 'pages.png'],
+        'students' => ['name' => 'Ученики']
     ];
 
     private $blockNeedle = [
-        'vg-rows'=>[],
+        'vg-rows' => [],
         'vg-img' => ['id'],
-        'vg-content' =>['content']
+        'vg-content' => ['content']
     ];
 
     private $translate = [
-        'name' =>['Название', 'Не более 100 символов']
+        'name' => ['Название', 'Не более 100 символов']
     ];
 
     private $rootItems = [
         'name' => 'Корневая',
         'tables' => ['articles']
-        ];
+    ];
+
+    private $radio = [
+        'visible' => ['Нет', 'Да', 'default' => 'Да']
+    ];
 
 
     static public function get($property)

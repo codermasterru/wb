@@ -15,10 +15,11 @@ class AddController extends BaseAdmin
         // Собирает данные
         $this->createTableData();
 
+        $this->createForeignData();
+
+        $this->createRadio();
         // Создает выходные данные
         $this->createOutputData();
-
-        $this->createForeignData();
     }
 
 
