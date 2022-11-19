@@ -49,7 +49,7 @@ class Settings
 
     private $expansion = 'core/admin/expansion/';
 
-    private $defaultTable = 'teachers';
+    private $defaultTable = 'articles';
 
     private $projectTables = [
         'teachers' => ['name'=>'Учителя','img'=>'pages.png' ],
@@ -66,7 +66,11 @@ class Settings
         'name' =>['Название', 'Не более 100 символов']
     ];
 
-    private $
+    private $rootItems = [
+        'name' => 'Корневая',
+        'tables' => ['articles']
+        ];
+
 
     static public function get($property)
     {
@@ -84,7 +88,7 @@ class Settings
                 $baseProperties[$name] = $this->arrayMergeRecursive($this->$name, $property);
                 continue;
             }
-            if ($property) $baseProperties[name] = $this->$name;
+            if ($property) $baseProperties['name'] = $this->$name;
         }
 
         return $baseProperties;
