@@ -68,7 +68,7 @@ class Settings
 
     private $rootItems = [
         'name' => 'Корневая',
-        'tables' => ['articles']
+        'tables' => ['teachers']
     ];
 
     private $radio = [
