@@ -380,45 +380,4 @@ abstract class BaseModalMethods
         return $insert_arr;
     }
 
-
-
-//    protected function createInsert($fields, $files, $except)
-//    {
-//
-//        $insert_arr = [];
-//
-//        if ($fields) {
-//
-//            foreach ($fields as $row => $value) {
-//
-//                if ($except && in_array($row, $except)) continue;
-//
-//                $insert_arr['fields'] .= $row . ',';
-//
-//                if (in_array($value, $this->sqlFunc)) {
-//                    $insert_arr['values'] .= $value . ',';
-//                } else {
-//                    $insert_arr['values'] .= "'" . addslashes($value) . "',";
-//                }
-//            } // foreach
-//        }
-//
-//        if ($files) {
-//
-//            foreach ($files as $row => $file) {
-//
-////                $file = 'main_jmg.jpg';
-////                $file['gallery_img'] = ['1.jpg', '2.jpg'];
-//
-//                $insert_arr['fields'] .= $row . ',';
-//
-//                if (is_array($file)) $insert_arr['values'] .= "'" . addslashes(json_encode($file)) . "',";
-//                else $insert_arr['values'] .= "'" . addslashes($file) . "',";
-//            }
-//        }
-//
-//        foreach ($insert_arr as $key => $arr) $insert_arr[$key] = rtrim($arr, ',');
-//
-//        return $insert_arr;
-//    }
 }
