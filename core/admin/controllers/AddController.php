@@ -6,9 +6,9 @@ use core\base\settings\Settings;
 
 class AddController extends BaseAdmin
 {
+    protected $action = 'add';
 
     protected function inputData()
-
     {
         if (!$this->iserId) $this->exectBase();
 
@@ -23,7 +23,6 @@ class AddController extends BaseAdmin
         // Создает выходные данные
         $this->createOutputData();
 
-        $this->manyAdd();
 
     }
 
