@@ -137,7 +137,7 @@ abstract class BaseModel extends BaseModalMethods
         // Собираем все данные в метод createInsert
         $insert_arr = $this->createInsert($set['fields'], $set['files'], $set['except']);
 
-        $query = "INSERT INTO $table({$insert_arr['fields']}) VALUES ({$insert_arr['values']})";
+        $query = "INSERT INTO $table{$insert_arr['fields']} VALUES {$insert_arr['values']}";
 
         return $this->query($query, 'c', $set['return_id']);
 

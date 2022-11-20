@@ -1,0 +1,4 @@
+Fault:20-11-2022 10:43:06 - Не верное имя файла для подключения - core/admin/controllers/EditController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
