@@ -24,6 +24,10 @@ abstract class BaseAdmin extends BaseController
     protected $translate;
     protected $blocks = [];
 
+    protected $templateArr;
+    protected $formTemplates;
+    protected $noDelete;
+
 
     protected function inputData()
     {
@@ -40,6 +44,9 @@ abstract class BaseAdmin extends BaseController
         // Возвращает таблицу меню
         if (!$this->menu) $this->menu = Settings::get('projectTables');
         if (!$this->adminPath) $this->adminPath = PATH . Settings::get('routes')['admin']['alias'] . '/';
+
+        if(!$this->templateArr) $this->templateArr = Settings::get('templateArr');
+        if(!$this->formTemplates) $this->formTemplates = Settings::get('formTemplates');
 
         // Отправляем заголовки
         $this->sendNoCacheHeaders();
@@ -150,9 +157,9 @@ abstract class BaseAdmin extends BaseController
         if (!$blocks || !is_array($blocks)) {
 
             foreach ($this->columns as $name => $item) {
-                if($name === 'id_row') continue;
+                if ($name === 'id_row') continue;
 
-                if(!$this->translate[$name]) $this->translate[$name][] = $name;
+                if (!$this->translate[$name]) $this->translate[$name][] = $name;
 
                 $this->blocks[0][] = $name;
 
@@ -164,7 +171,7 @@ abstract class BaseAdmin extends BaseController
         $default = array_keys($blocks)[0];
 
         foreach ($this->columns as $name => $item) {
-            if($name === 'id_row') continue;
+            if ($name === 'id_row') continue;
 
             $insert = false;
 
@@ -181,7 +188,7 @@ abstract class BaseAdmin extends BaseController
 
             if (!$insert) $this->blocks[$default][] = $name;
 
-            if(!$this->translate[$name]) $this->translate[$name][] = $name;
+            if (!$this->translate[$name]) $this->translate[$name][] = $name;
         }
 
     }
@@ -192,7 +199,7 @@ abstract class BaseAdmin extends BaseController
 
         $radio = $settings::get('radio');
 
-        if($radio) {
+        if ($radio) {
             foreach ($this->columns as $name => $item) {
                 if ($radio[$name]) {
                     $this->foreignData[$name] = $radio[$name];

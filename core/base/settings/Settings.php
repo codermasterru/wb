@@ -43,13 +43,19 @@ class Settings
     ];
 
     private $templateArr = [
-        'text' => ['name', 'phone', 'address'],
-        'textarea' => ['goods_content']
+        'text' => ['name'],
+        'textarea' => ['content'],
+        'radio' => ['visible'],
+        'select' => ['menu_position', 'parent_id'],
+        'img' => ['img'],
+        'gallery_img' => ['gallery_img']
     ];
 
     private $expansion = 'core/admin/expansion/';
 
-    private $defaultTable = 'articles';
+    private $defaultTable = 'teachers';
+
+    private $formTemplates = PATH . 'core/admin/views/include/form_templates/';
 
     private $projectTables = [
         'teachers' => ['name' => 'Учителя', 'img' => 'pages.png'],
@@ -58,7 +64,7 @@ class Settings
 
     private $blockNeedle = [
         'vg-rows' => [],
-        'vg-img' => ['id'],
+        'vg-img' => [],
         'vg-content' => ['content']
     ];
 
