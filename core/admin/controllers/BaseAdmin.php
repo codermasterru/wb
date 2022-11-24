@@ -21,6 +21,7 @@ abstract class BaseAdmin extends BaseController
 
     protected $menu;
     protected $title;
+    protected $messages;
     protected $translate;
     protected $blocks = [];
 
@@ -47,6 +48,8 @@ abstract class BaseAdmin extends BaseController
 
         if (!$this->templateArr) $this->templateArr = Settings::get('templateArr');
         if (!$this->formTemplates) $this->formTemplates = Settings::get('formTemplates');
+
+        if (!$this->messages) $this->messages = $_SERVER['DOCUMENT_ROOT'] . PATH . Settings::get('messages') . 'informationMessages.php';
 
         // Отправляем заголовки
         $this->sendNoCacheHeaders();
@@ -216,7 +219,7 @@ abstract class BaseAdmin extends BaseController
             $this->table = $this->clearStr($_POST['table']);
             unset($_POST['table']);
 
-            if ($this->table) {
+            if($this->table) {
                 $this->createTableData($settings);
                 $this->editData();
             }
@@ -267,18 +270,51 @@ abstract class BaseAdmin extends BaseController
                             }
                         }
 
-                        if ($validate[$key]['empty']) $this->emptyFields($item, $answer);
+                        if ($validate[$key]['empty']) $this->emptyFields($item, $answer, $arr);
 
                         if ($validate[$key]['trim']) $arr[$key] = trim($item);
 
                         if ($validate[$key]['int']) $arr[$key] = $this->clearNum($item);
 
-                        if ($validate[$key]['count']) $this->countChar($item, $validate[$key]['count'], $answer);
+                        if ($validate[$key]['count']) $this->countChar($item, $validate[$key]['count'], $answer, $arr);
                     }
                 }
             }
         }
         return true;
+
+    }
+
+    protected function emptyFields($str, $answer, $arr = [])
+    {
+        if (empty($str)) {
+            $_SESSION['res']['answer'] = '<div class="error">' . $this->messages['empty'] . ' ' . $answer . '</div>';
+            $this->addSessionData($arr);
+        }
+    }
+
+    protected function addSessionData($arr = [])
+    {
+        if (!$arr) $arr = $_POST;
+
+        foreach ($arr as $key => $item) {
+            $_SESSION['res'][$key] = $item;
+        }
+
+        $this->redirect();
+
+    }
+
+    protected function countChar($str, $counter, $answer, $arr)
+    {
+        if (mb_strlen($str) > $counter) {
+
+            $str_res = mb_str_replace('$1', $answer, $this->messages['empty']);
+            $str_res = mb_str_replace('$2', $counter, $str_res);
+
+            $_SESSION['res']['answer'] = '<div class="error">' . $str_res . '</div>';
+            $this->addSessionData($arr);
+        }
 
     }
 
