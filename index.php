@@ -21,7 +21,7 @@ use core\base\exception\DbException;
 use core\base\controllers\RouteController;
 
 
-try {
+ try {
     //Метод будет подключать все остальное(выборки  и тд)
     RouteController::instance()->route();
 

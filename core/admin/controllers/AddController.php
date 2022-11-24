@@ -12,7 +12,7 @@ class AddController extends BaseAdmin
     {
         if (!$this->userId) $this->exectBase();
 
-
+        $this->checkPost();
 
         // Собирает данные
         $this->createTableData();
@@ -25,12 +25,12 @@ class AddController extends BaseAdmin
         // Создает выходные данные
         $this->createOutputData();
 
-        $this->data = [
-            'name' => 'Georgiy',
-            'keywords' => 'Ключевики',
-            'img' => '1.png',
-            'gallery_img' => json_encode(['1.jpg', '2.jpg'])
-        ];
+//        $this->data = [
+//            'name' => 'Georgiy',
+//            'keywords' => 'Ключевики',
+//            'img' => '1.png',
+//            'gallery_img' => json_encode(['1.jpg', '2.jpg'])
+//        ];
 
 
     }
