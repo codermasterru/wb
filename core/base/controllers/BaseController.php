@@ -30,7 +30,7 @@ abstract class BaseController
     protected $template;
     protected $styles;
     protected $scripts;
-    protected $userID;
+    protected $userId;
 
     //Метод будет подключать все остальное(выборки  и тд)
     public function route()

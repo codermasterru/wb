@@ -44,7 +44,7 @@ class Settings
 
     private $templateArr = [
         'text' => ['name'],
-        'textarea' => ['content'],
+        'textarea' => ['content', 'keywords'],
         'radio' => ['visible'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img'],
@@ -64,17 +64,19 @@ class Settings
 
     private $blockNeedle = [
         'vg-rows' => [],
-        'vg-img' => [],
+        'vg-img' => ['img'],
         'vg-content' => ['content']
     ];
 
     private $translate = [
-        'name' => ['Название', 'Не более 100 символов']
+        'name' => ['Название', 'Не более 100 символов'],
+        'keywords' => ['Ключевые слова'],
+        'content' => []
     ];
 
     private $rootItems = [
         'name' => 'Корневая',
-        'tables' => ['teachers']
+        'tables' => ['articles']
     ];
 
     private $radio = [

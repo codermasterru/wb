@@ -10,7 +10,9 @@ class AddController extends BaseAdmin
 
     protected function inputData()
     {
-        if (!$this->iserId) $this->exectBase();
+        if (!$this->userId) $this->exectBase();
+
+
 
         // Собирает данные
         $this->createTableData();
@@ -22,6 +24,13 @@ class AddController extends BaseAdmin
         $this->createRadio();
         // Создает выходные данные
         $this->createOutputData();
+
+        $this->data = [
+            'name' => 'Georgiy',
+            'keywords' => 'Ключевики',
+            'img' => '1.png',
+            'gallery_img' => json_encode(['1.jpg', '2.jpg'])
+        ];
 
 
     }
