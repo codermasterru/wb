@@ -49,7 +49,7 @@ abstract class BaseAdmin extends BaseController
         if (!$this->templateArr) $this->templateArr = Settings::get('templateArr');
         if (!$this->formTemplates) $this->formTemplates = Settings::get('formTemplates');
 
-        if (!$this->messages) $this->messages = $_SERVER['DOCUMENT_ROOT'] . PATH . Settings::get('messages') . 'informationMessages.php';
+        if (!$this->messages) $this->messages = include $_SERVER['DOCUMENT_ROOT'] . PATH . Settings::get('messages') . 'informationMessages.php';
 
         // Отправляем заголовки
         $this->sendNoCacheHeaders();
@@ -219,15 +219,11 @@ abstract class BaseAdmin extends BaseController
             $this->table = $this->clearStr($_POST['table']);
             unset($_POST['table']);
 
-            if($this->table) {
+            if ($this->table) {
                 $this->createTableData($settings);
                 $this->editData();
             }
         }
-    }
-
-    protected function editData()
-    {
     }
 
     // Валидация полей
@@ -307,15 +303,32 @@ abstract class BaseAdmin extends BaseController
 
     protected function countChar($str, $counter, $answer, $arr)
     {
-        if (mb_strlen($str) > $counter) {
 
-            $str_res = mb_str_replace('$1', $answer, $this->messages['empty']);
+        if (mb_strlen($str) > $counter) {
+            $str_res = mb_str_replace('$1', $answer, $this->messages['count']);
+
             $str_res = mb_str_replace('$2', $counter, $str_res);
 
             $_SESSION['res']['answer'] = '<div class="error">' . $str_res . '</div>';
             $this->addSessionData($arr);
         }
+    }
 
+    protected function editData($returnId = false)
+    {
+        $id = false;
+        $method = 'add';
+
+        if ($_POST[$this->columns['id_row']]) {
+            $id = is_numeric($_POST[$this->columns['id_row']]) ?
+                $this->clearNum($_POST[$this->columns['id_row']]) :
+                $this->clearStr($_POST[$this->columns['id_row']]);
+
+            if($id){
+                $where = [$this->columns['id_row']=>$id];
+                $method = 'edit';
+            }
+        }
     }
 
 }

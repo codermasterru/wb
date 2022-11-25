@@ -5,6 +5,8 @@ namespace core\base\controllers;
 use core\base\exception\RouteException;
 use core\base\settings\Settings;
 
+include_once  'libraries/function.php';
+
 abstract class BaseController
 {
     use \core\base\controllers\BaseMethods;

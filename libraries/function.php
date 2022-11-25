@@ -1,9 +1,9 @@
 <?php
 
-if (!function_exists('mb_str_replace')) {
-
-    function mb_str_replace($needle, $tex_replace, $haystack)
+if(!function_exists('mb_str_replace'))
+{
+    function mb_str_replace($needle, $text_replace, $haystack)
     {
-        return implode($tex_replace, mb_split($needle, $haystack));
+        return implode($text_replace, explode($needle, $haystack));
     }
 }

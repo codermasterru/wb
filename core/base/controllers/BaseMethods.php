@@ -12,7 +12,7 @@ trait BaseMethods
             foreach ($str as $key => $item) $str[$key] = trim(strip_tags($item));
             return $str;
         } else {
-            return trim(stip_tags($str));
+            return trim(strip_tags($str));
         }
     }
 

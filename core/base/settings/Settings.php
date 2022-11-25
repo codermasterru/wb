@@ -72,7 +72,7 @@ class Settings
 
     private $translate = [
         'name' => ['Название', 'Не более 100 символов'],
-        'keywords' => ['Ключевые слова'],
+        'keywords' => ['Ключевые слова', 'Не более 70 символов'],
         'content' => []
     ];
 
