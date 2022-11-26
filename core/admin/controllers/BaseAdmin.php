@@ -319,16 +319,57 @@ abstract class BaseAdmin extends BaseController
         $id = false;
         $method = 'add';
 
+        // Пришел ли постом из формы id_row
         if ($_POST[$this->columns['id_row']]) {
             $id = is_numeric($_POST[$this->columns['id_row']]) ?
                 $this->clearNum($_POST[$this->columns['id_row']]) :
                 $this->clearStr($_POST[$this->columns['id_row']]);
 
-            if($id){
-                $where = [$this->columns['id_row']=>$id];
+            if ($id) {
+                $where = [$this->columns['id_row'] => $id];
                 $method = 'edit';
             }
         }
+
+        foreach ($this->columns as $key => $item) {
+            if ($item['Type'] === 'date' || $item['Type'] === 'datetime') {
+                !$_POST[$key] && $_POST['date'] = 'NOW()';
+            }
+        }
+
+        $this->createFile();
+
+        $this->createAlias($id);
+
+        $this->updateMenuPosition();
+
+        // Поля , которые будем исключать из добавления в админ панель
+        $except = $this->checkExceptFields();
+
+        if (isset($method)) {
+            $res_id = $this->model->$method($this->table,[
+                'files' => $this->fileArray
+            ]);
+        }
+
+    }
+
+
+
+    protected function createFile()
+    {
+    }
+
+    protected function createAlias( $id = false)
+    {
+    }
+
+    protected function updateMenuPosition()
+    {
+    }
+
+    protected function checkExceptFields()
+    {
     }
 
 }
