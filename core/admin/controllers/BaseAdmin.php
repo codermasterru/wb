@@ -11,17 +11,20 @@ abstract class BaseAdmin extends BaseController
 {
     protected $model;
 
-
     protected $table;
     protected $columns;
-    protected $data;
     protected $foreignData;
 
     protected $adminPath;
 
     protected $menu;
     protected $title;
+
+    protected $alias;
+    protected $fileArray;
+
     protected $messages;
+
     protected $translate;
     protected $blocks = [];
 
@@ -316,10 +319,10 @@ abstract class BaseAdmin extends BaseController
 
     protected function editData($returnId = false)
     {
+
         $id = false;
         $method = 'add';
 
-        // Пришел ли постом из формы id_row
         if ($_POST[$this->columns['id_row']]) {
             $id = is_numeric($_POST[$this->columns['id_row']]) ?
                 $this->clearNum($_POST[$this->columns['id_row']]) :
@@ -330,10 +333,11 @@ abstract class BaseAdmin extends BaseController
                 $method = 'edit';
             }
         }
-
         foreach ($this->columns as $key => $item) {
-            if ($item['Type'] === 'date' || $item['Type'] === 'datetime') {
-                !$_POST[$key] && $_POST['date'] = 'NOW()';
+            if (is_array($item) && array_key_exists('Type', $item)) {
+                if ($item['Type'] === 'date' || $item['Type'] === 'datetime') {
+                    !$_POST[$key] && $_POST[$key] = 'NOW()';
+                }
             }
         }
 
@@ -343,33 +347,143 @@ abstract class BaseAdmin extends BaseController
 
         $this->updateMenuPosition();
 
-        // Поля , которые будем исключать из добавления в админ панель
         $except = $this->checkExceptFields();
 
-        if (isset($method)) {
-            $res_id = $this->model->$method($this->table,[
-                'files' => $this->fileArray
-            ]);
+        $res_id = $this->model->$method($this->table, [
+            'files' => $this->fileArray,
+            'where' => $where,
+            'return_id' => true,
+            'except' => $except
+        ]);
+
+        if (!$id && $method === 'add') {
+            $_POST[$this->columns['id_row']] = $res_id;
+            $answerSuccess = $this->messages['addSuccess'];
+            $answerFail = $this->messages['addFail'];
+        } else {
+            $answerSuccess = $this->messages['editSuccess'];
+            $answerFail = $this->messages['editFail'];
+        }
+
+        $this->expansion(get_defined_vars());
+
+        $result = $this->checkAlias($_POST[$this->columns['id_row']]);
+
+        if ($res_id) {
+            $_SESSION['res']['answer'] = '<div class="success">' . $answerSuccess . '</div>';
+
+            if (!$returnId) $this->redirect();
+
+            return $_POST[$this->columns['id_row']];
+        } else {
+
+            $_SESSION['res']['answer'] = '<div class="error">' . $answerFail . '</div>';
+
+            if (!$returnId) $this->redirect();
+
         }
 
     }
-
 
 
     protected function createFile()
     {
     }
 
-    protected function createAlias( $id = false)
+    protected function createAlias($id = false)
     {
+        if ($this->columns['alias']) {
+
+            if (!$_POST['alias']) {
+
+                if ($_POST['name']) {
+                    $alias_str = $this->clearStr($_POST['name']);
+                } else {
+                    foreach ($_POST as $key => $item) {
+                        if (strpos($key, 'name') !== false && $item) {
+                            $alias_str = $this->clearStr($item);
+                            break;
+                        }
+                    }
+                }
+
+            } else {
+
+                $alias_str = $_POST['alias'] = $this->clearStr($_POST['alias']);
+
+            }
+
+//            $textModify = new \libraries\TextModify();
+//            $alias = $textModify->translit($alias_str);
+
+
+            $alias = 'teacher_123';
+
+            $where['alias'] = $alias;
+            $operand[] = '=';
+
+            if ($id) {
+                $where[$this->columns['id_row']] = $id;
+                $operand[] = '<>';
+            }
+
+            $res_alias = $this->model->get($this->table, [
+                'fields' => ['alias'],
+                'where' => $where,
+                'operand' => $operand,
+                'limit' => '1'
+            ])[0];
+
+            if (!$res_alias) {
+                $_POST['alias'] = $alias;
+            } else {
+                $this->alias = $alias;
+                $_POST['alias'] = '';
+            }
+
+            if ($_POST['alias'] && $id) {
+                method_exists($this, 'checkOldAlias') && $this->checkOldAlias($id);
+            }
+        }
+    }
+
+
+    protected function checkAlias($id)
+    {
+        if ($id) {
+            if ($this->alias) {
+                $this->alias .= '-' . $id;
+
+                $this->model->edit($this->table, [
+                    'fields' => ['alias' => $this->alias],
+                    'where' => [$this->columns['id_row'] => $id]
+                ]);
+
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function updateMenuPosition()
     {
     }
 
-    protected function checkExceptFields()
+    protected function checkExceptFields($arr = [])
     {
-    }
+        // Если массива исключений нет то массив равен массиву POST
+        if (!$arr) $arr = $_POST;
+        $except = [];
 
+        if ($arr) {
+
+            foreach ($arr as $key => $item) {
+                if (!$this->columns[$key]) $except[] = $key;
+            }
+        }
+
+        return $except;
+
+    }
 }

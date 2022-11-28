@@ -230,3 +230,83 @@ Fault:26-11-2022 8:27:07 - Не верное имя файла для подкл
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 58
 
+Fault:28-11-2022 10:48:23 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 10:48:23 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 14:37:22 - Не верное имя файла для подключения - libraries/TextModify
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:05:56 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:05:56 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:05:59 - Не верное имя файла для подключения - core/admin/controllers/EditController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:11:28 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:11:28 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:12:17 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:12:17 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:12:19 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:12:19 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:23:59 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:23:59 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:28:14 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:28:14 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:28:30 - Не верное имя файла для подключения - core/admin/controllers/FileEdit
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 15:56:27 - Не верное имя файла для подключения - libraries/TextModify
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 16:03:56 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:28-11-2022 16:03:56 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
