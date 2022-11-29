@@ -194,7 +194,7 @@ abstract class BaseAdmin extends BaseController
 
             if (!$insert) $this->blocks[$default][] = $name;
 
-            if (!$this->translate[$name]) $this->translate[$name][] = $name;
+            if (!$this->translate[$name]) $this->translate[$name] = [$name];
         }
 
     }
@@ -413,11 +413,9 @@ abstract class BaseAdmin extends BaseController
 
             }
 
-//            $textModify = new \libraries\TextModify();
-//            $alias = $textModify->translit($alias_str);
+            $textModify = new \libraries\TextModify();
+            $alias = $textModify->translit($alias_str);
 
-
-            $alias = 'teacher_123';
 
             $where['alias'] = $alias;
             $operand[] = '=';

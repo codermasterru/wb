@@ -2,7 +2,6 @@
 
 namespace core\base\settings;
 
-
 class ShopSettings
 {
 
@@ -12,13 +11,13 @@ class ShopSettings
         'plugins' => [
             'dir' => false,
             'routes' => [
-//                'product' => 'goods'
             ]
         ]
     ];
 
     private $templateArr = [
-        'text' => ['price', 'short'],
+        'text' => ['price', 'short', 'name'],
         'textarea' => ['goods_content']
     ];
+
 }
