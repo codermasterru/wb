@@ -393,8 +393,6 @@ abstract class BaseAdmin extends BaseController
         $fileEdit = new FileEdit();
         $this->fileArray = $fileEdit->addFile();
 
-
-
     }
 
     protected function createAlias($id = false)
@@ -451,7 +449,6 @@ abstract class BaseAdmin extends BaseController
             }
         }
     }
-
 
     protected function checkAlias($id)
     {
