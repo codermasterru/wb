@@ -10,12 +10,16 @@ class EditController extends BaseAdmin
 
     }
 
+    // Проверка старых ссылок
     protected function checkOldAlias($id)
     {
+        // Получаем массив названий всех таблиц
         $tables = $this->model->showTables();
 
+        //   Если в массиве есть 'old_alias'
         if (in_array('old_alias', $tables)) {
 
+            //
             $old_alias = $this->model->get($this->table, [
                 'alias' => ['alias'],
                 'where' => [$this->columns['id_row'] => $id]
