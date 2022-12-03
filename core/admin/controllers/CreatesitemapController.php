@@ -38,7 +38,7 @@ class  CreatesitemapController extends BaseAdmin
 
         $this->parsing(SITE_URL);
 
-        $this->createSiteMap();
+       $this->createSiteMap();
 
         !$_SESSION['res']['answer'] && $_SESSION['res']['answer'] = '<div class="success">Sitemap is created</div>';
         $this->redirect();
@@ -47,9 +47,6 @@ class  CreatesitemapController extends BaseAdmin
 
     protected function parsing($url, $index = 0)
     {
-        //
-        if (mb_strlen(SITE_URL) + 1 === mb_strlen($url) && mb_strpos($url, '/') === mb_strlen($url) - 1) return;
-
         $curl = curl_init();
 
 
@@ -72,7 +69,7 @@ class  CreatesitemapController extends BaseAdmin
         curl_close($curl);
 
 
-        if (!preg_match("/Content-Type:\s+text\/html/ui", $out)) {
+        if (!preg_match('/Content-Type:\s+text\/html/ui', $out)) {
 
             unset($this->linkArr[$index]);
 
@@ -84,7 +81,7 @@ class  CreatesitemapController extends BaseAdmin
 
         // Код ответа
         // Например               HTTP/1.1 200 OK
-        if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/uis", $out)) {
+        if (!preg_match('/HTTP\/\d\.?\d?\s+20\d/ui', $out)) {
 
             $this->writeLog('Не корректная ссылка при парсинге - ' . $url, $this->parsingLogFile);
 
@@ -97,12 +94,55 @@ class  CreatesitemapController extends BaseAdmin
             return;
 
         }
+//        $str = "<a class='class' id='1' href='ya.ru' data-id='dataid'>";
+
+        preg_match_all('/<a\s*?[^>]*?href\s*?=(["\'])(.+?)\1[^>]*?>/ui', $out, $links);
+
+        if ($links[2]) {
+
+            foreach ($links[2] as $link) {
+
+                if ($link === '/' || $link === SITE_URL . '/') continue;
+
+                foreach ($this->fileArr as $ext) {
+                    if ($ext) {
+
+                        $ext = addslashes($ext);
+                        $ext = str_replace('.', '\.' , $ext);
+
+                        if (preg_match('/' . $ext . '\s*?$/ui', $link)) {
+                            continue 2;
+                        }
+                    }
+                }
+
+                if (strpos($link, '/') === 0) {
+
+                    $link = SITE_URL . $link;
+                }
+
+                if (!in_array($link, $this->linkArr)
+                    && $link !== '#'
+                    && strpos($link, SITE_URL) === 0) {
+
+                    if ($this->filter($link)) {
+
+                        $this->linkArr[] = $link;
+                        $this->parsing($link, count($this->linkArr) -1);
+                    }
+                }
+              //  exit;
+            }
+        }
+
+    //    exit();
+
 
     }
 
     protected function filter($link)
     {
-
+        return true;
     }
 
     protected function createSiteMap()
