@@ -6,11 +6,23 @@ Fault:29-11-2022 11:12:11 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 58
 
+Fault:01-12-2022 17:48:02 - Не верное имя файла для подключения - core/user/controller/IndexController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
 Fault:01-12-2022 14:38:02 - Не верное имя файла для подключения - core/user/controller/UserfilesController
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 58
 
 Fault:01-12-2022 14:38:02 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:01-12-2022 21:23:31 - Не верное имя файла для подключения - core/user/controller/IndexController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 58
+
+Fault:01-12-2022 21:26:38 - Не верное имя файла для подключения - core/user/controller/IndexController
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 58
 

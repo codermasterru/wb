@@ -6,8 +6,7 @@ defined('VG_ACCESS') or die('Access denied');
 //Костанты проекта
 
 //Адрес сайта
-const SITE_URL = 'http://www.filter.fvds.ru';
-//const SITE_URL = 'https://www.ya.ru';
+const SITE_URL = 'http://wb';
 
 //Абсолютный путь
 const PATH = '/';

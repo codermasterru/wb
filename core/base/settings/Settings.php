@@ -25,7 +25,7 @@ class Settings
             'dir' => false
         ],
         'user' => [
-            'path' => 'core/user/controller/',
+            'path' => 'core/user/controllers/',
             'hrUrl' => true,
             'routes' => [
                 'site' => 'index/hello'
