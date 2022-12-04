@@ -15,8 +15,8 @@ class  CreatesitemapController extends BaseAdmin
     protected $fileArr = ['jpg', 'png', 'jpeg', 'gif', 'xls', 'xlsx', 'pdf', 'mp4', 'mpeg', 'mp3'];
 
     protected $filterArr = [
-        'url' => [],
-        'get' => []
+        'url' => ['order'],
+        'get' => ['masha']
     ];
 
 
@@ -38,7 +38,7 @@ class  CreatesitemapController extends BaseAdmin
 
         $this->parsing(SITE_URL);
 
-       $this->createSiteMap();
+        $this->createSiteMap();
 
         !$_SESSION['res']['answer'] && $_SESSION['res']['answer'] = '<div class="success">Sitemap is created</div>';
         $this->redirect();
@@ -108,7 +108,7 @@ class  CreatesitemapController extends BaseAdmin
                     if ($ext) {
 
                         $ext = addslashes($ext);
-                        $ext = str_replace('.', '\.' , $ext);
+                        $ext = str_replace('.', '\.', $ext);
 
                         if (preg_match('/' . $ext . '\s*?$/ui', $link)) {
                             continue 2;
@@ -128,20 +128,52 @@ class  CreatesitemapController extends BaseAdmin
                     if ($this->filter($link)) {
 
                         $this->linkArr[] = $link;
-                        $this->parsing($link, count($this->linkArr) -1);
+                        $this->parsing($link, count($this->linkArr) - 1);
                     }
                 }
-              //  exit;
             }
         }
-
-    //    exit();
-
 
     }
 
     protected function filter($link)
     {
+       // $link = 'https://yandex.ru/order/id?order=ASC&amp;name=Masha';
+
+        if ($this->filterArr) {
+
+            foreach ($this->filterArr as $type => $values) {
+
+                if ($values) {
+
+                    foreach ($values as $item) {
+
+                        $item = str_replace('/', '\/', addslashes($item));
+
+                        if($type === 'url') {
+
+                            if (preg_match('/^[^\?]*' . $item . '/ui', $link)) {
+                                return false;
+                            }
+
+                        }
+
+                        if ($type === 'get') {
+
+                            if (preg_match('/(\?|&amp;|=|&)' . $item . '(=|&amp;|&|$)/ui', $link, $matches)) {
+                                return false;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
         return true;
     }
 
