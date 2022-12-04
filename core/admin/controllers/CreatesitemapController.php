@@ -102,6 +102,9 @@ class  CreatesitemapController extends BaseAdmin
 
             foreach ($links[2] as $link) {
 
+                $links[2] = [];
+                $links[2][0] = 'http://yandex.ru/image.jpg?ver1.1';
+
                 if ($link === '/' || $link === SITE_URL . '/') continue;
 
                 foreach ($this->fileArr as $ext) {
@@ -110,7 +113,7 @@ class  CreatesitemapController extends BaseAdmin
                         $ext = addslashes($ext);
                         $ext = str_replace('.', '\.', $ext);
 
-                        if (preg_match('/' . $ext . '\s*?$/ui', $link)) {
+                        if (preg_match('/' . $ext . '\s*?$|\?[^\/]]/ui', $link)) {
                             continue 2;
                         }
                     }
