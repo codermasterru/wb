@@ -8,7 +8,7 @@ class  CreatesitemapController extends BaseAdmin
 {
     use BaseMethods;
 
-    protected $linkArr = [];
+    protected $all_links = [];
     protected $temp_links = [];
 
     protected $maxLinks = 5000;
@@ -51,10 +51,49 @@ class  CreatesitemapController extends BaseAdmin
 
         $this->maxLinks = (int)$links_counter > 1 ? ceil($this->maxLinks / $links_counter) : $this->maxLinks;
 
-        while ($this->temp_links){
+        while ($this->temp_links) {
 
             $temp_links_counter = count($this->temp_links);
 
+            $links = $this->temp_links;
+
+            $this->temp_links = [];
+
+            if ($temp_links_counter > $this->maxLinks) {
+
+                $links = array_chunk($links, ceil($temp_links_counter / $this->maxLinks));
+
+                $count_chunks = count($links);
+
+                for ($i = 0; $i < $count_chunks; $i++) {
+
+                    $this->parsing($links[$i]);
+
+                    unset($links[$i]);
+
+                    if ($links) {
+
+                        $this->model->edit('parsing_data', [
+                            'fields' => [
+                                'temp_link' => json_encode(array_merge(...$links)),
+                                'all_links' => json_encode($this->all_links)
+                            ]
+                        ]);
+
+                    }
+                }
+
+            } else {
+
+                $this->parsing($links);
+            }
+
+            $this->model->edit('parsing_data', [
+                'fields' => [
+                    'temp_link' => json_encode($this->temp_links),
+                    'all_links' => json_encode($this->all_links)
+                ]
+            ]);
 
         }
 
@@ -93,9 +132,9 @@ class  CreatesitemapController extends BaseAdmin
 
         if (!preg_match('/Content-Type:\s+text\/html/ui', $out)) {
 
-            unset($this->linkArr[$index]);
+            unset($this->all_links[$index]);
 
-            $this->linkArr = array_values($this->linkArr);
+            $this->all_links = array_values($this->all_links);
 
             return;
 
@@ -107,9 +146,9 @@ class  CreatesitemapController extends BaseAdmin
 
             $this->writeLog('Не корректная ссылка при парсинге - ' . $url, $this->parsingLogFile);
 
-            unset($this->linkArr[$index]);
+            unset($this->all_links[$index]);
 
-            $this->linkArr = array_values($this->linkArr);
+            $this->all_links = array_values($this->all_links);
 
             $_SESSION['res']['answer'] = '<div class="error">Incorrect link parsing' . $url . '<br>Sitemap is created</div>';
 
@@ -146,14 +185,14 @@ class  CreatesitemapController extends BaseAdmin
                     $link = SITE_URL . $link;
                 }
 
-                if (!in_array($link, $this->linkArr)
+                if (!in_array($link, $this->all_links)
                     && $link !== '#'
                     && strpos($link, SITE_URL) === 0) {
 
                     if ($this->filter($link)) {
 
-                        $this->linkArr[] = $link;
-                        $this->parsing($link, count($this->linkArr) - 1);
+                        $this->all_links[] = $link;
+                        $this->parsing($link, count($this->all_links) - 1);
                     }
                 }
             }
