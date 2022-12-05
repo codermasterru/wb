@@ -7,6 +7,7 @@ class EditController extends BaseAdmin
 
     protected function inputData()
     {
+        if (!$this->userId) $this->exectBase();
 
     }
 

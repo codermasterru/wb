@@ -30,6 +30,10 @@ class  CreatesitemapController extends BaseAdmin
             $this->redirect();
         }
 
+        if (!$this->userId) $this->exectBase();
+
+        if (!$this->checkParsingTable()) return false;
+
         set_time_limit(0);
 
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . PATH . 'log/' . $this->parsingLogFile)) {
@@ -102,8 +106,8 @@ class  CreatesitemapController extends BaseAdmin
 
             foreach ($links[2] as $link) {
 
-                $links[2] = [];
-                $links[2][0] = 'http://yandex.ru/image.jpg?ver1.1';
+//                $links[2] = [];
+//                $links[2][0] = 'http://yandex.ru/image.jpg?ver1.1';
 
                 if ($link === '/' || $link === SITE_URL . '/') continue;
 
@@ -141,21 +145,31 @@ class  CreatesitemapController extends BaseAdmin
 
     protected function filter($link)
     {
-       // $link = 'https://yandex.ru/order/id?order=ASC&amp;name=Masha';
+//        $link = 'https://yandex.ru/asc?order/';
 
+        // Если есть filterArr
         if ($this->filterArr) {
 
+            // Перебираем его
+            //     protected $filterArr = [
+            //        'url' => ['order'],
+            //        'get' => ['masha']
+            //    ];
+            //
+            //                          url       [order]
             foreach ($this->filterArr as $type => $values) {
 
-                if ($values) {
 
+                // Если есть значение  в type
+                if ($values) {
+                    //             []   order
                     foreach ($values as $item) {
 
                         $item = str_replace('/', '\/', addslashes($item));
 
-                        if($type === 'url') {
+                        if ($type === 'url') {
 
-                            if (preg_match('/^[^\?]*' . $item . '/ui', $link)) {
+                            if (preg_match('/^[^?]*' . $item . '/ui', $link)) {
                                 return false;
                             }
 
@@ -178,6 +192,27 @@ class  CreatesitemapController extends BaseAdmin
         }
 
         return true;
+    }
+
+    protected function checkParsingTable()
+    {
+        // Формируем массив с названием таблиц
+        $tables = $this->model->showTables();
+
+        // Если в массиве нет
+        if (!in_array('parsing_data', $tables)) {
+            //..создаем таблицу
+            $query = 'CREATE TABLE parsing_data (all_links text, temp_links text)';
+            // Если не получилось создать, выходим из скрипта
+            if (!$this->model->query($query, 'c') ||
+                !$this->model->add(
+                    'parsing_data',
+                    ['fields' => ['all_links' => '', 'temp_links' => '']]
+                )
+            ) return false;
+        }
+        return true;
+
     }
 
     protected function createSiteMap()
