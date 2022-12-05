@@ -390,3 +390,7 @@ Fault:05-12-2022 13:46:06 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 58
 
+Fault:06-12-2022 2:12:21 - Class core\admin\controllers\CreatesitemapController does not exist
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 57
+

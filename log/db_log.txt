@@ -1,0 +1,12 @@
+Fault:06-12-2022 2:03:59 - Ошибка в SQL запросе: UPDATE parsing_data SET temp_link='[]',all_links='[]'  - 1054 Unknown column 'temp_link' in 'field list'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-12-2022 2:05:47 - Ошибка в SQL запросе: UPDATE parsing_data SET temp_link='[]',all_links='[]'  - 1054 Unknown column 'temp_link' in 'field list'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-12-2022 2:06:31 - Ошибка в SQL запросе: UPDATE parsing_data SET temp_link='[]',all_links='[]'  - 1054 Unknown column 'temp_link' in 'field list'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
