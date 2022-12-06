@@ -1,0 +1,2 @@
+Fault:06-12-2022 14:39:09 - Incorrect server code http://cpa.fvds.ru/products/special-offer
+Fault:06-12-2022 14:39:10 - Incorrect server code http://cpa.fvds.ru/product/canvas

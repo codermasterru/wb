@@ -4,7 +4,7 @@ namespace core\base\model;
 
 use core\base\exception\DbException;
 
-abstract class BaseModel extends BaseModalMethods
+abstract class BaseModel extends BaseModelMethods
 {
 
     protected $db;

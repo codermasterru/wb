@@ -1,13 +1,11 @@
 <?php
 
-
 namespace core\admin\controllers;
 
 
-use core\admin\controllers\BaseAdmin;
 use core\base\controllers\BaseMethods;
 
-class CreatesitemapController extends BaseAdmin
+class  CreatesitemapController extends BaseAdmin
 {
 
     use BaseMethods;
@@ -19,7 +17,7 @@ class CreatesitemapController extends BaseAdmin
     protected $parsingLogFile = 'parsing_log.txt';
     protected $fileArr = ['jpg', 'png', 'jpeg', 'gif', 'xls', 'xlsx', 'pdf', 'mp4', 'mpeg', 'mp3'];
 
-    protected $filterArr = [
+    protected  $filterArr = [
         'url' => ['order', 'page'],
         'get' => []
     ];
@@ -49,16 +47,17 @@ class CreatesitemapController extends BaseAdmin
 
         $table_rows = [];
 
-        if (isset($reserve) && is_array($reserve)) {
+        if(isset($reserve) && is_array($reserve)) {
             foreach ($reserve as $name => $item) {
 
                 $table_rows[$name] = '';
 
                 if ($item) $this->$name = json_decode($item, '');
-                elseif ($name === 'all_links' || $name === 'temp_links') $this->$name = [SITE_URL];
+                elseif($name === 'all_links' || $name === 'temp_links') $this->$name = [SITE_URL];
 
             }
         }
+
 
 
         $this->maxLinks = (int)$links_counter > 1 ? ceil($this->maxLinks / $links_counter) : $this->maxLinks;
@@ -100,6 +99,7 @@ class CreatesitemapController extends BaseAdmin
                     }
 
                 }
+
 
 
             } else {
@@ -208,7 +208,7 @@ class CreatesitemapController extends BaseAdmin
 
             }
 
-        } while ($status === CURLM_CALL_MULTI_PERFORM || $active);
+        } while($status === CURLM_CALL_MULTI_PERFORM || $active);
 
 
         foreach ($urls as $i => $url) {
@@ -259,7 +259,7 @@ class CreatesitemapController extends BaseAdmin
 
                     foreach ($this->fileArr as $ext) {
 
-                        if ($ext) {
+                        if($ext) {
 
                             $ext = addslashes($ext);
                             $ext = str_replace('.', '\.', $ext);
@@ -308,7 +308,7 @@ class CreatesitemapController extends BaseAdmin
 
                         $item = str_replace('/', '\/', addslashes($item));
 
-                        if ($type === 'url') {
+                        if($type === 'url') {
 
                             if (preg_match('/^[^\?]*' . $item . '/ui', $link)) {
                                 return false;
@@ -344,7 +344,7 @@ class CreatesitemapController extends BaseAdmin
             $query = 'CREATE TABLE parsing_data (all_links longtext, temp_links longtext, bad_links longtext)';
 
             if (!$this->model->query($query, 'c') ||
-                !$this->model->add('parsing_data', ['fields' => ['all_links' => '', 'temp_links' => '', 'bad_links' => '']])) {
+                !$this->model->add('parsing_data', ['fields' => ['all_links' => '', 'temp_links' =>  '', 'bad_links' => '']])) {
                 return false;
             }
 
@@ -363,7 +363,7 @@ class CreatesitemapController extends BaseAdmin
 
         $class = 'success';
 
-        if (!$exitArr['success']) {
+        if(!$exitArr['success']) {
 
             $class = 'error';
 
@@ -373,7 +373,7 @@ class CreatesitemapController extends BaseAdmin
 
         if ($exit) {
 
-            $exitArr['message'] = '<div class="' . $class . '">' . $exitArr['message'] . '</div>';
+            $exitArr['message'] = '<div class="' . $class .'">' . $exitArr['message'] . '</div>';
             exit(json_encode($exitArr));
 
         }
@@ -403,11 +403,11 @@ class CreatesitemapController extends BaseAdmin
                 $elem = trim(mb_substr($item, mb_strlen(SITE_URL)), '/');
                 $elem = explode('/', $elem);
 
-                $count = '0.' . (count($elem) - 1);
+                $count = '0.' . (count($elem) -1);
 
                 $priority = 1 - (float)$count;
 
-                if ($priority == 1) $priority = '1.0';
+                if($priority == 1) $priority = '1.0';
 
                 $urlMain = $sxe->addChild('url');
 
@@ -428,9 +428,6 @@ class CreatesitemapController extends BaseAdmin
     }
 
 }
-
-
-
 
 //
 //namespace core\admin\controllers;
