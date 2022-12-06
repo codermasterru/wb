@@ -18,12 +18,11 @@ require_once 'core/base/settings/internal_settings.php';
 
 use core\base\exception\RouteException;
 use core\base\exception\DbException;
-use core\base\controllers\RouteController;
+use core\base\controllers\BaseRoute;
 
 
  try {
-    //Метод будет подключать все остальное(выборки  и тд)
-    RouteController::instance()->route();
+    BaseRoute::routeDirection();
 
 } catch (RouteException $e) {
     exit($e->getMessage());
