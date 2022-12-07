@@ -3,7 +3,6 @@
 defined('VG_ACCESS') or die;
 
 
-
 // Путь к шаблонам пользовательской части сайта
 const TEMPLATE = 'template/default/';
 
@@ -30,7 +29,10 @@ const QTY_LINKS = 3;
 //  Путь к админским скриптам и стилям
 const ADMIN_CSS_JS = [
     'styles' => ['css/main.css'],
-    'scripts' => []
+    'scripts' => [
+        'js/frameworkfunctions.js',
+        'js/scripts.js'
+    ]
 ];
 
 //  Путь к пользовательским скриптам и стилям
@@ -53,9 +55,9 @@ function autoloadMainClasses($class_name)
 //str_replace - Заменяет все вхождения строки поиска на строку замены
     $class_name = str_replace('\\', '/', $class_name);
 
-    if(!@include_once $class_name.'.php') {
+    if (!@include_once $class_name . '.php') {
         echo 'попали в ошибку';
-        throw new RouteException('Не верное имя файла для подключения - '.$class_name);
+        throw new RouteException('Не верное имя файла для подключения - ' . $class_name);
     }
 }
 
