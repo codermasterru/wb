@@ -21,12 +21,14 @@ use core\base\exception\DbException;
 use core\base\controllers\BaseRoute;
 
 
- try {
+if($_POST) exit('AJAX');
+
+
+try {
     BaseRoute::routeDirection();
 
 } catch (RouteException $e) {
     exit($e->getMessage());
-}
-catch (DbException $e) {
+} catch (DbException $e) {
     exit($e->getMessage());
 }
