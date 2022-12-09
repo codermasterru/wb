@@ -12,20 +12,22 @@ const Ajax = (set) => {
 
     let body = '';
 
-    if (typeof set.data !== 'undefined' && set.data) {
+    if (typeof set.data !== "undefined" && set.data) {
 
         for (let i in set.data) {
 
-            body += '&' + i + set.data[i];
+            body += '&' + i + '=' + set.data[i];
+
         }
 
-        body = body.substr()
+        body = body.substr(1);
+
     }
 
-    if (typeof ADMIN_MODE != 'undefined') {
+    if (typeof ADMIN_MODE !== 'undefined') {
 
         body += body ? '&' : '';
-        body += 'ADMIN_MODE=' + "ADMIN_MODE";
+        body += 'ADMIN_MODE=' + ADMIN_MODE;
 
     }
 
@@ -33,18 +35,17 @@ const Ajax = (set) => {
 
         set.url += '?' + body;
         body = null;
+
     }
 
     return new Promise((resolve, reject) => {
-
         let xhr = new XMLHttpRequest();
-
 
         xhr.open(set.type, set.url, true);
 
         let contentType = false;
 
-        if (typeof set.headers !== 'undefined' && set.headers) {
+        if (typeof set.headers !== "undefined" && set.headers) {
 
             for (let i in set.headers) {
 
@@ -53,17 +54,18 @@ const Ajax = (set) => {
                 if (i.toLowerCase() === 'content-type') contentType = true;
 
             }
+
         }
 
-        if (!contentType) xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+        if (!contentType) xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
-        xhr.onload = function () {
+        xhr.onload = function()
+        {
+            if(this.status >= 200 && this.status < 300) {
 
-            if (this.status >= 200 && this.status < 300) {
-
-                if (/fatal\s+?error/ui.test(this.response)) {
+                if(/fatal\s+?error/ui.test(this.response)) {
 
                     reject(this.response);
 
@@ -74,14 +76,15 @@ const Ajax = (set) => {
             }
 
             reject(this.response);
-
         }
 
-        xhr.onerror = function () {
+        xhr.onerror = function()
+        {
             reject(this.response);
         }
 
         xhr.send(body);
+
     });
 
 }

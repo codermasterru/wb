@@ -1,4 +1,5 @@
-document.querySelector('.sitemap-button').onclick = (e) => {
+document.querySelector('.sitemap-button').onclick = (e) =>
+{
     e.preventDefault();
 
     createSitemap();
@@ -11,13 +12,13 @@ function createSitemap() {
 
     links_counter++;
 
-    Ajax({type: 'POST'})
+    Ajax({data: {ajax:'sitemap', links_counter:links_counter}})
         .then((res) => {
-            console.log('успех - ' + res)
+            console.log('успех - ' + res);
         })
         .catch((res) => {
-            console.log('неудача - ' + res)
+            console.log('ошибка - ' + res);
+            createSitemap();
         });
-
 }
 

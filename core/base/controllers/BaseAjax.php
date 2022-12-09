@@ -6,8 +6,10 @@ use core\base\settings\Settings;
 
 class BaseAjax extends BaseController
 {
+
     public function route()
     {
+
         $route = Settings::get('routes');
 
         $controller = $route['user']['path'] . 'AjaxController';
@@ -19,6 +21,7 @@ class BaseAjax extends BaseController
             unset($data['ADMIN_MODE']);
 
             $controller = $route['admin']['path'] . 'AjaxController';
+
         }
 
         $controller = str_replace('/', '\\', $controller);
@@ -27,12 +30,12 @@ class BaseAjax extends BaseController
 
         $ajax->createAjaxData($data);
 
-        return ($ajax->ajax);
+        return ($ajax->ajax());
     }
 
+    protected function createAjaxData($data) {
 
-    protected function createAjaxData($data)
-    {
         $this->data = $data;
     }
+
 }
