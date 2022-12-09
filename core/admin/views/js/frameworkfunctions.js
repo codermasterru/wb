@@ -57,6 +57,8 @@ const Ajax = (set) => {
 
         if (!contentType) xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
 
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
         xhr.onload = function () {
 
             if (this.status >= 200 && this.status < 300) {
@@ -82,14 +84,4 @@ const Ajax = (set) => {
         xhr.send(body);
     });
 
-
-
 }
-// Ajax({type: 'POST'})
-//     .then((res) => {
-//         console.log('успех - ' + res)
-//     })
-//     .catch((res) => {
-//         console.log('неудача - ' + res)
-//     });
-

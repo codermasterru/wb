@@ -1,7 +1,15 @@
-document.querySelector('.vg-element.vg-box-shadow.sitemap-button').onclick = (e) => {
-
+document.querySelector('.sitemap-button').onclick = (e) => {
     e.preventDefault();
 
+    createSitemap();
+
+}
+
+let links_counter = 0;
+
+function createSitemap() {
+
+    links_counter++;
 
     Ajax({type: 'POST'})
         .then((res) => {
