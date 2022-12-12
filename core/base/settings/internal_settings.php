@@ -15,7 +15,7 @@ const UPLOAD_DIR = 'userfiles/';
 const COOKIE_VERSION = '1.0.0';
 
 // Ключ шифрования
-const CRYPT_KEY = '';
+const CRYPT_KEY = 'bPeShVmYq3t6w9z$G-KaPdSgVkYp3s6v%C*F-JaNdRgUkXp2w!z$C&F)J@NcRfUj3t6w9z$B&E)H@McQkYp3s6v9y$B?E(H+RgUkXp2s5v8y/B?D@NcRfUjXn2r5u8x/';
 
 // Ограничение времени авторизации (60 МИНУТ)
 const COOKIE_TIME = '60';

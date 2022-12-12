@@ -10,8 +10,12 @@ class IndexController extends BaseController
 
     protected function inputData()
     {
-       $this->isPost();
-       //exit();
+      $str = '1234567890';
+
+      $en_str = \core\base\model\Crypt::instance()->encrypt($str);
+
+      $dec_str = \core\base\model\Crypt::instance()->decrypt($en_str);
+       exit();
     }
 
 
