@@ -25,8 +25,13 @@ class Crypt
 
         $hmac = hash_hmac($this->hasheAlgoritm, $cipherText, CRYPT_KEY, true);
 
-        return base64_encode($iv . $hmac . $cipherText);
+//        return base64_encode($iv . $hmac . $cipherText);
 
+        $cipherText_comb = '112233445566778899';
+        $iv_comp = 'abcdefg';
+        $hmac_comb = '00000000000000';
+
+        $res = '1122a33b445c5667d78899efg  ';
 
     }
 
