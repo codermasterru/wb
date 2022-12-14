@@ -13,28 +13,6 @@ class Crypt
     private $hasheAlgoritm = 'sha256';
     private $hasheLength = 32;
 
-
-    public function encrypt($str)
-    {
-
-        $ivlen = openssl_cipher_iv_length($this->cryptMethod);
-
-        $iv = openssl_random_pseudo_bytes($ivlen);
-
-        $cipherText = openssl_encrypt($str, $this->cryptMethod, CRYPT_KEY, OPENSSL_RAW_DATA, $iv);
-
-        $hmac = hash_hmac($this->hasheAlgoritm, $cipherText, CRYPT_KEY, true);
-
-//        return base64_encode($iv . $hmac . $cipherText);
-
-        $cipherText_comb = '112233445566778899';
-        $iv_comp = 'abcdefg';
-        $hmac_comb = '00000000000000';
-
-        $res = '1122a33b445c5667d78899efg  ';
-
-    }
-
     public function decrypt($str)
     {
 
@@ -55,6 +33,71 @@ class Crypt
         if (hash_equals($hmac, $calcmac)) return $originalPlaintext;
 
         return false;
+    }
+
+    public function encrypt($str)
+    {
+
+        $ivlen = openssl_cipher_iv_length($this->cryptMethod);
+
+        $iv = openssl_random_pseudo_bytes($ivlen);
+
+        $cipherText = openssl_encrypt($str, $this->cryptMethod, CRYPT_KEY, OPENSSL_RAW_DATA, $iv);
+
+        $hmac = hash_hmac($this->hasheAlgoritm, $cipherText, CRYPT_KEY, true);
+
+//        return base64_encode($iv . $hmac . $cipherText);
+
+        $cipherText_comb = '1122334455667788';
+        $iv_comp = 'abcdefg';
+        $hmac_comb = '00000000000000';
+
+        $res = $this->cryptCombine($cipherText_comb, $iv_comp, $hmac_comb);
+
+    }
+
+    protected function cryptCombine($str, $iv, $hmac)
+    {
+
+        $new_str = '';
+
+        $str_len = (strlen($str));
+
+        $counter = (int)ceil(strlen(CRYPT_KEY) / $str_len + strlen($hmac));
+
+        $progress = 1;
+
+        if ($counter >= $str_len) $counter = 1;
+
+        for ($i = 0; $i < $str_len; $i++) {
+
+            if ($counter < $str_len) {
+
+                if ($counter === $i) {
+
+                    $new_str .= substr($iv, $progress - 1, 1);
+                    $progress++;
+                    $counter += $progress;
+                }
+            } else {
+
+                break;
+
+            }
+
+            $new_str .= substr($str, $i, 1);
+
+        }
+
+        $new_str .= substr($str, $i);
+        $new_str .= substr($iv, $progress - 1);
+
+        $new_str_half = (int)ceil(strlen($new_str) / 2);
+
+        $new_str = substr($new_str, 0, $new_str_half) . $hmac . substr($new_str, $new_str_half, $new_str_half);
+
+        return base64_encode($new_str);
+
     }
 
 }
