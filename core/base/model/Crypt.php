@@ -49,10 +49,12 @@ class Crypt
 //        return base64_encode($iv . $hmac . $cipherText);
 
         $cipherText_comb = '1122334455667788';
-        $iv_comp = 'abcdefg';
-        $hmac_comb = '00000000000000';
+        $iv_comp = 'abcdefghijklmnop';
+        $hmac_comb = '00000000000000000000000000000000';
 
         $res = $this->cryptCombine($cipherText_comb, $iv_comp, $hmac_comb);
+
+        $crypt_data = $this->cryptUnCombine($res, $ivlen);
 
     }
 
@@ -63,7 +65,7 @@ class Crypt
 
         $str_len = (strlen($str));
 
-        $counter = (int)ceil(strlen(CRYPT_KEY) / $str_len + strlen($hmac));
+        $counter = (int)ceil(strlen(CRYPT_KEY) / $str_len + $this->hasheLength);
 
         $progress = 1;
 
@@ -98,6 +100,22 @@ class Crypt
 
         return base64_encode($new_str);
 
+    }
+
+    protected function cryptUnCombine($str, $ivlen)
+    {
+
+        $crypt_data = [];
+
+        $str = base64_decode($str);
+
+        $hash_position = (int)ceil(strlen($str) / 2 - $this->hasheLength / 2);
+
+        $crypt_data['hmac'] = substr($str, $hash_position, $this->hasheLength);
+
+        $str  = str_replace($crypt_data['']);
+
+        exit();
     }
 
 }
