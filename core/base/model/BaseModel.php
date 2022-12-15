@@ -106,7 +106,24 @@ abstract class BaseModel extends BaseModelMethods
 
         $query = "SELECT $fields FROM $table $join $where $order $limit";
 
-        return $this->query($query);
+        $res = $this->query($query);
+
+        if (isset($set['join_structure']) && $set['join_structure'] && $res) {
+
+            $res = $this->joinStructure($res, $table);
+
+        }
+
+        return $res;
+    }
+
+    protected  function joinStructure($res, $table){
+
+
+
+
+        return true;
+
     }
 
 //    /**
@@ -175,25 +192,26 @@ abstract class BaseModel extends BaseModelMethods
         return $this->query($query, 'u');
     }
 
-    public function delete($table, $set) {
+    public function delete($table, $set = [])
+    {
 
         $table = trim($table);
 
         $where = $this->createWhere($set, $table);
 
         $columns = $this->showColumns($table);
-        if(!$columns) return false;
+        if (!$columns) return false;
 
-        if(is_array($set['fields']) && !empty($set['fields'])) {
+        if (is_array($set['fields']) && !empty($set['fields'])) {
 
-            if($columns['id_row']) {
+            if ($columns['id_row']) {
                 $key = array_search($columns['id_row'], $set['fields']);
-                if($key !== false) unset($set['fields'][$key]);
+                if ($key !== false) unset($set['fields'][$key]);
             }
 
             $fields = [];
 
-            foreach($set['fields'] as $field) {
+            foreach ($set['fields'] as $field) {
 
                 $fields[$field] = $columns[$field]['Default'];
 
@@ -204,37 +222,56 @@ abstract class BaseModel extends BaseModelMethods
 
             $query = "UPDATE $table SET $update $where";
 
-        }else{
+        } else {
 
             $join_arr = $this->createJoin($set, $table);
             $join = $join_arr['join'];
             $join_tables = $join_arr['tables'];
 
-            $query = 'DELETE ' . $table . $join_tables . ' FROM ' .$table . ' ' . $join . ' ' . $where;
+            $query = 'DELETE ' . $table . $join_tables . ' FROM ' . $table . ' ' . $join . ' ' . $where;
 
         }
 
         return $this->query($query, 'u');
     }
 
-    final public function showColumns($table) {
+    final public function showColumns($table)
+    {
+        if (!isset($this->tableRows[$table]) || $this->tableRows[$table]) {
 
-        $query = "SHOW COLUMNS FROM $table";
-        $res = $this->query($query);
+            $query = "SHOW COLUMNS FROM $table";
+            $res = $this->query($query);
 
-        $columns = [];
+            $this->tableRows[$table] = [];
 
-        if($res) {
+            if ($res) {
 
-            foreach ($res as $row) {
+                foreach ($res as $row) {
 
-                $columns[$row['Field']] = $row;
-                if($row['Key'] === 'PRI') $columns['id_row'] = $row['Field'];
+                    $this->tableRows[$table][$row['Field']] = $row;
+                    if ($row['Key'] === 'PRI') {
+
+                        if (!isset($this->tableRows[$table]['id_row'])) {
+
+                            $this->tableRows[$table]['id_row'] = $row['Field'];
+
+                        } else {
+
+                            if (!isset($this->tableRows[$table]['multi_id_row'])) $this->tableRows[$table]['multi_id_row'][] = $this->tableRows[$table]['id_row'];
+
+                            $this->tableRows[$table]['multi_id_row'][] = $row['Field'];
+
+                        }
+
+                    }
+                }
+
             }
 
         }
 
-        return $columns;
+
+        return $this->tableRows[$table];
     }
 
     final public function showTables()

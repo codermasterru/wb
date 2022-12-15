@@ -4,6 +4,7 @@
   <component name="PhpStepFilterConfiguration">
     <skipped_functions>
       <skipped_function name="core\admin\controllers\ShowController-&gt;inputData" />
+      <skipped_function name="core\user\controllers\IndexController-&gt;inputData" />
     </skipped_functions>
   </component>
 </project>
