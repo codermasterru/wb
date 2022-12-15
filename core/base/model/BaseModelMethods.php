@@ -9,7 +9,7 @@ abstract class BaseModelMethods
 
     protected $tableRows;
 
-    protected function createFields($set, $join, $table = false)
+    protected function createFields($set,  $table = false, $join =false)
     {
 
         $fields = '';
@@ -88,24 +88,11 @@ abstract class BaseModelMethods
 
             }
 
-            return $fields;
+
 
         }
+        return $fields;
 
-
-//        $set['fields'] = (is_array($set['fields']) && !empty($set['fields']))
-//            ? $set['fields'] : ['*'];
-//
-//        $table = ($table && !$set['no_concat']) ? $table . '.' : '';
-//
-//        $fields = '';
-//
-//        foreach ($set['fields'] as $field) {
-//            $fields .= $table . $field . ',';
-//
-//        }
-//
-//        return $fields;
 
     }
 
