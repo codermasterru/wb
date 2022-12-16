@@ -117,12 +117,63 @@ abstract class BaseModel extends BaseModelMethods
         return $res;
     }
 
-    protected  function joinStructure($res, $table){
+    protected function joinStructure($res, $table)
+    {
+
+        $join_arr = [];
+
+        $id_row = $this->tableRows[$table]['id_row'];
+
+        foreach ($res as $value) {
+
+            if ($value) {
+
+                if (!isset($join_arr[$value[$id_row]])) $join_arr[$value[$id_row]] = [];
+
+                foreach ($value as $key => $item) {
+
+                    if (preg_match('/TABLE(.+)?TABLE/u', $key, $matches)) {
+
+                        $table_name_normal = $matches[1];
+
+                        if (!isset($this->tableRows[$table_name_normal]['multi_id_row'])) {
+
+                            $join_id_row = $value[$matches[0]] . '_' . $this->tableRows[$table_name_normal]['id_row'];
+
+                        } else {
+
+                            $join_id_row = '';
+
+                            foreach ($this->tableRows[$table_name_normal]['multi_id_row'] as $multi) {
+
+                                $join_id_row .= $value[$matches[0]] . '_' . $multi;
+
+                            }
+
+                        }
+
+                        $row = preg_replace('//TABLE(.+)TABLE_/u', '', $key);
+
+                        if ($join_id_row && !isset($join_arr[$value[$id_row]]['join'][$table_name_normal][$join_id_row][$row])) {
+
+                            $join_arr[$value[$id_row]]['join'][$table_name_normal][$join_id_row][$row] = $item;
+
+                        }
+
+                        continue;
+
+                    }
+
+                    $join_arr[$value[$id_row]][$key] = $item;
+
+                }
+
+            }
+
+        }
 
 
-
-
-        return true;
+        return $join_arr;
 
     }
 
@@ -237,7 +288,7 @@ abstract class BaseModel extends BaseModelMethods
 
     final public function showColumns($table)
     {
-        if (!isset($this->tableRows[$table]) || $this->tableRows[$table]) {
+        if (!isset($this->tableRows[$table]) || !$this->tableRows[$table]) {
 
             $query = "SHOW COLUMNS FROM $table";
             $res = $this->query($query);

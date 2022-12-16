@@ -9,7 +9,7 @@ abstract class BaseModelMethods
 
     protected $tableRows;
 
-    protected function createFields($set,  $table = false, $join =false)
+    protected function createFields($set, $table = false, $join = false)
     {
 
         $fields = '';
@@ -62,9 +62,15 @@ abstract class BaseModelMethods
 
                 if ($field) {
 
-                    if ($join && $join_structure && !preg_match('/\s+as\s+/i', $field)) {
+                    if ($join && $join_structure) {
 
-                        $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field . ',';
+                        if (preg_match('/^(.+)?\s+as\s+(.+)/i', $field, $matches)) {
+
+                            $fields .= $concat_table . $matches[1] . ' as TABLE' . $table . 'TABLE_' . $matches[1] . ',';
+
+                        }else{
+                            $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field . ',';
+                        }
 
                     } else {
 
@@ -87,7 +93,6 @@ abstract class BaseModelMethods
                 }
 
             }
-
 
 
         }
