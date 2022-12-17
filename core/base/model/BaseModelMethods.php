@@ -16,19 +16,18 @@ abstract class BaseModelMethods
 
         $join_structure = false;
 
-        if ($join || isset($set['join_structure']) && $set['join_structure'] && $table) {
 
-            $join_structure = true;
+        if (($join || isset($set['join_structure']) && $set['join_structure'] && $table)) {
 
             $this->showColumns($table);
 
             if (isset($this->tableRows['multi_id_row'])) $set['fields'] = [];
 
-        }
+        } // end if
 
         $concat_table = $table && !$set['concat'] ? $table . '.' : '';
 
-        if (!isset($set['fields']) || !is_array($set['fields']) || !$set['fields']) {
+        if (!isset($set['fields']) || !is_array($set['fields']) || $set['fields']) {
 
             if (!$join) {
 
@@ -40,7 +39,7 @@ abstract class BaseModelMethods
 
                     if ($key !== 'id_row' && $key !== 'multi_id_row') {
 
-                        $fields .= $concat_table . $key . ' as TABLE' . $table . 'TABLE_' . $key . ',';
+                        $fields .= $concat_table . $key . ' as TABLE' . $table . 'TABLE_' . $key. ',';
 
                     }
 
@@ -62,20 +61,16 @@ abstract class BaseModelMethods
 
                 if ($field) {
 
-                    if ($join && $join_structure) {
+                    if ($join && $join_structure && !preg_match('/\s+as\s+/i', $field)) {
 
-                        if (preg_match('/^(.+)?\s+as\s+(.+)/i', $field, $matches)) {
-
-                            $fields .= $concat_table . $matches[1] . ' as TABLE' . $table . 'TABLE_' . $matches[1] . ',';
-
-                        }else{
-                            $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field . ',';
-                        }
+                        $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field;
 
                     } else {
 
                         $fields .= $concat_table . $field . ',';
+
                     }
+
                 }
 
             }
@@ -91,14 +86,10 @@ abstract class BaseModelMethods
                     $fields .= $concat_table . $this->tableRows[$table]['id_row'] . ',';
 
                 }
-
             }
-
-
         }
+
         return $fields;
-
-
     }
 
     protected function createOrder($set, $table = false)
@@ -290,6 +281,7 @@ abstract class BaseModelMethods
 
                     $join_table = $key;
 
+
                     if ($new_where) {
 
                         if ($item['where']) {
@@ -302,7 +294,7 @@ abstract class BaseModelMethods
                         $group_condition = $item['group_condition'] ? strtoupper($item['group_condition']) : 'AND';
                     }
 
-                    $fields .= $this->createFields($set['join_structure'], $key, $item);
+                    $fields .= $this->createFields($item, $key, $set['join_structure']);
                     $where .= $this->createWhere($item, $key, $group_condition);
 
                 }

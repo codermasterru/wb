@@ -15,20 +15,18 @@ class IndexController extends BaseController
         $model = Model::instance();
 
         $res = $model->get('teachers', [
-            'where' => ['id' => '13, 14'],
+            'where' => ['id' => '13,14'],
             'operand' => ['IN'],
             'join' => [
-                'stud_teach' => ['on' => ['id', 'teacher']],
+                'stud_teach' => ['on' => ['id', 'teachers']],
                 'students' => [
-                    'fields' => ['name'],
-                    'on'=>['student', 'id']
+                    'fields' => [ 'name as student_name'],
+                    'on'=>['students', 'id']
                 ]
             ],
-           'join_structure' => true
+          //  'join_structure' => true
         ]);
 
-
-      //  $res2 = $model->showColumns('teachers');
         exit;
 
     }
