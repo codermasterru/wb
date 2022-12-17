@@ -24,7 +24,7 @@ class IndexController extends BaseController
                     'on'=>['students', 'id']
                 ]
             ],
-          //  'join_structure' => true
+           'join_structure' => true
         ]);
 
         exit;

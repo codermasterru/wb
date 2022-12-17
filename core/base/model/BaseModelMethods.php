@@ -39,7 +39,7 @@ abstract class BaseModelMethods
 
                     if ($key !== 'id_row' && $key !== 'multi_id_row') {
 
-                        $fields .= $concat_table . $key . ' as TABLE' . $table . 'TABLE_' . $key. ',';
+                        $fields .= $concat_table . $key . ' as TABLE' . $table . 'TABLE_' . $key . ',';
 
                     }
 
@@ -61,9 +61,18 @@ abstract class BaseModelMethods
 
                 if ($field) {
 
-                    if ($join && $join_structure && !preg_match('/\s+as\s+/i', $field)) {
+                    if ($join && $join_structure) {
 
-                        $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field;
+                        if (preg_match('/^(.+)?\s+as\s+(.+)/i', $field, $matches)) {
+
+                            $fields .= $concat_table . $matches[1] . ' as TABLE' . $table . 'TABLE_' . $matches[2] . ',';
+
+                        } else {
+
+                            $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field . ',';
+
+                        }
+
 
                     } else {
 
