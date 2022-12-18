@@ -74,3 +74,11 @@ Fault:18-12-2022 9:41:31 - Ошибка в SQL запросе: SELECT goods.*,go
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:18-12-2022 11:41:50 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers,filters f.id as TABLEfilters fTABLE_id,filters f.name as TABLEfilters fTABLE_name,filters f.parent_id as TABLEfilters fTABLE_parent_id,filters f.content as TABLEfilters fTABLE_content,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=filters f.id LEFT JOIN filters ON filters f.parent_id=filters.id WHERE goods.id IN ('13','14')    - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.id as TABLEfilters fTABLE_id,filters f.name as TABLEfilters fTABLE_name,filters' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:18-12-2022 17:19:56 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers,f.id as TABLEfTABLE_id,f.name as TABLEfTABLE_name,f.parent_id as TABLEfTABLE_parent_id,f.content as TABLEfTABLE_content,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=filters f.id LEFT JOIN filters ON filters f.parent_id=filters.id WHERE goods.id IN ('13','14')    - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'f.id LEFT JOIN filters ON filters f.parent_id=filters.id WHERE goods.id IN ('13'' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
