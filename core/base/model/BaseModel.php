@@ -122,7 +122,7 @@ abstract class BaseModel extends BaseModelMethods
 
         $join_arr = [];
 
-        $id_row = $this->tableRows[$table]['id_row'];
+        $id_row = $this->tableRows[$this->createTableAlias($table)['alias']]['id_row'];
 
         foreach ($res as $value) {
 

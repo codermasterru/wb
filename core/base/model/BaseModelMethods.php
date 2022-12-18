@@ -41,7 +41,7 @@ abstract class BaseModelMethods
 
         } // end if
 
-       // $concat_table = $table && !$set['concat'] ? $table . '.' : '';
+        // $concat_table = $table && !$set['concat'] ? $table . '.' : '';
 
         if (!isset($set['fields']) || !is_array($set['fields']) || $set['fields']) {
 
@@ -120,14 +120,16 @@ abstract class BaseModelMethods
     protected function createOrder($set, $table = false)
     {
 
-        $table = ($table && !$set['no_concat']) ? $table . '.' : '';
+        $table = ($table && (!isset($set['no_concat']) || !$set['no_concat'])) ? $this->createTableAlias($table)['alias'] . '.' : '';
 
         $order_by = '';
 
-        if (is_array($set['order']) && !empty($set['order'])) {
+        if (isset($set['order']) && $set['order']) {
 
-            $set['order_direction'] = (is_array($set['order_direction']) && !empty($set['order_direction']))
-                ? $set['order_direction'] : ['ASC'];
+            $set['order'] = (array)$set['order'];
+
+            $set['order_direction'] = (isset($set['order_direction']) && $set['order_direction'])
+                ? (array)$set['order_direction'] : ['ASC'];
 
             $order_by = 'ORDER BY ';
 
@@ -144,7 +146,9 @@ abstract class BaseModelMethods
 
                     $order_direction = strtoupper($set['order_direction'][$direct_count - 1]);
                 }
-                if (is_int($order)) $order_by .= $order . ' ' . $order_direction . ',';
+
+                if (in_array($order, $this->sqlFunc)) $order_by .= $order . ',';
+                elseif (is_int($order)) $order_by .= $order . ' ' . $order_direction . ',';
                 else $order_by .= $table . $order . ' ' . $order_direction . ',';
 
             }
@@ -160,7 +164,8 @@ abstract class BaseModelMethods
     protected function createWhere($set, $table = false, $instruction = 'WHERE')
     {
 
-        $table = ($table && !$set['no_concat']) ? $table . '.' : '';
+        $table = ($table && (!isset($set['no_concat']) || !$set['no_concat'])) ? $this->createTableAlias($table)['alias'] . '.' : '';
+
 
         $where = '';
 
@@ -274,24 +279,27 @@ abstract class BaseModelMethods
                     else $key = $item['table'];
                 }
 
+                $concatTable = $this->createTableAlias($key)['alias'];
+
+
                 if ($join) $join .= ' ';
 
-                if ($item['on']) {
+                if (isset($item['on']) && $item['on']) {
 
-                    $join_fields = [];
+                    if (isset($item['on']['fields'])
+                        && is_array($item['on']['fields'])
+                        && count($item['on']['fields']) === 2) {
 
-                    switch (2) {
+                        $join_fields = $item['on']['fields'];
 
-                        case (is_array($item['on']['fields']) && count($item['on']['fields'])):
-                            $join_fields = $item['on']['fields'];
-                            break;
+                    }elseif (count($item['on'] )=== 2){
 
-                        case (is_array($item['on']) && count($item['on'])):
-                            $join_fields = $item['on'];
-                            break;
+                        $join_fields = $item['on'];
 
-                        default:
-                            continue 2;
+                    }else{
+
+                        continue;
+
                     }
 
                     if (!$item['type']) $join .= 'LEFT JOIN ';
@@ -299,10 +307,12 @@ abstract class BaseModelMethods
 
                     $join .= $key . ' ON ';
 
-                    if ($item['on']['table']) $join .= $item['on']['table'];
-                    else $join .= $join_table;
+                    if ($item['on']['table']) $join_temp_table = $item['on']['table'];
+                    else $join_temp_table = $join_table;
 
-                    $join .= '.' . $join_fields[0] . '=' . $key . '.' . $join_fields[1];
+                    $join .= $this->createTableAlias($join_temp_table)['alias'];
+
+                    $join .= '.' . $join_fields[0] . '=' . $concatTable . '.' . $join_fields[1];
 
                     $join_table = $key;
 
