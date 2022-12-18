@@ -26,3 +26,51 @@ Fault:17-12-2022 15:33:55 - Ошибка в SQL запросе: SELECT teachers.
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:17-12-2022 19:06:20 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 1146 Table 'wb.teachers' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 19:10:01 - Ошибка в SQL запросе: SELECT students.*,teachers.* FROM students LEFT JOIN teachers ON students.id=teachers.parent_id    - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:24:38 - Ошибка в SQL запросе: SELECT students.*,teachers.* FROM students LEFT JOIN teachers ON students.id=teachers.parent_id    - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:25:05 - Ошибка в SQL запросе: SELECT students.*,teachers.* FROM students LEFT JOIN teachers ON students.id=teachers.parent_id    - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:26:48 - Ошибка в SQL запросе: SELECT students.*,teachers.* FROM students LEFT JOIN teachers ON students.id=teachers.parent_id    - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:27:12 - Ошибка в SQL запросе: SELECT students.*,teachers.* FROM students LEFT JOIN teachers ON students.id=teachers.parent_id    - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:27:49 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters ON goods_filters.filters=filters.id WHERE goods.id IN ('13','14')    - 1054 Unknown column 'goods_filters.filters' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:28:01 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters ON goods_filters.filters=filters.id WHERE goods.id IN ('13','14')    - 1054 Unknown column 'goods_filters.filters' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:28:57 - Ошибка в SQL запросе: SHOW COLUMNS FROM students - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 21:29:13 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers FROM goods LEFT JOIN goods_filters ON goods.students=goods_filters.id WHERE goods.id IN ('13','14')    - 1054 Unknown column 'goods.students' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:17-12-2022 23:47:40 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters ON goods_filters.students=filters.id LEFT JOIN filters ON filters.parent_id=filters.id WHERE goods.id IN ('13','14')    - 1066 Not unique table/alias: 'filters'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:18-12-2022 9:41:31 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.students as TABLEgoods_filtersTABLE_students,goods_filters.teachers as TABLEgoods_filtersTABLE_teachers,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content,filters.id as TABLEfiltersTABLE_id,filters.name as TABLEfiltersTABLE_name,filters.parent_id as TABLEfiltersTABLE_parent_id,filters.content as TABLEfiltersTABLE_content FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters ON goods_filters.students=filters.id LEFT JOIN filters ON filters.parent_id=filters.id WHERE goods.id IN ('13','14')    - 1066 Not unique table/alias: 'filters'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
