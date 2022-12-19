@@ -3,6 +3,7 @@
 namespace core\base\settings;
 
 use core\base\controllers\Singletone;
+
 class Settings
 {
     use Singletone;
@@ -44,7 +45,7 @@ class Settings
         'text' => ['name'],
         'textarea' => ['content', 'keywords'],
         'radio' => ['visible'],
-        'checkboxlist' =>['filters'],
+        'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img'],
         'gallery_img' => ['gallery_img']
@@ -78,7 +79,7 @@ class Settings
     private $formTemplates = PATH . 'core/admin/views/include/form_templates/';
 
     private $projectTables = [
-        'goods' =>  ['name' => 'Товары', 'img' => 'pages.png'],
+        'goods' => ['name' => 'Товары', 'img' => 'pages.png'],
         'filters' => ['name' => 'Фильтры']
     ];
 
@@ -92,30 +93,33 @@ class Settings
     ];
 
     private $manyToMany = [
-         'goods_filters'=> ['goods', 'filters'] //'type' => 'child' || 'root'
+        'goods_filters' => ['goods', 'filters'] //'type' => 'child' || 'root'
     ];
 
-    static public function get($property) {
+    static public function get($property)
+    {
         return self::instance()->$property;
     }
 
 
-    public function glueProperties($class) {
+    public function glueProperties($class)
+    {
         $baseProperties = [];
         foreach ($this as $name => $item) {
             $property = $class::get($name);
 
-            if(is_array($property) && is_array($item)) {
+            if (is_array($property) && is_array($item)) {
                 $baseProperties[$name] = $this->arrayMergeRecursive($this->$name, $property);
                 continue;
             }
-            if(!$property) $baseProperties[$name] = $this->$name;
+            if (!$property) $baseProperties[$name] = $this->$name;
         }
 
         return $baseProperties;
     }
 
-    public function arrayMergeRecursive() {
+    public function arrayMergeRecursive()
+    {
 
         $arrays = func_get_args();
 
@@ -123,11 +127,11 @@ class Settings
 
         foreach ($arrays as $array) {
             foreach ($array as $key => $value) {
-                if(is_array($value) && is_array($base[$key])) {
+                if (is_array($value) && is_array($base[$key])) {
                     $base[$key] = $this->arrayMergeRecursive($base[$key], $value);
                 } else {
-                    if(is_int($key)) {
-                        if(!in_array($value, $base)) array_push($base, $value);
+                    if (is_int($key)) {
+                        if (!in_array($value, $base)) array_push($base, $value);
                         continue;
                     }
                     $base[$key] = $value;
