@@ -38,12 +38,13 @@ class Settings
         ]
     ];
 
-    private $defaultTable = 'teachers';
+    private $defaultTable = 'goods';
 
     private $templateArr = [
         'text' => ['name'],
         'textarea' => ['content', 'keywords'],
         'radio' => ['visible'],
+        'checkboxlist' =>['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img'],
         'gallery_img' => ['gallery_img']
@@ -88,6 +89,10 @@ class Settings
         'password' => ['crypt' => true, 'empty' => true],
         'keywords' => ['count' => 70, 'trim' => true],
         'description' => ['count' => 160, 'trim' => true]
+    ];
+
+    private $manyToMany = [
+         'goods_filters'=> ['goods', 'filters'] //'type' => 'child' || 'root'
     ];
 
     static public function get($property) {

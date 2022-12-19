@@ -146,3 +146,27 @@ Fault:18-12-2022 22:06:00 - Ошибка в SQL запросе: SELECT goods.*,g
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:19-12-2022 8:17:21 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1146 Table 'wb.goods' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:19-12-2022 8:18:23 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1146 Table 'wb.goods' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:19-12-2022 8:18:30 - Ошибка в SQL запросе: SHOW COLUMNS FROM goods - 1146 Table 'wb.goods' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:19-12-2022 9:20:32 - Ошибка в SQL запросе: SHOW COLUMNS FROM students - 1146 Table 'wb.students' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:19-12-2022 9:49:53 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 1146 Table 'wb.teachers' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:19-12-2022 9:49:58 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 1146 Table 'wb.teachers' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

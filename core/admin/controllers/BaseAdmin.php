@@ -25,6 +25,7 @@ abstract class BaseAdmin extends BaseController
     protected $fileArray;
 
     protected $messages;
+    protected $settings;
 
     protected $translate;
     protected $blocks = [];
@@ -59,7 +60,6 @@ abstract class BaseAdmin extends BaseController
         $this->sendNoCacheHeaders();
 
     }
-
 
     // Отправляем  заголовки
     protected function sendNoCacheHeaders()
@@ -386,7 +386,6 @@ abstract class BaseAdmin extends BaseController
 
     }
 
-
     protected function createFile()
     {
 
@@ -486,6 +485,63 @@ abstract class BaseAdmin extends BaseController
         }
 
         return $except;
+
+    }
+
+    protected function createOrderData($table)
+    {
+
+        $columns = $this->model->showColumns($table);
+
+        if (!$columns)
+            throw new RouteException('Отсутствуют поля  в таблице ' . $table);
+
+        $name = '';
+        $order_name = '';
+
+        if ($columns['name']) {
+            $order_name = $name = 'name';
+
+        } else {
+            foreach ($columns as $key => $value) {
+                if (strpos($key, 'name') !== false) {
+                    $order_name = $key;
+                    $name = $key . ' as name';
+                }
+            }
+
+            if (!$name) $name = $columns['id_row'] . ' as name';
+
+        }
+
+
+        $parent_id = '';
+        $order = [];
+
+        if ($columns['parent_id'])
+            $order[] = $parent_id = 'parent_id';
+
+        if ($columns['menu_position']) $order[] = 'menu_position';
+        else $order[] = $order_name;
+
+        return compact('name', 'parent_id', 'order', 'columns');
+    }
+
+    protected function createManyToMany($settings = false)
+    {
+
+        if (!$settings) $settings = $this->settings ?: Settings::instance();
+
+        $manyToMany = $settings::get('manyToMany');
+        $blocks = $settings::get('blockNeedle');
+
+        if($manyToMany){
+
+
+
+        }
+
+
 
     }
 }
