@@ -215,7 +215,7 @@ abstract class BaseAdmin extends BaseController
         }
     }
 
-// Проверка постов
+// Проверка POST
     protected function checkPost($settings = false)
     {
         if ($this->isPost()) {
@@ -531,7 +531,6 @@ abstract class BaseAdmin extends BaseController
     {
 
         if (!$settings) $settings = $this->settings ?: Settings::instance();
-
         $manyToMany = $settings::get('manyToMany');
         $blocks = $settings::get('blockNeedle');
 
@@ -581,7 +580,8 @@ abstract class BaseAdmin extends BaseController
 
                     }
 
-                    if (!$insert) $this->blocks[array_keys($this->blocks)[0]] = $tables[$otherKey];
+
+                    if (!$insert) $this->blocks[array_keys($this->blocks)[0]][] = $tables[$otherKey];
 
                     $foreign = [];
 

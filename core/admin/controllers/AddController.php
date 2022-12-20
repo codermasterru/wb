@@ -27,12 +27,6 @@ class AddController extends BaseAdmin
 
         $this->createManyToMany();
 
-//        $this->data = [
-//            'name' => 'Georgiy',
-//            'keywords' => 'Ключевики',
-//            'img' => '1.png',
-//            'gallery_img' => json_encode(['1.jpg', '2.jpg'])
-//        ];
 
 
     }
