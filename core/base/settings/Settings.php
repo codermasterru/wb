@@ -93,7 +93,7 @@ class Settings
     ];
 
     private $manyToMany = [
-        'goods_filters' => ['goods', 'filters'], //'type' => 'child' || 'root'
+        'goods_filters' => ['goods', 'filters','type' => 'root'], //'type' => 'child' || 'root'
 
     ];
 

@@ -633,6 +633,8 @@ abstract class BaseAdmin extends BaseController
 
                         if ($data) {
 
+                            $this->foreignData[$tables[$otherKey]][$tables[$otherKey]]['name'] = 'Выбрать';
+
                             foreach ($data as $item) {
 
                                 if ($tables['type'] === 'root' && $orderData['parent_id']) {
@@ -657,8 +659,7 @@ abstract class BaseAdmin extends BaseController
                             }
 
                         }
-                    }
-                    elseif ($orderData['parent_id']) {
+                    } elseif ($orderData['parent_id']) {
 
                         $parent = $tables[$otherKey];
 
@@ -779,10 +780,9 @@ abstract class BaseAdmin extends BaseController
                             }
 
                         }
-                        exit();
+                        //  exit();
 
-                    }
-                    else {
+                    } else {
 
                         $data = $this->model->get($tables[$otherKey], [
                             'fields' => [$orderData['columns']['id_row'] . ' as id', $orderData['name'], $orderData['parent_id']],
@@ -809,6 +809,5 @@ abstract class BaseAdmin extends BaseController
 
             }
         }
-       exit();
-    } // end function
+    }
 }
