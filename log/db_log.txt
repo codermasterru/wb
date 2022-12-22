@@ -1,0 +1,12 @@
+Fault:21-12-2022 14:50:31 - Ошибка в SQL запросе: SELECT goods_filters.* FROM goods_filters   ORDER BY goods_filters. ASC  - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:21-12-2022 14:50:33 - Ошибка в SQL запросе: SELECT goods_filters.* FROM goods_filters   ORDER BY goods_filters. ASC  - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:21-12-2022 14:50:39 - Ошибка в SQL запросе: SELECT goods_filters.* FROM goods_filters   ORDER BY goods_filters. ASC  - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASC' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

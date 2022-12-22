@@ -94,7 +94,7 @@ class Settings
 
     private $manyToMany = [
         'goods_filters' => ['goods', 'filters'], //'type' => 'child' || 'root'
-        'type' => 'root'
+
     ];
 
     static public function get($property)

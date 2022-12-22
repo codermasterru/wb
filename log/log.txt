@@ -1,0 +1,8 @@
+Fault:21-12-2022 13:03:14 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 60
+
+Fault:21-12-2022 13:03:15 - Не верное имя файла для подключения - core/user/controllers/UserfilesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 60
+

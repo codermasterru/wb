@@ -529,9 +529,22 @@ abstract class BaseAdmin extends BaseController
 
     protected function createManyToMany($settings = false)
     {
-
+        // Если нету настроек, то $settings или из текущего $setting или из файла настроек
         if (!$settings) $settings = $this->settings ?: Settings::instance();
+
         $manyToMany = $settings::get('manyToMany');
+        // Получили manyToMany
+//        [
+//            'goods_filters' => ['goods', 'filters'], //'type' => 'child' || 'root'
+//        ];
+
+
+        // Получили блоки
+//        [
+//            'vg-rows' => [],
+//            'vg-img' => ['img'],
+//            'vg-content' => ['content']
+//        ];
         $blocks = $settings::get('blockNeedle');
 
         if ($manyToMany) {
@@ -540,24 +553,29 @@ abstract class BaseAdmin extends BaseController
 
                 $targetKey = array_search($this->table, $tables);
 
+
+                // Ключ целевой таблицы
                 if ($targetKey !== false) {
 
                     $otherKey = $targetKey ? 0 : 1;
 
                     $checkboxList = $settings::get('templateArr')['checkboxlist'];
 
+
+                    // Если свойства нет то continue
                     if (!$checkboxList || !in_array($tables[$otherKey], $checkboxList)) continue;
 
+                    // Проверяем  существование целевой таблицы
                     if (!$this->translate[$tables[$otherKey]]) {
 
+                        //
                         if ($settings::get('projectTables')[$tables[$otherKey]]) {
-
                             $this->translate[$tables[$otherKey]] = [$settings::get('projectTables')[$tables[$otherKey]]['name']];
-
                         }
 
                     }
 
+                    //
                     $orderData = $this->createOrderData($tables[$otherKey]);
 
                     $insert = false;
@@ -639,12 +657,13 @@ abstract class BaseAdmin extends BaseController
                             }
 
                         }
-
-                    } elseif ($orderData['parent_id']) {
+                    }
+                    elseif ($orderData['parent_id']) {
 
                         $parent = $tables[$otherKey];
 
                         $keys = $this->model->showForeignKeys($tables[$otherKey]);
+
 
                         if ($keys) {
 
@@ -760,8 +779,10 @@ abstract class BaseAdmin extends BaseController
                             }
 
                         }
+                        exit();
 
-                    } else {
+                    }
+                    else {
 
                         $data = $this->model->get($tables[$otherKey], [
                             'fields' => [$orderData['columns']['id_row'] . ' as id', $orderData['name'], $orderData['parent_id']],
@@ -786,8 +807,8 @@ abstract class BaseAdmin extends BaseController
                     }
                 }
 
-            }//
-        } //  if ($manyToMany)
-        exit();
+            }
+        }
+       exit();
     } // end function
 }
