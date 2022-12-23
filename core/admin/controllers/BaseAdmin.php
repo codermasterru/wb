@@ -346,7 +346,7 @@ abstract class BaseAdmin extends BaseController
 
         $this->createAlias($id);
 
-        $this->updateMenuPosition();
+        $this->updateMenuPosition($id);
 
         $except = $this->checkExceptFields();
 
@@ -469,8 +469,11 @@ abstract class BaseAdmin extends BaseController
         return false;
     }
 
-    protected function updateMenuPosition()
+    protected function updateMenuPosition($id = false)
     {
+
+
+
     }
 
     protected function checkExceptFields($arr = [])
