@@ -32,6 +32,30 @@ class Model extends BaseModel
 
             $update_rows['operand'] = isset($update_rows['operand']) ? $update_rows['operand'] : ['='];
 
+            if ($where) {
+
+                $old_data = $this->get($table, [
+                    'fields' => [$update_rows['where'], $row],
+                    'where' => $where
+                ])[0];
+
+                $start_pos = $old_data[$row];
+
+                if ($old_data[$update_rows['where']] !== $_POST[$update_rows['where']]) {
+
+                    $pos = $this->get($table, [
+                        'fields' => ['COUNT(*) as count'],
+                        'where' => [$update_rows['where'] => $old_data[$update_rows['where']]],
+                        'no_concat' => true
+                    ])[0]['count'];
+
+                    if($)
+
+                }
+
+            }
+
+
         } else {
 
             if ($where) {
