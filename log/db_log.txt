@@ -18,3 +18,23 @@ Fault:24-12-2022 10:59:12 - Ошибка в SQL запросе: SELECT goods.*,f
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:27-12-2022 11:09:08 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1054 Unknown column 'goods_filters.students' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:27-12-2022 13:09:07 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1054 Unknown column 'goods_filters.students' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:27-12-2022 13:11:02 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1054 Unknown column 'goods_filters.students' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:27-12-2022 13:11:15 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1054 Unknown column 'goods_filters.students' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:27-12-2022 13:11:25 - Ошибка в SQL запросе: SELECT goods.*,f.*,filters.* FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters f ON goods_filters.students=f.id LEFT JOIN filters ON f.parent_id=filters.id WHERE goods.id IN ('13','14')  ORDER BY goods.id DESC  - 1054 Unknown column 'goods_filters.students' in 'on clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

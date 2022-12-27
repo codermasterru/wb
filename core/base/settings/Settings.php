@@ -69,7 +69,8 @@ class Settings
     private $translate = [
         'name' => ['Название', 'Не более 100 символов'],
         'keywords' => ['Ключевые слова'],
-        'content' => ''
+        'content' => '',
+        'menu_position' =>['Позиция']
     ];
 
     private $expansion = 'core/admin/expansion/';
@@ -93,7 +94,7 @@ class Settings
     ];
 
     private $manyToMany = [
-        'goods_filters' => ['goods', 'filters','type' => 'child'], //'type' => 'child' || 'root'
+        'goods_filters' => ['goods', 'filters','type' => 'root'], //'type' => 'child' || 'root'
 
     ];
 
