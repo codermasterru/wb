@@ -8,6 +8,7 @@ const TEMPLATE = 'template/default/';
 
 //Путь к административной панели сайта
 const ADMIN_TEMPLATE = 'core/admin/views/';
+const USER_TEMPLATE = 'core/user/views/';
 
 const UPLOAD_DIR = 'userfiles/';
 
@@ -37,7 +38,7 @@ const ADMIN_CSS_JS = [
 
 //  Путь к пользовательским скриптам и стилям
 const USER_CSS_JS = [
-    'styles' => [],
+    'styles' => ['css/main.css'],
     'scripts' => []
 ];
 
@@ -50,11 +51,11 @@ use core\base\exception\RouteException;
  */
 function autoloadMainClasses($class_name)
 {
-
-// !!func
-//str_replace - Заменяет все вхождения строки поиска на строку замены
+    //str_replace - Заменяет все вхождения строки поиска на строку замены
+    //  Заменяем слэши для того чтобы подключить
     $class_name = str_replace('\\', '/', $class_name);
 
+    // Если файл не подключен, подключаем
     if (!@include_once $class_name . '.php') {
         echo 'попали в ошибку';
         throw new RouteException('Не верное имя файла для подключения - ' . $class_name);

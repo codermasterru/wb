@@ -9,9 +9,9 @@ class BaseRoute
 
     public static function routeDirection()
     {
-
+        // Если isAjax возвращает true
         if (self::instance()->isAjax()) {
-
+        // Выходим
             exit((new BaseAjax())->route());
 
         }

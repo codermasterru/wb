@@ -36,6 +36,7 @@ trait BaseMethods
      */
     protected function isAjax()
     {
+        // Если Аджаксом ничего не было передано  возвращаем false
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
     }
 

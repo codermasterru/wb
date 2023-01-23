@@ -23,8 +23,6 @@ use core\base\controllers\BaseRoute;
 try {
     BaseRoute::routeDirection();
 
-} catch (RouteException $e) {
-    exit($e->getMessage());
-} catch (DbException $e) {
+} catch (RouteException|DbException $e) {
     exit($e->getMessage());
 }

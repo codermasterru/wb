@@ -15,6 +15,7 @@ trait Singletone
 
     }
 
+    // Создаем экземпляр класса
     static public function instance() {
         if(self::$_instance instanceof self) {
             return self::$_instance;

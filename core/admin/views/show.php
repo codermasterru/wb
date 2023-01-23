@@ -11,6 +11,8 @@
         </a>
     </div>
 
+
+    // Данные из текущей таблицы
     <?php if ($this->data):?>
         <?php foreach ($this->data as $data):?>
             <div class="vg-element vg-fourth">

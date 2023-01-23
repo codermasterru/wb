@@ -11,18 +11,6 @@ class ShowController extends BaseAdmin
     {
         if (!$this->iserId) $this->exectBase();
 
-//        $res = $this->model->get('filters', [
-//            'fields' => ['id', 'name'],
-//            'join' => [
-//                'goods' => [
-//                    'fields' => ['id as t_id', 'name as t_name'],
-//                    'on' => ['id', 'parent_id']
-//                ]
-//            ]
-//        ]);
-
- //       exit();
-
         $this->createTableData();
 
         $this->createData();

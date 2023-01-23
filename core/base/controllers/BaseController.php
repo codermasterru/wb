@@ -9,11 +9,12 @@ include_once  'libraries/function.php';
 
 abstract class BaseController
 {
-    use \core\base\controllers\BaseMethods;
+    use BaseMethods;
 
     //protected $routes;
 
     protected $header;
+
     protected $content;
     protected $footer;
     protected $page;
@@ -136,7 +137,7 @@ abstract class BaseController
         if (!$admin) {
             if (USER_CSS_JS['styles']) {
                 foreach (USER_CSS_JS['styles'] as $item) {
-                    $this->styles[] = PATH . TEMPLATE . trim($item, '/');
+                    $this->styles[] = PATH . USER_TEMPLATE . trim($item, '/');
                 }
             }
 
