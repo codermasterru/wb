@@ -1178,3 +1178,7 @@ Fault:23-01-2023 14:37:30 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 61
 
+Fault:24-01-2023 9:47:33 - Не верное имя файла для подключения - core/plugins/shop/DeleteController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+

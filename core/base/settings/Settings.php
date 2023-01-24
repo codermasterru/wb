@@ -69,8 +69,10 @@ class Settings
     private $translate = [
         'name' => ['Название', 'Не более 100 символов'],
         'keywords' => ['Ключевые слова'],
-        'content' => '',
-        'menu_position' =>['Позиция']
+        'content' => ['Контент'],
+        'menu_position' =>['Позиция'],
+        'img' => ['Изображение'],
+        'gallery_img'=>['Галерея изображений']
     ];
 
     private $expansion = 'core/admin/expansion/';

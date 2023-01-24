@@ -9,6 +9,7 @@ class Model extends BaseModel
 {
     use Singletone;
 
+    // Возвращает
     public function showForeignKeys($table, $key = false)
     {
 
@@ -20,6 +21,10 @@ class Model extends BaseModel
                     FROM  information_schema.KEY_COLUMN_USAGE
                     WHERE TABLE_SCHEMA = '$db' AND TABLE_NAME = '$table' AND
                     CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null $where";
+
+        $a = $this->query($query);
+
+
 
         return $this->query($query);
 

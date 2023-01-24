@@ -1,13 +1,18 @@
+<!--  Начало формы-->
 <form class="vg-wrap vg-element vg-ninteen-of-twenty" method="post" action="<?= $this->adminPath . $this->action ?>"
       enctype="multipart/form-data">
+
     <div class="vg-wrap vg-element vg-full">
         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
             <div class="vg-element vg-half vg-left">
                 <div class="vg-element vg-padding-in-px">
+
+                    <!--      Кнопка сохранить              -->
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button"
                            value="Сохранить">
                 </div>
 
+                <!--      Если есть что удалять показываем кнопку          -->
                 <?php if (!$this->noDelete && $this->data): ?>
                     <div class="vg-element vg-padding-in-px">
                         <a href=""
@@ -29,9 +34,10 @@
 
 
     <?php
-
+    // Перебор
     foreach ($this->blocks as $class => $block) {
 
+        // Если $class число то $class будет равен 'vg-rows';
         if (is_int($class)) $class = 'vg-rows';
 
         echo '<div class="vg-wrap vg-element ' . $class . '">';
@@ -44,6 +50,7 @@
 
                 foreach ($this->templateArr as $template => $items) {
 
+                    // Пробегаем по настройкам и сравниваем, если есть совпадение, подключаем
                     if (in_array($row, $items)) {
 
                         if (!@include $_SERVER['DOCUMENT_ROOT'] . $this->formTemplates . $template . '.php') {

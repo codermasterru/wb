@@ -22,6 +22,7 @@ class AddController extends BaseAdmin
         $this->createMenuPosition();
 
         $this->createRadio();
+
         // Создает выходные данные
         $this->createOutputData();
 
@@ -34,10 +35,13 @@ class AddController extends BaseAdmin
     protected function createForeignData($settings = false)
     {
 
+        // Если есть настройки , собираем
         if (!$settings) $settings = Settings::instance();
 
         $rootItems = $settings::get('rootItems');
 
+
+        // Если есть
         $keys = $this->model->showForeignKeys($this->table);
 
         if ($keys) {
@@ -55,7 +59,6 @@ class AddController extends BaseAdmin
 
         }
 
-        return;
     }
 
 
