@@ -22,8 +22,6 @@ class Model extends BaseModel
                     WHERE TABLE_SCHEMA = '$db' AND TABLE_NAME = '$table' AND
                     CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null $where";
 
-        $a = $this->query($query);
-
 
 
         return $this->query($query);

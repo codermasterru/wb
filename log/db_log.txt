@@ -1,0 +1,4 @@
+Fault:26-01-2023 13:22:05 - Ошибка в SQL запросе: INSERT INTO filters_category(name) VALUES ('345345') - 1364 Field 'id' doesn't have a default value
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

@@ -102,11 +102,14 @@ class AddController extends BaseAdmin
 
     protected function createMenuPosition($settings = false)
     {
-
+        // Если есть menu_position в  столбцах
         if ($this->columns['menu_position']) {
+
+            // Собираем настройки
             if (!$settings) $settings = Settings::instance();
             $rootItems = $settings::get('rootItems');
 
+            // Если есть parent_id
             if ($this->columns['parent_id']) {
 
                 if (in_array($this->table, $rootItems['tables'])) {
