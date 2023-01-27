@@ -24,9 +24,12 @@ abstract class BaseController
 
 
     protected $controller;
+
+
     // Собирает данные из БД
     protected $inputMethod;
     // Выводит отображение
+
     protected $outputMethod;
     protected $parameters;
 
@@ -39,6 +42,7 @@ abstract class BaseController
     //Метод будет подключать все остальное(выборки  и тд)
     public function route()
     {
+        // Меняем слэши
         $controller = str_replace('/', '\\', $this->controller);
 
         try {

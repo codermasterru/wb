@@ -21,6 +21,7 @@ use core\base\exception\DbException;
 use core\base\controllers\BaseRoute;
 
 try {
+    // Обращаемся к Методу routeDirection() класса BaseRoute
     BaseRoute::routeDirection();
 
 } catch (RouteException|DbException $e) {

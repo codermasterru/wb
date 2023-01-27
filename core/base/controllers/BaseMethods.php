@@ -22,24 +22,21 @@ trait BaseMethods
         return $num * 1;
     }
 
-    /**
-     * @return bool
-     */
+    // Проверяет посланы ли данные постом
     protected function isPost()
     {
 
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
 
-    /**
-     * @return bool
-     */
+    // Определяем идет ли к нам Ajax запрос
     protected function isAjax()
     {
         // Если Аджаксом ничего не было передано  возвращаем false
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
     }
 
+    // "Реддиректим" на нужную страницу
     protected function redirect($http = false, $code = false)
     {
         if ($code) {
@@ -56,6 +53,7 @@ trait BaseMethods
             exit();
     }
 
+    // Подключаем стили
     protected function getStyles()
     {
         if ($this->styles) {
@@ -65,6 +63,7 @@ trait BaseMethods
         }
     }
 
+    // Подключаем скрипты
     protected function getScripts()
     {
 
@@ -76,6 +75,7 @@ trait BaseMethods
 
     }
 
+    // Логируем
     protected function writeLog($message, $file='log.txt', $event= 'Fault'){
 
         $dateTime = new \DateTime();
@@ -84,6 +84,5 @@ trait BaseMethods
 
         file_put_contents('log/' . $file, $str, FILE_APPEND);
     }
-
 
 }
