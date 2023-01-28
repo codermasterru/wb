@@ -12,8 +12,10 @@ error_reporting(E_ERROR | E_PARSE);
 // Стартуем сессию
 session_start();
 
-//Подключаем файл настроек
+//Подключаем файл настроек подключения к БД и др
 require_once 'config.php';
+
+// Внутренние константы
 require_once 'core/base/settings/internal_settings.php';
 
 use core\base\exception\RouteException;

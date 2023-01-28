@@ -10,7 +10,7 @@ class BaseRoute
 
     public static function routeDirection()
     {
-        // Если isAjax возвращает true
+        // Если Ajax-ом что нибудь передается
         if (self::instance()->isAjax()) {
 
         // Подключаем route в BaseAjax

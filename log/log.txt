@@ -1182,3 +1182,11 @@ Fault:24-01-2023 9:47:33 - Не верное имя файла для подкл
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 61
 
+Fault:28-01-2023 9:25:07 - Отсутствует шаблон - core/admin/views/edit
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 133
+
+Fault:28-01-2023 10:40:22 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
