@@ -77,22 +77,42 @@ abstract class BaseAdmin extends BaseController
         self::inputData();
     }
 
-    // Достали название таблицы
+    // Взяли данные и записали их в columns
+    // вида
+    //[
+    // id =>[]
+    // id_row = 'id'
+    // name =>[]
+    // img =>[]
+    // gallery_img =>[]
+    // menu_position =>[]
+    // visible=>[]
+    // content =>[]
+    // keywords => []
+    // date => []
+    // datetime =>[]
+    // alias=>[]
+    //]
     protected function createTableData($settings = false)
     {
+        // Если нет таблицы, используем по умолчанию
         if (!$this->table) {
+            // Если есть параметры
             if ($this->parameters) {
+                // Берем название таблицы из параметров
                 $this->table = array_keys($this->parameters)[0];
             } else {
+                // Собираем настройки
                 if (!$settings) $settings = Settings::instance();
                 $this->table = $settings::get('defaultTable');
             }
         }
 
+        // Получаем данные из таблицы
         $this->columns = $this->model->showColumns($this->table);
 
+        // Если нет данных --> логгируем
         if (!$this->columns) new RouteException('Не найдены поля в таблице - ' . $this->table, 2);
-
 
     }
 
@@ -472,14 +492,14 @@ abstract class BaseAdmin extends BaseController
     protected function updateMenuPosition($id = false)
     {
 
-        if(isset($_POST['menu_position'])){
+        if (isset($_POST['menu_position'])) {
 
             $where = false;
 
-            if($id && $this->columns['id_row']) $where = [$this->columnsp['id_row'] => $id];
+            if ($id && $this->columns['id_row']) $where = [$this->columnsp['id_row'] => $id];
 
-            if(array_key_exists('parent_id', $_POST))
-                $this->model->updateMenuPosition($this->table, 'menu_position', $where, $_POST['menu_position'],['where'=>'parent_id']);
+            if (array_key_exists('parent_id', $_POST))
+                $this->model->updateMenuPosition($this->table, 'menu_position', $where, $_POST['menu_position'], ['where' => 'parent_id']);
             else
                 $this->model->updateMenuPosition($this->table, 'menu_position', $where, $_POST['menu_position']);
 
@@ -881,10 +901,10 @@ abstract class BaseAdmin extends BaseController
 
                         }
 
-                        if($insertArr){
+                        if ($insertArr) {
 
                             $this->model->add($mTable, [
-                                'fields'=>$insertArr
+                                'fields' => $insertArr
                             ]);
 
                         }

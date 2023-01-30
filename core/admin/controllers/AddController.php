@@ -17,8 +17,10 @@ class AddController extends BaseAdmin
         // Собирает данные
         $this->createTableData();
 
+        // Проверяет внешние ключи
         $this->createForeignData();
 
+        // Формирует
         $this->createMenuPosition();
 
         $this->createRadio();
@@ -41,14 +43,15 @@ class AddController extends BaseAdmin
         $rootItems = $settings::get('rootItems');
 
 
-        // Если есть
+        // Если есть внешние ключи
         $keys = $this->model->showForeignKeys($this->table);
 
+        // Если есть внешние ключи
         if ($keys) {
             foreach ($keys as $item) {
                 $this->createForeignProperty($item, $rootItems);
             }
-
+        // Если есть полу parent_id
         } elseif ($this->columns['parent_id']) {
 
             $arr['COLUMN_NAME'] = 'parent_id';

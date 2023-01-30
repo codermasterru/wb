@@ -1,3 +1,8 @@
+<?php
+
+use core\base\exception\RouteException;
+
+?>
 <!--  Начало формы-->
 <form class="vg-wrap vg-element vg-ninteen-of-twenty" method="post" action="<?= $this->adminPath . $this->action ?>"
       enctype="multipart/form-data">
@@ -46,15 +51,26 @@
 
         if ($block) {
 
+            // Разбираем на строки
             foreach ($block as $row) {
 
                 foreach ($this->templateArr as $template => $items) {
+
+
+//                    private $templateArr = [
+//                        'text' => ['name'],
+//                        'textarea' => ['content', 'keywords'],
+//                        'radio' => ['visible'],
+//                        'select' => ['menu_position', 'parent_id'],
+//                        'img' => ['img'],
+//                        'gallery_img' => ['gallery_img']
+//                    ];
 
                     // Пробегаем по настройкам и сравниваем, если есть совпадение, подключаем
                     if (in_array($row, $items)) {
 
                         if (!@include $_SERVER['DOCUMENT_ROOT'] . $this->formTemplates . $template . '.php') {
-                            throw new \core\base\exception\RouteException('Не найден шаблон ' .
+                            throw new RouteException('Не найден шаблон ' .
                                 $_SERVER['DOCUMENT_ROOT'] . $this->formTemplates . $template . '.php');
                         }
 
@@ -74,6 +90,8 @@
     }
 
     ?>
+
+    // Нижний блок кнопок сохранить / удалить
     <div class="vg-wrap vg-element vg-full">
         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
             <div class="vg-element vg-half vg-left">

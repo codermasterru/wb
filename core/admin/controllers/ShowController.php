@@ -8,20 +8,26 @@ class ShowController extends BaseAdmin
 {
     protected function inputData()
     {
-        if (!$this->iserId) $this->exectBase();
+        // Если есть пользователь не авторизован , запускаем  родительский inputData
+        if (!$this->userId) $this->exectBase();
 
+        // Получаем columns
         $this->createTableData();
 
+        // Получаем data
         $this->createData();
 
+        // Расширение
         return $this->expansion(get_defined_vars());
     }
 
     //Получает данные для вывода из текщей таблицы
+    // data
     protected function createData($arr = [])
     {
-
+        //
         $fields = [];
+
         // Сортировка
         $order = [];
         // Напрвление сортировки
@@ -86,7 +92,6 @@ class ShowController extends BaseAdmin
             'order' => $order,
             'order_direction' => $order_direction
         ]);
-
 
     }
 
