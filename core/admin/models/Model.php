@@ -30,13 +30,14 @@ class Model extends BaseModel
 
     public function updateMenuPosition($table, $row, $where, $end_pos, $update_rows = [])
     {
-
+       // Если update_rows
         if ($update_rows && isset($update_rows['where'])) {
 
-            $update_rows['operand'] = isset($update_rows['operand']) ? $update_rows['operand'] : ['='];
+            $update_rows['operand'] = $update_rows['operand'] ?? ['='];
 
             if ($where) {
 
+                // Получаем старые данные
                 $old_data = $this->get($table, [
                     'fields' => [$update_rows['where'], $row],
                     'where' => $where

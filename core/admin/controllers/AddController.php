@@ -115,6 +115,7 @@ class AddController extends BaseAdmin
             // Если есть parent_id
             if ($this->columns['parent_id']) {
 
+                // Если в настройках  rootItems
                 if (in_array($this->table, $rootItems['tables'])) {
                     $where = 'parent_id IS NULL OR parent_id = 0';
                 } else {
