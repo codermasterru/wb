@@ -11,12 +11,13 @@ abstract class BaseModelMethods
 
     protected function createFields($set, $table = false, $join = false)
     {
-
+        // Если fields есть в set   и  равен нулю прекращаем
         if (array_key_exists('fields', $set) && $set['fields'] === null) return '';
 
         $concat_table = '';
         $alias_table = $table;
 
+        // Если  активирован  no_concat  --> пропуск
         if (!$set['no_concat']) {
 
             $arr = $this->createTableAlias($table);
@@ -43,7 +44,7 @@ abstract class BaseModelMethods
 
         // $concat_table = $table && !$set['concat'] ? $table . '.' : '';
 
-        if (!isset($set['fields']) || !is_array($set['fields']) || $set['fields']) {
+        if (!isset($set['fields']) || !is_array($set['fields']) || !$set['fields']) {
 
             if (!$join) {
 

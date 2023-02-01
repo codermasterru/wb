@@ -35,6 +35,7 @@ class Model extends BaseModel
 
             $update_rows['operand'] = $update_rows['operand'] ?? ['='];
 
+            // Если приходит условие
             if ($where) {
 
                 // Получаем старые данные
@@ -115,12 +116,15 @@ class Model extends BaseModel
 
         $db_where = isset($db_where) ? $db_where . ' AND' : 'WHERE';
 
+        $query = "UPDATE $table SET $row = $row - 1 $db_where $row <= $end_pos  AND $row > $start_pos";
+
         if ($start_pos < $end_pos)
             $query = "UPDATE $table SET $row = $row - 1 $db_where $row <= $end_pos  AND $row > $start_pos";
         elseif ($start_pos > $end_pos)
             $query = "UPDATE $table SET $row = $row + 1 $db_where $row >= $end_pos  AND $row < $start_pos";
-        else return;
+       else return;
+
 
         return $this->query($query, 'u');
-    }
-}
+    } // End methods
+}// End class
