@@ -1254,3 +1254,7 @@ Fault:01-02-2023 11:23:49 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 61
 
+Fault:02-02-2023 8:20:07 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+

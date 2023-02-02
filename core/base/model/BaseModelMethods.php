@@ -204,6 +204,7 @@ abstract class BaseModelMethods
                     $condition = $set['condition'][$c_count - 1];
                 }
 
+                // Если операнд равен IN  или  операнд равен NOT IN
                 if ($operand === 'IN' || $operand === 'NOT IN') {
 
                     if (is_string($item) && strpos($item, 'SELECT') === 0) {
@@ -246,6 +247,11 @@ abstract class BaseModelMethods
                     if (strpos($item, 'SELECT') === 0) {
 
                         $where .= $table . $key . $operand . '(' . $item . ") $condition";
+                    } elseif ($item === null || $item === 'NULL') {
+
+                        if ($operand === '=') $where .= $table . $key . 'IS NULL ' . $condition;
+                            else $where .= $table . $key . 'IS NOT NULL ' . $condition;
+
                     } else {
 
                         $where .= $table . $key . $operand . "'" . addslashes($item) . "' $condition";
@@ -293,11 +299,11 @@ abstract class BaseModelMethods
 
                         $join_fields = $item['on']['fields'];
 
-                    }elseif (count($item['on'] )=== 2){
+                    } elseif (count($item['on']) === 2) {
 
                         $join_fields = $item['on'];
 
-                    }else{
+                    } else {
 
                         continue;
 

@@ -31,7 +31,6 @@ class AddController extends BaseAdmin
         $this->createManyToMany();
 
 
-
     }
 
     protected function createForeignData($settings = false)
@@ -51,7 +50,7 @@ class AddController extends BaseAdmin
             foreach ($keys as $item) {
                 $this->createForeignProperty($item, $rootItems);
             }
-        // Если есть полу parent_id
+            // Если есть полу parent_id
         } elseif ($this->columns['parent_id']) {
 
             $arr['COLUMN_NAME'] = 'parent_id';
@@ -69,7 +68,7 @@ class AddController extends BaseAdmin
     {
 
         if (in_array($this->table, $rootItems['tables'])) {
-            $this->foreignData[$arr['COLUMN_NAME']][0]['id'] = 0;
+            $this->foreignData[$arr['COLUMN_NAME']][0]['id'] = 'NULL';
             $this->foreignData[$arr['COLUMN_NAME']][0]['name'] = $rootItems['name'];
         }
 
@@ -110,15 +109,15 @@ class AddController extends BaseAdmin
             if (!$settings) $settings = Settings::instance();
             $rootItems = $settings::get('rootItems');
 
-            if($this->columns['parent_id']) {
+            if ($this->columns['parent_id']) {
 
-                if(in_array($this->table, $rootItems['tables'])) {
+                if (in_array($this->table, $rootItems['tables'])) {
                     $where = 'parent_id IS NULL OR parent_id = 0';
                 } else {
 
                     $parent = $this->model->showForeignKeys($this->table, 'parent_id')[0];
 
-                    if($parent) {
+                    if ($parent) {
 
                         if ($this->table === $parent['REFERENCED_TABLE_NAME']) {
                             $where = 'parent_id IS NULL OR parent_id = 0';
@@ -135,7 +134,7 @@ class AddController extends BaseAdmin
                                 'limit' => '1'
                             ])[0][$parent['REFERENCED_COLUMN_NAME']];
 
-                            if($id) $where = ['parent_id' => $id];
+                            if ($id) $where = ['parent_id' => $id];
                         }
 
 
@@ -147,25 +146,18 @@ class AddController extends BaseAdmin
 
             }
 
-//            $menu_pos = $this->model->get($this->table, [
-//                    'fields' => ['COUNT(*) as count'],
-//                    'where' => $where,
-//                    'no_concat' => true
-//                ])[0]['count'];
             $menu_pos = $this->model->get($this->table, [
                     'fields' => ['COUNT(*) as count'],
                     'where' => $where,
                     'no_concat' => true
-                ])[0]['count'];
+                ])[0]['count'] + 1;
 
-            for($i = 1; $i <= $menu_pos; $i++) {
+            for ($i = 1; $i <= $menu_pos; $i++) {
                 $this->foreignData['menu_position'][$i - 1]['id'] = $i;
                 $this->foreignData['menu_position'][$i - 1]['name'] = $i;
 
             }
         }
-
-        return;
 
     }
 
