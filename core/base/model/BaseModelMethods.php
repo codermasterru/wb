@@ -249,8 +249,8 @@ abstract class BaseModelMethods
                         $where .= $table . $key . $operand . '(' . $item . ") $condition";
                     } elseif ($item === null || $item === 'NULL') {
 
-                        if ($operand === '=') $where .= $table . $key . 'IS NULL ' . $condition;
-                            else $where .= $table . $key . 'IS NOT NULL ' . $condition;
+                        if ($operand === '=') $where .= $table . $key . ' IS NULL ' . $condition;
+                            else $where .= $table . $key . ' IS NOT NULL ' . $condition;
 
                     } else {
 

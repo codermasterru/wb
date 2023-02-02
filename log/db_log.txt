@@ -2,3 +2,11 @@ Fault:26-01-2023 13:22:05 - Ошибка в SQL запросе: INSERT INTO filt
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:02-02-2023 15:51:18 - Ошибка в SQL запросе: SELECT COUNT(*) as count FROM filters  WHERE parent_idIS NULL    - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:02-02-2023 15:53:01 - Ошибка в SQL запросе: SELECT COUNT(*) as count FROM filters  WHERE parent_idIS NULL    - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NULL' at line 1
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
