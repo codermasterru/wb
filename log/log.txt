@@ -1258,3 +1258,87 @@ Fault:02-02-2023 8:20:07 - Не верное имя файла для подкл
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 61
 
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/JsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:06:02 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 11:28:07 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 11:28:08 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 11:28:12 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 11:28:21 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 11:28:23 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 11:31:53 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+

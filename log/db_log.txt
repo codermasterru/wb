@@ -10,3 +10,7 @@ Fault:02-02-2023 15:53:01 - Ошибка в SQL запросе: SELECT COUNT(*) 
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:03-02-2023 10:06:21 - Ошибка в SQL запросе: SELECT goods_filters.filters_id FROM goods_filters  WHERE goods_filters.0='goods_31'    - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

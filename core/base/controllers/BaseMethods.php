@@ -19,7 +19,8 @@ trait BaseMethods
     // Очистка цифровых данных
     protected function clearNum($num)
     {
-        return $num * 1;
+        return (!empty($num) && preg_match('/\d/', $num)) ?
+            preg_replace('//[^\d.]', '', $num) * 1 : 0;
     }
 
     // Проверяет посланы ли данные постом
@@ -46,11 +47,11 @@ trait BaseMethods
                 header($codes[$code]);
             }
         }
-            if ($http) $redirect = $http;
-            else $redirect = $_SERVER['HTTP_REFERER'] ?? PATH;
+        if ($http) $redirect = $http;
+        else $redirect = $_SERVER['HTTP_REFERER'] ?? PATH;
 
-            header("Location: $redirect");
-            exit();
+        header("Location: $redirect");
+        exit();
     }
 
     // Подключаем стили
@@ -76,7 +77,8 @@ trait BaseMethods
     }
 
     // Логируем
-    protected function writeLog($message, $file='log.txt', $event= 'Fault'){
+    protected function writeLog($message, $file = 'log.txt', $event = 'Fault')
+    {
 
         $dateTime = new \DateTime();
 

@@ -2,6 +2,8 @@
 
 namespace core\admin\controllers;
 
+use core\base\exception\RouteException;
+
 class EditController extends BaseAdmin
 {
     protected $action = 'edit';
@@ -14,6 +16,9 @@ class EditController extends BaseAdmin
 
         // Собирает данные
         $this->createTableData();
+
+        // Метод получает данные из БД
+        $this->createData();
 
         // Проверяет внешние ключи
         $this->createForeignData();
@@ -28,7 +33,31 @@ class EditController extends BaseAdmin
 
         $this->createManyToMany();
 
+        $this->template = ADMIN_TEMPLATE . 'add';
+
+
         return $this->expansion();
+
+    }
+
+    // Метод получает данные из БД
+    protected function createData()
+    {
+
+        $id = $this->clearNum($this->parameters[$this->table]);
+
+        if (!$id) throw new RouteException('Не корректный идентификатор - ' . $id .
+            ' при редактировании таблицы' . $this->table);
+
+        // Получаем данные
+        $this->data = $this->model->get($this->table, [
+            'where' => [$this->columns['id_row'] => $id]
+        ]);
+
+        $this->data && $this->data = $this->data[0];
+
+
+      //  exit();
 
     }
 
@@ -36,7 +65,7 @@ class EditController extends BaseAdmin
     protected function checkOldAlias($id)
     {
         // Получаем массив названий всех таблиц
-        $tables  = $this->model->showTables();
+        $tables = $this->model->showTables();
 
         //   Если в массиве есть 'old_alias'
         if (in_array('old_alias', $tables)) {
