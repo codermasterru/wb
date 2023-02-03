@@ -1342,3 +1342,111 @@ Fault:03-02-2023 11:31:53 - Не корректный идентификатор
 file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
 In line 49
 
+Fault:03-02-2023 13:24:30 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:24:45 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:24:50 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:25:00 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:25:11 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:25:17 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:25:30 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:25:58 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:27:48 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:27:55 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:28:15 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:28:32 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:29:33 - Не корректный идентификатор - 0 при редактировании таблицыgoods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 49
+
+Fault:03-02-2023 13:39:04 - Не верное имя файла для подключения - core/admin/controllers/DeleteController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 14:40:05 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:03-02-2023 14:40:23 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:03-02-2023 14:40:39 - Не верное имя файла для подключения - core/user/controllers/EditController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 14:42:14 - Не верное имя файла для подключения - core/user/controllers/EditController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 14:42:21 - Не верное имя файла для подключения - core/user/controllers/EditController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 14:42:29 - Не корректный идентификатор -  при редактировании таблицы goods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 52
+
+Fault:03-02-2023 14:43:52 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:03-02-2023 14:44:06 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:03-02-2023 14:44:55 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:03-02-2023 14:45:04 - Не верное имя файла для подключения - core/user/controllers/EditController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:03-02-2023 14:45:12 - Не корректный идентификатор -  при редактировании таблицы goods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 53
+
+Fault:03-02-2023 14:46:02 - Не корректный идентификатор -  при редактировании таблицы goods
+file C:\OSPanel\domains\wb\core\admin\controllers\EditController.php
+In line 53
+
+Fault:03-02-2023 14:48:41 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+

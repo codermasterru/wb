@@ -20,7 +20,7 @@ trait BaseMethods
     protected function clearNum($num)
     {
         return (!empty($num) && preg_match('/\d/', $num)) ?
-            preg_replace('//[^\d.]', '', $num) * 1 : 0;
+            preg_replace('/[^\d.]/', '', $num) * 1 : 0;
     }
 
     // Проверяет посланы ли данные постом

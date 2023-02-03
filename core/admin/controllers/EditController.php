@@ -44,10 +44,12 @@ class EditController extends BaseAdmin
     protected function createData()
     {
 
-        $id = $this->clearNum($this->parameters[$this->table]);
+        $id = is_numeric($this->parameters[$this->table]) ?
+            $this->clearNum($this->parameters[$this->table]) :
+            $this->clearStr($this->parameters[$this->table]);
 
         if (!$id) throw new RouteException('Не корректный идентификатор - ' . $id .
-            ' при редактировании таблицы' . $this->table);
+            ' при редактировании таблицы ' . $this->table);
 
         // Получаем данные
         $this->data = $this->model->get($this->table, [
@@ -56,8 +58,6 @@ class EditController extends BaseAdmin
 
         $this->data && $this->data = $this->data[0];
 
-
-      //  exit();
 
     }
 
