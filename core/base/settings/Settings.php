@@ -43,13 +43,15 @@ class Settings
 
     private $templateArr = [
         'text' => ['name'],
-        'textarea' => ['content', 'keywords'],
+        'textarea' => ['keywords','content', [1,2,3,4]],
         'radio' => ['visible'],
         'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img'],
         'gallery_img' => ['gallery_img']
     ];
+
+    private $fileTemplates = ['img', 'gallery_img'];
 
     private $blockNeedle = [
         'vg-rows' => [],

@@ -1450,3 +1450,51 @@ Fault:03-02-2023 14:48:41 - Отсутствует шаблон - core/admin/vie
 file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
 In line 134
 
+Fault:04-02-2023 11:27:39 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:27:39 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:27:39 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:28:57 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:28:57 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:28:57 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:33:39 - Не верное имя файла для подключения - core/user/controllers/LoginController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
+Fault:04-02-2023 11:58:24 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:04-02-2023 12:00:12 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:04-02-2023 12:00:25 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:04-02-2023 12:00:35 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
+Fault:04-02-2023 12:01:30 - Отсутствует шаблон - core/admin/views/delete
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 134
+
