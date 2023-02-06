@@ -70,3 +70,39 @@ Fault:06-02-2023 14:52:03 - Ошибка в SQL запросе: SELECT goods_fil
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:06-02-2023 15:10:08 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_13'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 15:11:34 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='filters_26'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 15:11:43 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='filters_27'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 15:22:25 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_14'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 15:23:08 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_48'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 15:43:11 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_50'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 15:52:32 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_52'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 16:23:45 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_53'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:06-02-2023 16:23:52 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_51'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

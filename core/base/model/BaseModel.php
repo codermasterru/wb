@@ -245,7 +245,7 @@ abstract class BaseModel extends BaseModelMethods
 
     public function delete($table, $set = [])
     {
-
+        // Чистим название таблицы
         $table = trim($table);
 
         $where = $this->createWhere($set, $table);

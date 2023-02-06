@@ -56,10 +56,13 @@ class DeleteController extends BaseAdmin
 
                                 if (!empty($this->data[$item])) {
 
-                                    if (preg_match('/^[\[{].*?[}\]]$/',$this->data[$item]))
-                                        $fileData = json_decode($this->data[$item], true);
-                                    else
-                                        $fileData = $this->data[$item];
+//                                    if (preg_match('/^[\[{].*?[}\]]$/',$this->data[$item]))
+//                                        $fileData = json_decode($this->data[$item], true);
+//                                    else
+//                                        $fileData = $this->data[$item];
+
+                                    $fileData = json_decode($this->data[$item], true) ?: $this->data[$item];
+
 
                                     if (is_array($fileData)) {
 
