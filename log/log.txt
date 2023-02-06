@@ -1450,6 +1450,10 @@ Fault:03-02-2023 14:48:41 - Отсутствует шаблон - core/admin/vie
 file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
 In line 134
 
+Fault:06-02-2023 9:37:59 - Не верное имя файла для подключения - core/user/controllers/ImagesController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 61
+
 Fault:04-02-2023 11:27:39 - Не верное имя файла для подключения - core/user/controllers/ImagesController
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 61
