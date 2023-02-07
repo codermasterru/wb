@@ -2,6 +2,8 @@
 
 defined('VG_ACCESS') or die;
 
+const MS_MODE = false;
+
 
 // Путь к шаблонам пользовательской части сайта
 const TEMPLATE = 'template/default/';

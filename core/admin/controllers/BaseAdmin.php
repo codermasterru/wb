@@ -37,6 +37,18 @@ abstract class BaseAdmin extends BaseController
 
     protected function inputData()
     {
+
+        if (!MS_MODE) {
+
+            if (preg_match('/msie| trident.+?rv*:/i', $_SERVER['HTTP_USER_AGENT'])) {
+
+                exit('Вы спользуете устаревшую версию браузера, пожалуйста обновитесь до актуальной версии ');
+
+            }
+
+
+        }
+
         // // Инициализируем скрипты и стили
         $this->init(true);
 
