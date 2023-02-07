@@ -74,7 +74,7 @@ class DeleteController extends BaseAdmin
 
                                     } else {
 
-                                        @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $fileData); // delete $f
+                                        @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $fileData);
 
                                     }
 
@@ -172,6 +172,67 @@ class DeleteController extends BaseAdmin
 
     protected function checkDeleteFile()
     {
+
+        unset($this->parameters[$this->table]);
+
+        $updateFlag = false;
+
+        foreach ($this->parameters as $row => $item) {
+
+            $item = base64_decode($item);
+
+            if (!empty($this->data[$row])) {
+
+                $data = json_decode($this->data[$row], true);
+
+                if ($data) {
+
+                    foreach ($data as $key => $value) {
+
+                        if ($item === $value) {
+
+                            $updateFlag = true;
+
+                            @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $value);
+
+                            unset($data[$key]);
+
+                            $data = $data ? json_encode($data) : 'NULL';
+
+                            break;
+
+                        }
+
+                    }
+
+                } elseif ($this->data[$row] === $item) {
+
+                    $updateFlag = true;
+
+                    @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $item);
+
+                    $this->data[$row] = 'NULL';
+
+                }
+
+
+            }
+
+        }
+
+        if ($updateFlag) {
+
+            $this->model->edit($this->table, [
+                'fields' => $this->data
+            ]);
+
+            $_SESSION['res']['answer'] = '<div class="edit">' . $this->messages['editSuccess'] . '</div>>';
+
+        }else{
+
+            $_SESSION['res']['answer'] = '<div class="edit">' . $this->messages['deleteFail'] . '</div>>';
+
+        }
 
         $this->redirect();
 

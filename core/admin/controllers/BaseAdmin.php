@@ -344,6 +344,8 @@ abstract class BaseAdmin extends BaseController
         $id = false;
         $method = 'add';
 
+
+        // Если пришло постом
         if ($_POST[$this->columns['id_row']]) {
             $id = is_numeric($_POST[$this->columns['id_row']]) ?
                 $this->clearNum($_POST[$this->columns['id_row']]) :
@@ -363,6 +365,10 @@ abstract class BaseAdmin extends BaseController
         }
 
         $this->createFile();
+
+
+        // Если есть $id И существует метод checkFiles запускаем его
+        if ($id && method_exists($this, 'checkFiles')) $this->checkFiles($id);
 
         $this->createAlias($id);
 
@@ -1036,7 +1042,6 @@ abstract class BaseAdmin extends BaseController
                 }
 
             }
-
 
 
             $menu_pos = $this->model->get($this->table, [
