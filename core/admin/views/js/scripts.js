@@ -88,7 +88,7 @@ if (files.length) {
 
             let fileName = item.name;
 
-            let attributeName = item.name.replace(/[\[\]]g/, '');
+            let attributeName = item.name.replace(/[\[\]]/g, '');
 
             for (let i in this.files) {
 
@@ -96,12 +96,23 @@ if (files.length) {
 
                     if (multiple) {
 
+                        if (typeof fileStore[fileName] === 'undefined') fileStore[fileName] = [];
+
+                        let elId = fileStore[fileName].push(this.files[i]) - 1;
+
+                        container[i].setAttribute(`data-deleteFileId-${attributeName}`, elId);
+
+                        showImage(this.files[i], container[i]);
+
+                        deleteNewFiles(elId, fileName, attributeName, container[i]);
+
 
                     } else {
 
                         container = this.closest('.img_container').querySelector('.img_show');
 
                         showImage(this.files[i], container);
+
 
                     }
 
@@ -121,10 +132,26 @@ if (files.length) {
 
         reader.onload = e => {
 
-            container.innerHTML = '<img class="img_item" src="">';
+            container.innerHTML = '<img class="img_item" src="" alt="">';
 
             container.querySelector('img').setAttribute('src', e.target.result);
+
+            container.classList.remove('.empty_container');
         }
+
+    }
+
+    function deleteNewFiles(elId, fileName, attributeName, container) {
+
+        container.addEventListener('click', function () {
+
+            this.remove();
+
+            delete fileStore[fileName][elId];
+
+            console.log(fileStore);
+
+        })
 
     }
 }
