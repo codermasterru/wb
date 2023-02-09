@@ -134,3 +134,7 @@ Fault:07-02-2023 13:15:49 - Ошибка в SQL запросе: DELETE goods_fil
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:09-02-2023 15:22:47 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_92'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

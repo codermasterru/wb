@@ -12,12 +12,14 @@ class BaseAjax extends BaseController
         // Собираем настройки
         $route = Settings::get('routes');
 
-        $controller = $route['user']['path'] . 'AjaxController';
+        $controller = $route['admin']['path'] . 'AjaxController';
 
         // Понимаем POST  или GET
         $data = $this->isPost() ? $_POST : $_GET;
 
-        if (isset($data['ADMIN_MODE'])) {
+        $httpReferer = str_replace('/', '\/', $_SERVER['REQUEST_SHEMA'] . '://' . $_SERVER['SERVER_NAME'] . PATH . $route['admin']['alias']);
+
+        if (isset($data['ADMIN_MODE']) || preg_match('/^' . $httpReferer . '(\/?|$)/', $_SERVER['HTTP_REFERER'])) {
 
             unset($data['ADMIN_MODE']);
 
@@ -29,12 +31,13 @@ class BaseAjax extends BaseController
 
         $ajax = new $controller;
 
-        $ajax->createAjaxData($data);
+        $ajax->data = $data;
 
         return ($ajax->ajax());
     }
 
-    protected function createAjaxData($data) {
+    protected function createAjaxData($data)
+    {
 
         $this->data = $data;
     }

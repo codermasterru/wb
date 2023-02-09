@@ -2,9 +2,8 @@
 
 namespace core\admin\controllers;
 
-use core\base\controllers\BaseAjax;
 
-class AjaxController extends BaseAjax
+class AjaxController extends BaseAdmin
 {
 
     public function ajax()
@@ -15,8 +14,18 @@ class AjaxController extends BaseAjax
 
                 case 'sitemap':
 
-                    //
                     return (new CreatesitemapController())->inputData($this->data['links_counter'], false);
+
+                    break;
+                case 'editData':
+
+                    $_POST['return_id'] = true;
+
+                    $this->checkPost();
+
+                    return json_encode(['success' => 1]);
+
+                    break;
 
             }
         }

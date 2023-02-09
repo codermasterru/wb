@@ -356,6 +356,8 @@ abstract class BaseAdmin extends BaseController
         $id = false;
         $method = 'add';
 
+        if (!empty($_POST['return_id'])) $returnId = true;
+
 
         // Если пришло постом
         if ($_POST[$this->columns['id_row']]) {
@@ -1067,6 +1069,86 @@ abstract class BaseAdmin extends BaseController
                 $this->foreignData['menu_position'][$i - 1]['name'] = $i;
 
             }
+        }
+
+    }
+
+    // EditController
+
+    // Проверка старых ссылок
+    protected function checkOldAlias($id)
+    {
+        // Получаем массив названий всех таблиц
+        $tables = $this->model->showTables();
+
+        //   Если в массиве есть 'old_alias'
+        if (in_array('old_alias', $tables)) {
+
+            //
+            $old_alias = $this->model->get($this->table, [
+                'alias' => ['alias'],
+                'where' => [$this->columns['id_row'] => $id]
+            ])[0]['alias'];
+
+            if ($old_alias && $old_alias !== $_POST['alias']) {
+
+                $this->model->delete('old_alias', [
+                    'where' => ['alias' => $old_alias, 'table_name' => $this->table]
+                ]);
+
+                $this->model->delete('old_alias', [
+                    'where' => ['alias' => $_POST['alias'], 'table_name' => $this->table]
+                ]);
+
+                $this->model->add('old_alias', [
+                    'fields' => ['alias' => $old_alias, 'table_name' => $this->table, 'table_id' => $id]
+                ]);
+            }
+
+        }
+    }
+
+    protected function checkFiles($id)
+    {
+
+        if ($id && $this->fileArray) {
+
+            $data = $this->model->get($this->table, [
+                'fields' => array_keys($this->fileArray),
+                'where' => [$this->columns['id_row'] => $id]
+            ]);
+
+            if ($data) {
+
+                $data = $data[0];
+
+                foreach ($this->fileArray as $key => $item) {
+
+                    if (is_array($item) && !empty($data[$key])) {
+
+                        $fileArr = json_decode($data[$key]);
+
+                        if ($fileArr) {
+
+                            foreach ($fileArr as $file) {
+
+                                $this->fileArray[$key][] = $file;
+
+                            }
+
+                        } elseif (!empty($data[$key])) {
+
+                            @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $data[$key]);
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+
         }
 
     }
