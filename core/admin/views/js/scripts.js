@@ -177,7 +177,7 @@ function createFile() {
 
                             formData.delete(i);
 
-                            let rowName = i.replace(/[/[/]]/g, '');
+                            let rowName = i.replace(/[\[\]]/g, '');
 
                             fileStore[i].forEach((item, index) => {
 

@@ -40,6 +40,8 @@ abstract class BaseController
 
     protected $data;
 
+    protected $ajaxData;
+
     //Метод будет подключать все остальное(выборки  и тд)
     public function route()
     {

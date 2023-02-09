@@ -43,12 +43,12 @@ class Settings
 
     private $templateArr = [
         'text' => ['name'],
-        'textarea' => ['keywords','content', [1,2,3,4]],
+        'textarea' => ['keywords', 'content', [1, 2, 3, 4]],
         'radio' => ['visible'],
         'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img', 'main_img'],
-        'gallery_img' => ['gallery_img','new_gallery_img']
+        'gallery_img' => ['gallery_img', 'new_gallery_img']
     ];
 
     private $fileTemplates = ['img', 'gallery_img'];
@@ -72,9 +72,9 @@ class Settings
         'name' => ['Название', 'Не более 100 символов'],
         'keywords' => ['Ключевые слова'],
         'content' => ['Контент'],
-        'menu_position' =>['Позиция'],
+        'menu_position' => ['Позиция'],
         'img' => ['Изображение'],
-        'gallery_img'=>['Галерея изображений']
+        'gallery_img' => ['Галерея изображений']
     ];
 
     private $expansion = 'core/admin/expansion/';
@@ -84,6 +84,8 @@ class Settings
     private $formTemplates = PATH . 'core/admin/views/include/form_templates/';
 
     private $projectTables = [
+        'pages' => ['name' => 'Страницы'],
+        'article' => ['name' => 'Статьи'],
         'goods' => ['name' => 'Товары', 'img' => 'pages.png'],
         'filters' => ['name' => 'Фильтры']
     ];
@@ -98,7 +100,7 @@ class Settings
     ];
 
     private $manyToMany = [
-        'goods_filters' => ['goods', 'filters','type' => 'root'], //'type' => 'child' || 'root'
+        'goods_filters' => ['goods', 'filters', 'type' => 'root'], //'type' => 'child' || 'root'
 
     ];
 
