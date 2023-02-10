@@ -301,6 +301,12 @@ function changeMenuPosition() {
 }
 
 
+blockParameters();
+function blockParameters(){
+
+}
+
+
 
 
 
