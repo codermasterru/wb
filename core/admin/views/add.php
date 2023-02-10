@@ -35,7 +35,7 @@ use core\base\exception\RouteException;
         <type="hidden" name="<?= $this->columns['id_row'] ?>" value="<?= $this->data[$this->columns['id_row']] ?>">
     <?php endif; ?>
 
-    <input type="hidden" name="table" value="<?= $this->table ?>">
+    <input id="tableId" type="hidden" name="table" value="<?= $this->table ?>">
 
 
     <?php

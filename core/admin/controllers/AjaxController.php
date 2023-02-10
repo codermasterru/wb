@@ -13,6 +13,8 @@ class AjaxController extends BaseAdmin
 
             $this->exectBase();
 
+            foreach ($this->ajaxData as $key => $item) $this->ajaxData[$key] = $this->clearStr($item);
+
             switch ($this->ajaxData['ajax']) {
 
                 case 'sitemap':
@@ -30,10 +32,25 @@ class AjaxController extends BaseAdmin
 
                     break;
 
+                case  'change_parent':
+
+
+                    return $this->changeParent();
             }
         }
 
         return json_encode(['success' => '0', 'message' => 'No ajax variable']);
+
+    }
+
+    protected function changeParent()
+    {
+
+        return $this->model-> get($this->ajaxData['table'], [
+                'fields' => ['COUNT(*)  as count'],
+                'where' => ['parent_id' => $this->ajaxData['parent_id']],
+                'no_concat' => true
+            ])[0]['count'] + $this->ajaxData['iteration'] ;
 
     }
 

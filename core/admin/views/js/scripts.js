@@ -21,18 +21,6 @@ function createSitemap() {
         });
 }
 
-function isEmpty(arr) {
-
-    for (let i in arr) {
-
-        return false;
-
-    }
-
-    return true;
-
-}
-
 
 //  delete img
 
@@ -139,6 +127,8 @@ function createFile() {
 
         function showImage(item, container) {
 
+
+            // Объект FileReader позволяет веб-приложениям асинхронно читать содержимое файлов
             let reader = new FileReader();
 
             container.innerHTML = '';
@@ -169,7 +159,7 @@ function createFile() {
 
                     let formData = new FormData(this);
 
-                    console.log(formData.get('name'));
+                    //     console.log(formData.get('name'));
 
                     for (let i in fileStore) {
 
@@ -236,6 +226,84 @@ function createFile() {
         }
     }
 }
+
+changeMenuPosition();
+
+function changeMenuPosition() {
+
+    // Нашли форму
+    let form = document.querySelector('#main-form');
+
+    // Если форма есть
+    if (form) {
+
+        let selectParent = document.querySelector('select[name=parent_id]');
+
+
+        let selectPosition = document.querySelector('select[name=menu_position]');
+
+        if (selectParent && selectPosition) {
+
+            let defaultParent = selectParent.value;
+
+            let defaultPosition = +selectPosition.value
+
+            selectParent.addEventListener('change', function () {
+
+                let defaultChoose = false;
+
+                if (this.value === defaultParent) defaultChoose = true;
+
+                Ajax({
+                    data: {
+                        table: form.querySelector('input[name=table]').value,
+                        'parent_id': this.value,
+                        ajax: 'change_parent',
+                        iteration: !form.querySelector('#tableId') ? 1 : +!defaultChoose
+
+                    }
+                }).then(res => {
+
+                    res = +res;
+
+                    if (!res) return errorAlert();
+
+                    let newSelect = document.createElement('select');
+
+                    newSelect.setAttribute('name', 'menu_position');
+
+                    newSelect.classList.add('vg-input', 'vg-text', 'vg-full', 'vg-firm-color1');
+
+                    for (let i = 1; i <= res; i++) {
+
+                        let selected = defaultChoose && i === defaultPosition ? 'selected' : ''
+
+                        newSelect.insertAdjacentHTML('beforeend', `<option ${selected} value="${i}">${i}</option>`);
+
+                    }
+
+                    selectPosition.before(newSelect);
+
+                    selectPosition.remove();
+
+                    selectPosition = newSelect;
+
+                });
+
+            });
+
+        }
+
+
+    }
+
+
+}
+
+
+
+
+
 
 
 

@@ -18,7 +18,7 @@ const Ajax = (set) => {
 
     if (typeof set.data !== "undefined" && set.data) {
 
-        if(typeof set.processData !== 'undefined' && !set.processData){
+        if (typeof set.processData !== 'undefined' && !set.processData) {
 
             body = set.data
 
@@ -43,7 +43,6 @@ const Ajax = (set) => {
         }
 
     }
-
 
 
     if (set.type === 'GET') {
@@ -77,7 +76,7 @@ const Ajax = (set) => {
 
         }
 
-        if (!contentType && (typeof  set.contentType === 'undefined' || set.contentType)) xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        if (!contentType && (typeof set.contentType === 'undefined' || set.contentType)) xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
         if (set.ajax)
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
@@ -105,5 +104,25 @@ const Ajax = (set) => {
         xhr.send(body);
 
     });
+
+}
+
+function isEmpty(arr) {
+
+    for (let i in arr) {
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+function errorAlert() {
+
+    alert('Произошла внутренняя ошибка');
+
+    return false;
 
 }

@@ -138,3 +138,11 @@ Fault:09-02-2023 15:22:47 - Ошибка в SQL запросе: DELETE goods_fil
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:10-02-2023 11:28:53 - Ошибка в SQL запросе: SHOW COLUMNS FROM article - 1146 Table 'wb.article' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:10-02-2023 11:29:17 - Ошибка в SQL запросе: SHOW COLUMNS FROM article - 1146 Table 'wb.article' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
