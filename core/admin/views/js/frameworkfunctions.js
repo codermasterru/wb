@@ -126,3 +126,49 @@ function errorAlert() {
     return false;
 
 }
+
+
+Element.prototype.slideToggle = function (time, callback) {
+
+    let _time = typeof time === 'number' ? time : 400
+
+    callback = typeof time === 'function' ? time : callback
+
+    if (getComputedStyle(this)['display'] === 'none') {
+
+        this.style.transiction = null;
+
+        this.style.overflow = 'hidden';
+
+        this.style.maxHeight = 0;
+
+        this.style.display = 'block';
+
+        this.style.transition = _time + 'ms';
+
+        this.style.maxHeight = this.scrollHeight + 'px';
+
+        setTimeout(() => {
+
+            callback && callback();
+
+        }, _time);
+    } else {
+
+        this.style.transition = _time + 'ms';
+
+        this.style.maxHeight = 0;
+
+        setTimeout(() => {
+
+            this.style.transiction = 0;
+
+            callback && callback();
+
+            this.style.display = 'none';
+
+        }, _time);
+
+    }
+
+}

@@ -302,7 +302,49 @@ function changeMenuPosition() {
 
 
 blockParameters();
-function blockParameters(){
+
+function blockParameters() {
+
+    let wraps = document.querySelectorAll('.select_wrap');
+
+    if (wraps.length) {
+
+        let selectAllIndexes = [];
+
+        wraps.forEach(item => {
+
+            let next = item.nextElementSibling;
+
+            if (next && next.classList.contains('option_wrap')) {
+
+                item.addEventListener('click', e => {
+
+                    if (!e.target.classList.contains('select_all')) {
+
+                        next.slideToggle()
+
+                    } else {
+
+                        let index = [...document.querySelectorAll('.select_all')].indexOf(e.target);
+
+                        if (typeof selectAllIndexes[index] === 'undefined') selectAllIndexes[index] = false;
+
+                        selectAllIndexes[index] = !selectAllIndexes[index];
+
+                        next.querySelectorAll('input[type=checkbox]').forEach(el => {
+
+                            el.checked = selectAllIndexes[index];
+
+                        })
+
+                    }
+
+                })
+
+            }
+        });
+
+    }
 
 }
 

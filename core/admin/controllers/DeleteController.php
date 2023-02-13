@@ -234,6 +234,8 @@ class DeleteController extends BaseAdmin
 
         }
 
+        unset($this->parameters[$this->table]);
+
         $this->redirect();
 
     }
