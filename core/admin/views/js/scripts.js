@@ -172,7 +172,7 @@ function createFile() {
 
                         area.style.background = '#fff';
 
-                        if(index === 3){
+                        if (index === 3) {
 
                             input.files = e.dataTransfer.files;
 
@@ -389,10 +389,43 @@ function blockParameters() {
 
 }
 
+showHideMenuSearch();
+
+function showHideMenuSearch() {
+
+    document.querySelector('#hideButton').addEventListener('click', () => {
+
+        document.querySelector('.vg-carcass').classList.toggle('vg-hide');
+
+    });
+
+    let searchBtn = document.querySelector('#searchButton');
+
+    let searchInput = searchBtn.querySelector('input[type]');
+
+    searchBtn.addEventListener('click', () => {
+
+        searchBtn.classList.add('vg-search-reverse');
+
+        searchInput.focus()
+    });
+
+    searchInput.addEventListener('blur', () => {
+
+        searchBtn.classList.remove('vg-search-reverse')
+
+    });
+}
 
 
+let searchResultHover = (() => {
 
+    return () => {
 
+    }
 
+})();
+
+searchResultHover();
 
 
