@@ -146,3 +146,7 @@ Fault:10-02-2023 11:29:17 - Ошибка в SQL запросе: SHOW COLUMNS FRO
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:14-02-2023 17:14:39 - Ошибка в SQL запросе: SHOW COLUMNS FROM login - 1146 Table 'wb.login' doesn't exist
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
