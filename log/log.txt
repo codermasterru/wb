@@ -3622,3 +3622,7 @@ Fault:14-02-2023 18:05:17 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 63
 
+Fault:14-02-2023 19:07:28 - Отсутствует шаблон - core/admin/views/login
+file C:\OSPanel\domains\wb\core\base\controllers\BaseController.php
+In line 136
+
