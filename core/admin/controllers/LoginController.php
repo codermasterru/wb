@@ -16,6 +16,11 @@ class LoginController extends BaseController
 
         $this->model = UserModel::instance();
 
+        if($this->isPost()){
+
+            $a = 1;
+        }
+
         return $this->render('', ['adminPath' => Settings::get('routes')['admin']['alias']]);
     }
 
