@@ -14,7 +14,7 @@ class UserModel extends BaseModel
     use BaseMethods;
 
     private $cookieName = 'indentifir';
-    private $cookieAdminName = 'indentifir';
+    private $cookieAdminName = 'WQEngineCache';
 
     private $userData = [];
 
