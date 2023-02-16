@@ -16,6 +16,7 @@ class LoginController extends BaseController
 
         $this->model = UserModel::instance();
 
+        // Установили куки , создали таблицу, сделали записи
         $this->model->setAdmin();
 
         if (isset($this->parameters['logout'])) {
@@ -30,17 +31,7 @@ class LoginController extends BaseController
 
             $this->redirect(PATH);
 
-
         }
-
-
-        $timeClean = (new \DateTime())->modify('-' . BLOCK_TIME . ' hour')->format('Y-m-d H:i:s');
-
-        $this->model->delete($this->model->getBlockedTable(), [
-            'where' => ['time' => $timeClean],
-            'operand' => ['<']
-        ]);
-
 
         if ($this->isPost()) {
 
@@ -49,6 +40,13 @@ class LoginController extends BaseController
                 exit('Ошибка');
 
             }
+
+            $timeClean = (new \DateTime())->modify('-' . BLOCK_TIME . ' hour')->format('Y-m-d H:i:s');
+
+            $this->model->delete($this->model->getBlockedTable(), [
+                'where' => ['time' => $timeClean],
+                'operand' => ['<']
+            ]);
 
             $ipUser = filter_var(@$_SERVER['HTTP_CLIENT_IP'], FILTER_VALIDATE_IP) ?:
                 (filter_var(@$_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP) ?:
@@ -84,7 +82,7 @@ class LoginController extends BaseController
 
                         $method = 'edit';
 
-                        $where['id'] = $ipUser;
+                        $where['ip'] = $ipUser;
 
                     }
 
@@ -111,7 +109,8 @@ class LoginController extends BaseController
                 }
 
 
-            } elseif ($trying >= 3) {
+            } elseif ($trying >= 30) {
+                $this->model->logout();
 
                 $error = 'Превышено максимальное количество попыток ввода пароля - ' . $ipUser;
 

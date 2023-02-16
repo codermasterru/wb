@@ -150,3 +150,47 @@ Fault:14-02-2023 17:14:39 - Ошибка в SQL запросе: SHOW COLUMNS FRO
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:15-02-2023 16:46:49 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:15-02-2023 16:47:05 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:15-02-2023 16:47:10 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:15-02-2023 16:52:41 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 11:01:50 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 11:18:13 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 11:19:14 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 11:22:10 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 12:02:40 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 12:04:29 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:16-02-2023 12:06:39 - Ошибка в SQL запросе: UPDATE blocked_access SET login='admin',ip='127.0.0.1',time=NOW(),trying='2' WHERE id='127.0.0.1'  - 1292 Truncated incorrect DOUBLE value: '127.0.0.1'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+

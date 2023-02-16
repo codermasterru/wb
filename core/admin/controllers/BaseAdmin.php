@@ -49,6 +49,8 @@ abstract class BaseAdmin extends BaseController
 
         }
 
+        $this->checkAuth(true);
+
         // // Инициализируем скрипты и стили
         $this->init(true);
 

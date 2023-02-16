@@ -49,7 +49,7 @@ class UserModel extends BaseModel
 
     }
 
-
+// Установили куки , создали таблицу, сделали записи
     public function setAdmin()
     {
 
@@ -57,10 +57,13 @@ class UserModel extends BaseModel
 
         $this->userTable = $this->adminTable;
 
+
+        // Проверяет содержится ли  БД таблица  с данным именем
+        // Если не то создаем
         if (!in_array($this->userTable, $this->showTables())) {
 
+            // Создаем запрос на создание
             $query = 'CREATE TABLE ' . $this->userTable . '
-            
             (
             id int auto_increment primary key,
             name  varchar(255) null,
@@ -68,8 +71,7 @@ class UserModel extends BaseModel
             password varchar(32) null,
             credentials text null
             )
-            
-            charset = utf8;
+            charset = utf8
             ';
 
             if (!$this->query($query, 'u')) {
@@ -96,7 +98,6 @@ class UserModel extends BaseModel
             trying tinyint(1) null,
             time datetime null
             )
-            
             charset = utf8;
             ';
 
@@ -132,7 +133,7 @@ class UserModel extends BaseModel
 
             $this->error = $e->getMessage();
 
-            !empty($e->getCode()) && $this->writeLog($this->error, 'log_user');
+            !empty($e->getCode()) && $this->writeLog($this->error, 'log_user.txt');
 
             return false;
         }
@@ -183,7 +184,7 @@ class UserModel extends BaseModel
         if (empty($_COOKIE[$this->cookieName]))
             throw new AuthException('Отсутствуют cookie пользователя');
 
-        $data = json_decode(Crypt::instance()->decrypt($_COOKIE[$this->cookieName]));
+        $data = json_decode(Crypt::instance()->decrypt($_COOKIE[$this->cookieName], true));
 
         if (empty($data['id']) || empty($data['version']) || empty($data['cookieTime'])) {
 
