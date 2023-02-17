@@ -8,17 +8,17 @@ use core\base\settings\Settings;
 
 class LoginController extends BaseController
 {
-
     protected $model;
 
     protected function inputData()
     {
-
+        // Пользовательская модель
         $this->model = UserModel::instance();
 
         // Установили куки , создали таблицу, сделали записи
         $this->model->setAdmin();
 
+        // Логоут
         if (isset($this->parameters['logout'])) {
 
             $this->checkAuth(true);
@@ -33,20 +33,20 @@ class LoginController extends BaseController
 
         }
 
-        if ($this->isPost()) {
+        $timeClean = (new \DateTime())->modify('-' . BLOCK_TIME . ' hour')->format('Y-m-d H:i:s');
 
+        $this->model->delete($this->model->getBlockedTable(), [
+            'where' => ['time' => $timeClean],
+            'operand' => ['<']
+        ]);
+
+        if ($this->isPost()) {
+        // Если не получили токен
             if (empty($_POST['token']) || $_POST['token'] !== $_SESSION['token']) {
 
                 exit('Ошибка');
 
             }
-
-            $timeClean = (new \DateTime())->modify('-' . BLOCK_TIME . ' hour')->format('Y-m-d H:i:s');
-
-            $this->model->delete($this->model->getBlockedTable(), [
-                'where' => ['time' => $timeClean],
-                'operand' => ['<']
-            ]);
 
             $ipUser = filter_var(@$_SERVER['HTTP_CLIENT_IP'], FILTER_VALIDATE_IP) ?:
                 (filter_var(@$_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP) ?:
@@ -72,7 +72,7 @@ class LoginController extends BaseController
                     'where' => ['login' => $login, 'password' => $password],
                 ]);
 
-                if ($userData) {
+                if (!$userData) {
 
                     $method = 'add';
 
@@ -109,7 +109,7 @@ class LoginController extends BaseController
                 }
 
 
-            } elseif ($trying >= 30) {
+            } elseif ($trying >= 3) {
                 $this->model->logout();
 
                 $error = 'Превышено максимальное количество попыток ввода пароля - ' . $ipUser;
@@ -120,14 +120,14 @@ class LoginController extends BaseController
 
             }
 
-            $_SESSION['res']['answer'] = $success ? '<div class="success">Добро пожаловать' . $userData['name'] . ' </div>':
-                preg_split('/\s*\-/',$error, 2, PREG_SPLIT_NO_EMPTY)[0];
+            $_SESSION['res']['answer'] = $success ? '<div class="success">Добро пожаловать' . $userData['name'] . ' </div>' :
+                preg_split('/\s*\-/', $error, 2, PREG_SPLIT_NO_EMPTY)[0];
 
             $this->writeLog('user_log.txt', 'Access user');
 
             $path = null;
 
-            $success && $path = PATH .Settings::get('routes')['admin']['alias'];
+            $success && $path = PATH . Settings::get('routes')['admin']['alias'];
 
             $this->redirect($path);
 

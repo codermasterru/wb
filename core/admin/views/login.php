@@ -74,7 +74,7 @@
 
     } ?>
 
-    <h1>Авторизация</h1>
+    <h1>Авторизация пользователя</h1>
     <form action="<?= PATH . $adminPath ?>/login" method="post">
 
         <label for="login">Логин</label>

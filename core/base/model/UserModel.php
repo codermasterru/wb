@@ -13,26 +13,38 @@ class UserModel extends BaseModel
 
     use BaseMethods;
 
-    private $cookieName = 'indentifir';
+    // Имя куки длоя пользовательской части
+    private $cookieName = 'identifier';
+
+
     private $cookieAdminName = 'WQEngineCache';
 
+    // Массив с данными  из БД
     private $userData = [];
 
+    // Сюда будем сваливать ошибки
     private $error;
 
+    // Таблица где будем хранить данные пользователей сайта
     private $userTable = 'visitors';
 
+
+    // Таблица с админискими данными
     private $adminTable = 'users';
 
+
+    // Таблица в которой содержатся некорректные попытки входа
     private $blockedTable = 'blocked_access';
 
-
+// Возвращает  имя админской таблицы
     public function getAdminTable()
     {
 
         return $this->adminTable;
 
     }
+
+// Возвращает  имя таблицы с блоками
 
     public function getBlockedTable()
     {
@@ -41,6 +53,7 @@ class UserModel extends BaseModel
 
     }
 
+// Возвращает  ошибки
 
     public function getLastError()
     {
@@ -62,7 +75,7 @@ class UserModel extends BaseModel
         // Если не то создаем
         if (!in_array($this->userTable, $this->showTables())) {
 
-            // Создаем запрос на создание
+            // Создаем запрос на создание таблицы user
             $query = 'CREATE TABLE ' . $this->userTable . '
             (
             id int auto_increment primary key,
@@ -79,18 +92,16 @@ class UserModel extends BaseModel
                 exit('Ошибка создания таблицы ' . $this->userTable);
             }
 
+            // Добавили  учетку по умолчанию (admin, admin, 123)
             $this->add($this->userTable, [
-
                 'fields' => ['name' => 'admin', 'login' => 'admin', 'password' => md5('123')]
-
             ]);
-
         }
 
+        // Создаем таблицу  с блоками
         if (!in_array($this->blockedTable, $this->showTables())) {
 
             $query = 'CREATE TABLE ' . $this->blockedTable . '
-            
             (
             id int auto_increment primary key,
             login varchar(255) null,
@@ -98,7 +109,7 @@ class UserModel extends BaseModel
             trying tinyint(1) null,
             time datetime null
             )
-            charset = utf8;
+            charset = utf8
             ';
 
             if (!$this->query($query, 'u')) {
@@ -110,23 +121,29 @@ class UserModel extends BaseModel
 
     }
 
-
+// Проверка пользователя
     public function checkUser($id = false, $admin = false)
     {
 
+        // Если пришел $admin  и userTable не равен adminTable то вызовем setAdmin()
         $admin && $this->userTable !== $this->adminTable && $this->setAdmin();
 
+        // Метод по умолчанию
         $method = 'unPackage';
 
+        // Если пришел id
         if ($id) {
 
+            //  В массив с данными попадает этот id
             $this->userData['id'] = $id;
 
+            // И перепределили метод на set
             $method = 'set';
 
         }
 
         try {
+
             $this->$method();
 
         } catch (AuthException $e) {
@@ -137,10 +154,11 @@ class UserModel extends BaseModel
 
             return false;
         }
+
+        // Вернет массив с данными
         return $this->userData;
 
     }
-
 
     private function set()
     {
@@ -184,7 +202,7 @@ class UserModel extends BaseModel
         if (empty($_COOKIE[$this->cookieName]))
             throw new AuthException('Отсутствуют cookie пользователя');
 
-        $data = json_decode(Crypt::instance()->decrypt($_COOKIE[$this->cookieName], true));
+        $data = json_decode(Crypt::instance()->decrypt($_COOKIE[$this->cookieName]), true);
 
         if (empty($data['id']) || empty($data['version']) || empty($data['cookieTime'])) {
 
@@ -213,7 +231,7 @@ class UserModel extends BaseModel
 
     }
 
-    // Проверяет врсию cookie и время cookie
+    // Проверяет версию cookie и время cookie
     private function validate($data)
     {
 
@@ -244,7 +262,7 @@ class UserModel extends BaseModel
     public function logout()
     {
 
-        setcookie($this->cookieName, '', PATH);
+        setcookie($this->cookieName, '',1, PATH);
 
     }
 
