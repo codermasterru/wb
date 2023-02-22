@@ -501,6 +501,21 @@ let searchResultHover = (() => {
 
 searchResultHover();
 
+//   #118
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    function hideMessages() {
+
+        document.querySelectorAll('.success, .error').forEach(item => {item.remove() });
+
+        document.removeEventListener('click', hideMessages)
+
+    }
+
+    document.addEventListener('click', hideMessages);
+})
+
 
 
 

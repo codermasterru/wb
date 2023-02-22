@@ -194,3 +194,11 @@ Fault:16-02-2023 12:06:39 - Ошибка в SQL запросе: UPDATE blocked_a
 file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
 In line 39
 
+Fault:22-02-2023 16:25:00 - Ошибка в SQL запросе: DELETE goods_filters FROM goods_filters  WHERE goods_filters.0='goods_110'  - 1054 Unknown column 'goods_filters.0' in 'where clause'
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
+Fault:22-02-2023 16:35:19 - Ошибка в SQL запросе: DELETE pages FROM pages  WHERE pages.id='1'  - 1451 Cannot delete or update a parent row: a foreign key constraint fails (`wb`.`articles`, CONSTRAINT `articles_pages_id_fk` FOREIGN KEY (`parent_id`) REFERENCES `pages` (`id`))
+file C:\OSPanel\domains\wb\core\base\model\BaseModel.php
+In line 39
+
