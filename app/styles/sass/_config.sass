@@ -1,0 +1,40 @@
+// USER VARIABLES SECTION
+// Colors
+$main: #623B2A
+$record_red: #E04E39
+$social_icon_gray: hsla(29,43%,58%,.8)
+$text_color: #F4EBE0
+$background_body: #EBEFF2
+// Font Size
+$fontsize: 16px
+// Line Height
+$lineheight: 1.65 // Document Line Height
+$userfont: 'PT Sans', sans-serif // User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+
+// IMPORT SECTION
+@import 'node_modules/normalize.css/normalize'
+// @import 'node_modules/font-awesome/css/font-awesome' 
+@import '../../libs/css/caurousel'
+
+// FONTS LOAD SECTION
+@mixin font($fname, $fstyle, $fweight, $furl)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		src: url($furl) format('woff')
+
+@include font('PT Sans', normal, 700, '../fonts/PTSans-Bold.woff')
+@include font('PT Sans', normal, 400, '../fonts/PTSans-Regular.woff')
+
+body
+	font-family: $userfont
+	font-size: $fontsize
+	line-height: $lineheight
+	color: $text_color
+	min-width: 320px
+	position: relative
+	overflow-x: hidden
+	background-color: #EBEFF2
+	// position: relative

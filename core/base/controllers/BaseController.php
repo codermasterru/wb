@@ -6,7 +6,7 @@ use core\base\exception\RouteException;
 use core\base\model\UserModel;
 use core\base\settings\Settings;
 
-include_once  'libraries/function.php';
+include_once 'libraries/function.php';
 
 abstract class BaseController
 {
@@ -145,44 +145,49 @@ abstract class BaseController
         if (!$admin) {
             if (USER_CSS_JS['styles']) {
                 foreach (USER_CSS_JS['styles'] as $item) {
-                    $this->styles[] = PATH . USER_TEMPLATE . trim($item, '/');
+                    $this->styles[] = (!preg_match('/^\s*https?:\/\//i', $item) ? PATH . TEMPLATE :
+                            '') . trim($item, '/');
                 }
             }
 
             if (USER_CSS_JS['scripts']) {
                 foreach (USER_CSS_JS['scripts'] as $item) {
-                    $this->scripts[] = PATH . TEMPLATE . trim($item, '/');
+                    $this->scripts[] = (!preg_match('/^\s*https?:\/\//i', $item) ? PATH . TEMPLATE :
+                        '');
                 }
             }
         } else {
             if (ADMIN_CSS_JS['styles']) {
                 foreach (ADMIN_CSS_JS['styles'] as $item) {
-                    $this->styles[] = PATH . ADMIN_TEMPLATE. trim($item, '/');
+                    $this->styles[] = (!preg_match('/^\s*https?:\/\//i', $item) ? PATH . TEMPLATE :
+                        '');
                 }
             }
 
             if (ADMIN_CSS_JS['scripts']) {
                 foreach (ADMIN_CSS_JS['scripts'] as $item) {
-                    $this->scripts[] = PATH . ADMIN_TEMPLATE . trim($item, '/');
+                    $this->scripts[] = (!preg_match('/^\s*https?:\/\//i', $item) ? PATH . TEMPLATE :
+                        '');
                 }
             }
         }
-     }
+    }
 
 
-     protected function checkAuth($type=false){
+    protected function checkAuth($type = false)
+    {
 
-        if(!($this->userId = UserModel::instance()->checkUser(false, $type))){
+        if (!($this->userId = UserModel::instance()->checkUser(false, $type))) {
 
             $type && $this->redirect(PATH);
 
         }
 
-        if(property_exists($this, 'userModel')){
+        if (property_exists($this, 'userModel')) {
 
             $this->userModel = UserModel::instance();
 
         }
 
-     }
+    }
 }

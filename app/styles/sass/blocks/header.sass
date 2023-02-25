@@ -1,0 +1,71 @@
+.header
+    width: 100%
+    min-height: 66px
+    background-color: $main
+.header-fix
+    position: fixed
+    top: 0
+    z-index: 5
+.header_left-container,
+.header_right-container
+    padding: 20px
+.header_left-container
+    display: flex
+    justify-content: flex-end
+    align-items: center
+.header_top-nav
+    display: flex
+    height: 100%
+    flex-direction: column
+    justify-content: center
+.header_left-group-links
+    display: flex
+    justify-content: flex-end
+.visually_button
+    margin-right: 10px
+    cursor: pointer
+.header-links
+    display: flex
+    justify-content: space-between
+.header-links li a
+    font-family: 'PT Sans',sans-serif
+    font-style: normal
+    font-weight: 700
+    font-size: 20px
+    line-height: 26px
+    transition: transform .4s
+.centr_button a,
+.ofice_button a
+    position: relative
+.centr_button .dropbtn:before,
+.ofice_button .dropbtn:before
+    content: url("../images/dist/header/check.svg")
+    position: absolute
+    right: -20px
+    bottom: 0px
+.header_social-icon-list
+    display: flex
+    justify-content: flex-end
+.substrate
+    width: 40px
+    height: 40px
+    background: rgba(195, 147, 103, 0.8)
+    display: flex
+    align-items: center
+    // justify-content: center
+    margin-right: 10px
+    // text-align: center
+    padding: 5px
+.substrate a
+    display: flex
+    width: 35px
+    height: 35px
+.vk, .ok, .telegram
+    width: 30px
+@media screen and (min-width: 1440px) and (max-width: 1600px)
+    .header-links li a
+        font-size: 18px
+@media screen  and (max-width: 1440px)
+    .header_middle-container,
+    .header_right-container
+        display: none

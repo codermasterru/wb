@@ -1,1 +1,3 @@
-
+<?=$header?>
+<?=$content?>
+<?=$footer?>

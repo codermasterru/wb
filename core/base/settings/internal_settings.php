@@ -40,7 +40,7 @@ const ADMIN_CSS_JS = [
 
 //  Путь к пользовательским скриптам и стилям
 const USER_CSS_JS = [
-    'styles' => ['css/main.css'],
+    'styles' => ['assets/css/style.css'],
     'scripts' => []
 ];
 

@@ -1,0 +1,222 @@
+.company-block
+    margin-top: 100px
+    margin-bottom: 25px
+.min-height
+    min-height: 900px
+.company-block_left-container,
+.company-block_right-container
+    background: #fff
+    padding: 25px
+.company-block_img-fix
+    display: flex
+    width: 100%
+    justify-content: flex-end
+    margin-bottom: 25px
+.company-block_img-wrap
+    max-width: 264px
+    max-height: 200px
+.left-menu_item,
+.right_menu_item
+    background-color: $main
+    width: 100%
+    // display: inline-block
+    margin-bottom: 3px
+    min-height: 40px
+    display: flex
+    align-items: center
+    // flex-direction: column
+.left-menu_link,
+.right_menu_link
+    margin-left: 20px
+    font-family: 'PT Sans'
+    font-style: normal
+    font-weight: 400
+    font-size: 18px
+    line-height: 100%
+    // vertical-align: middle 
+    // display: inline-block  
+.left-menu_item:hover,
+.right_menu_item:hover
+    transform: scale(1.03)
+    transition: all .2s
+.company-block_middle-container
+    padding: 38px 25px 25px
+    background-color: #fff
+.h1,.h2
+    max-width: 710px
+    font-family: 'PT Sans',sans-serif
+    font-style: normal
+    font-weight: 700
+    font-size: 26px
+    line-height: 105%
+    text-transform: uppercase
+    color: $main
+    letter-spacing: 0.05em
+.h1
+    margin-bottom: 25px
+.h2
+    font-size: 22px
+    line-height: 28px
+    margin-bottom: 30px
+// .company-block_contacts
+//     background-color: #e1c9b3
+.contacts-wrap
+    width: 100%
+    background-color: rgba(195, 147, 103, 0.5)
+    min-height: 40px
+    padding: 0 50px
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 33px
+.contacts_item
+    display: flex
+.number_wrapper
+    font-family: 'PT Sans'
+    font-style: normal
+    font-weight: 700
+    font-size: 18px
+    line-height: 23px
+    color: #623B2A
+    display: flex
+    align-items: center
+    margin-left: 10px
+.img_wrapper
+    display: flex
+.company-block_content_banners
+    width: 100%
+    display: flex
+    justify-content: space-between
+.top_content_contacts
+    margin-bottom: 25px
+/* right-block */
+.company-block_right-container
+    padding: 87px 25px 25px
+.accent
+    background: #E04E39
+.right_menu_wrap
+    margin-bottom: 34px
+.banner_wrap
+    margin-bottom: 60px
+@media screen and (min-width: 1440px) and (max-width: 1600px)
+    .contacts-wrap
+        padding: 0 18px
+    .right_menu_wrap
+        margin-bottom: 134px
+@media (max-width: 1440px)
+    .hidden_before_1440
+        display: none
+@media (min-width: 1440px)
+    .hidden_after_1440
+        display: none
+@media screen and (min-width: 1280px) and (max-width: 1440px)
+    .right_container_top_content
+        max-width: 45%
+@media screen and (max-width: 1600px)
+    .banner_wrap
+        display: none
+@media (min-width: 1024px) and (max-width: 1280px)
+    .company-block_content_banner
+        margin-right: 40px
+@media (min-width: 768px) and (max-width: 1024px)
+    .contacts-wrap
+        flex-wrap: wrap
+        padding: 10px 20px
+        margin-bottom: 10px
+    .company-block_content_banner
+        display: none
+    .h1
+        font-size: 21px
+    .h2
+        margin-bottom: 18px
+        font-size: 18px
+    .contacts_item
+        margin-bottom: 10px
+    .contacts_item span
+        font-size: 13px
+@media (min-width: 768px)
+    .container_visible_before_768px
+        display: none
+@media (max-width: 768px)
+    .container_visible_before_768px
+        display: block
+    .company-block_img-fix
+        margin: 0
+    .h1
+        font-size: 16px
+        margin-bottom: 44px
+    .h2
+        font-size: 14px
+        margin: 0
+        line-height: 16px
+    .company-block_img-fix
+        margin-right: 16px
+/*  */
+.content-container
+    width: 100%
+    max-width: 900px
+    color: #000
+    margin-bottom: 30px
+.h750
+    max-height: 750px
+.text-caption
+    width: 100%
+    font-size: 20px
+    margin: 0
+    display: inline
+.services-block
+    display: flex
+    flex-direction: column
+    margin-bottom: 20px
+.services-block_item
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    margin-bottom: 10px
+.services-block img
+    width: 20px
+    height: 20px
+    margin-right: 20px
+.services-block_item_header
+    min-width: 300px
+    color: $main
+    font-family: 'PT Sans'
+    font-style: normal
+    font-weight: 700
+    font-size: 16px
+    line-height: 23px
+    text-transform: uppercase
+.file-color
+    color: $record_red
+.container_visible_before_768px
+    background-color: #fff
+    padding: 25px
+.logo-block_visible_before_768px
+    display: flex
+    flex-direction: row
+    align-items: start
+    margin-bottom: 20px
+.company-block_content
+    display: flex
+    flex-direction: column
+.container_visible_before_768px
+    .contacts-wrap
+        flex-wrap: wrap
+        margin: 0
+        padding: 10px 15px
+        margin-bottom: 20px
+        .contacts_item
+            margin-bottom: 10px
+        .number_wrapper
+            font-size: 14px
+.company-block_navigation_visible_before769px
+    display: flex
+    justify-content: space-between
+    .left_menu_list
+        min-width: 230px
+    .right_menu_wrap
+        min-width: 213px
+        a
+            font-size: 14px
+    .left-menu_item a
+        font-size: 14px

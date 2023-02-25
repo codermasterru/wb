@@ -1,0 +1,36 @@
+.header-page__hamburger
+    display: none
+    margin-right: -15px
+@media (max-width: 1440px)
+    .header-page__hamburger
+        display: block
+.btn-menu
+    border-radius: 0
+    cursor: pointer
+    display: inline-block
+    padding: 15px
+    border: 0
+.btn-menu__box
+    display: inline-block
+    width: 35px
+    height: 2px
+.btn-menu__inner
+    position: relative
+    background-color: #f4ebe0
+    height: 4px
+    width: 100%
+    display: block
+    top: 50%
+.btn-menu__inner::before,
+.btn-menu__inner::after
+    content: ''
+    width: 100%
+    height: 4px
+    background: #f4ebe0
+    position: absolute
+    left: 0
+    border-radius: 5px
+.btn-menu__inner::before
+    top: -10px
+.btn-menu__inner::after
+    bottom: -10px
