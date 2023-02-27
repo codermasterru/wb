@@ -1,4 +1,4 @@
-<script src="js/app.min.js"></script>
+<script src="template/default/assets/js/app.min.js"></script>
 
 </body>
 </html>

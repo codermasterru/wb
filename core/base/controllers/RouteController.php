@@ -74,8 +74,6 @@ class RouteController extends BaseController
                     $route = 'admin';
                 }
             } else {
-                //Пользовательская часть
-                echo 'Пользовательская часть сайта';
 
                 //Определяем нужен ЧПУ или нет --> bool
                 $hrUrl = $this->routes['user']['hrUrl'];

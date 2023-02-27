@@ -16,7 +16,10 @@ class IndexController extends BaseController
         $content = $this->render();
         $footer = $this->render(TEMPLATE . 'footer');
 
-        return ($this->render(TEMPLATE . 'templater', compact('header', 'content', 'footer')));
+     $a = $this->render(TEMPLATE . 'templater', compact('header', 'content', 'footer'));
+
+        //return $this->render(TEMPLATE . 'templater', compact('header', 'content', 'footer'));
+        return $a;
 
     }
 }
