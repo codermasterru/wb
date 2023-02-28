@@ -87,4 +87,10 @@ trait BaseMethods
         file_put_contents('log/' . $file, $str, FILE_APPEND);
     }
 
+    protected function getController(){
+
+        return $this->controller ?: $this->controller = preg_split('/_?controller/', strtolower(preg_replace('/([^A-Z])(A-Z)/', '$1_$2', (new \ReflectionClass($this))->getShortName())),0,PREG_SPLIT_NO_EMPTY)[0];
+
+    }
+
 }

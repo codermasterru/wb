@@ -159,15 +159,13 @@ abstract class BaseController
         } else {
             if (ADMIN_CSS_JS['styles']) {
                 foreach (ADMIN_CSS_JS['styles'] as $item) {
-                    $this->styles[] = (!preg_match('/^\s*https?:\/\//i', $item) ? PATH . TEMPLATE :
-                        '');
+                    $this->styles[] = PATH . ADMIN_TEMPLATE. trim($item, '/');
                 }
             }
 
             if (ADMIN_CSS_JS['scripts']) {
                 foreach (ADMIN_CSS_JS['scripts'] as $item) {
-                    $this->scripts[] = (!preg_match('/^\s*https?:\/\//i', $item) ? PATH . TEMPLATE :
-                        '');
+                    $this->scripts[] = PATH . ADMIN_TEMPLATE . trim($item, '/');
                 }
             }
         }

@@ -4,22 +4,16 @@ namespace core\user\controllers;
 
 use core\base\controllers\BaseController;
 
-class IndexController extends BaseController
+class IndexController extends BaseUser
 {
     protected $name;
 
     protected function inputData()
     {
-        $this->init();
+        parent::inputData();
+        echo $this->getController();
 
-        $header = $this->render(TEMPLATE . 'header');
-        $content = $this->render();
-        $footer = $this->render(TEMPLATE . 'footer');
-
-     $a = $this->render(TEMPLATE . 'templater', compact('header', 'content', 'footer'));
-
-        //return $this->render(TEMPLATE . 'templater', compact('header', 'content', 'footer'));
-        return $a;
+        exit();
 
     }
 }
