@@ -11,9 +11,10 @@ class IndexController extends BaseUser
     protected function inputData()
     {
         parent::inputData();
-        echo $this->getController();
 
-        exit();
+        $res = $this->img();
+
+        $a = 1;
 
     }
 }

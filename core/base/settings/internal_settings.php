@@ -13,6 +13,7 @@ const ADMIN_TEMPLATE = 'core/admin/views/';
 const USER_TEMPLATE = 'core/user/views/';
 
 const UPLOAD_DIR = 'userfiles/';
+const DEFAULT_IMAGE_DIRECTORY = 'default_images';
 
 // Если нужно заставить перелогиниться
 const COOKIE_VERSION = '1.0.0';

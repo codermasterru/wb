@@ -13,7 +13,8 @@ abstract class BaseUser extends BaseController
     protected $table;
 
 
-    protected function inputData(){
+    protected function inputData()
+    {
 
         $this->init();
 
@@ -31,17 +32,29 @@ abstract class BaseUser extends BaseController
             $this->content = $this->render($this->template, $vars);
         }
 
-        $this->header = $this->render(TEMPLATE . 'include/header',$vars);
-        $this->footer = $this->render(TEMPLATE . 'include/footer',$vars);
+        $this->header = $this->render(TEMPLATE . 'include/header', $vars);
+        $this->footer = $this->render(TEMPLATE . 'include/footer', $vars);
 
         return $this->render(TEMPLATE . 'layout/default');
     }
 
 
-    protected  function img($img){
+    protected function img($img = '')
+    {
+        if (!$img && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . DEFAULT_IMAGE_DIRECTORY)) {
 
+            $dir = scandir($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . DEFAULT_IMAGE_DIRECTORY);
 
+            $imgArr = preg_grep('/' . $this->getController() . '\./i', $dir) ?: preg_grep('/default\./i', $dir);
+
+            $imgArr && $img = array_shift($imgArr);
+
+        }
+
+        return  $img;
 
     }
 
 }
+
+
