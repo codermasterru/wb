@@ -128,7 +128,7 @@ abstract class BaseController
                 $template = ADMIN_TEMPLATE;
             }
 
-            $path = $template . explode('controller', strtolower($class->getShortName()))[0];
+            $path = $template . $this->getController();
         }
 
         ob_start();
@@ -159,7 +159,7 @@ abstract class BaseController
         } else {
             if (ADMIN_CSS_JS['styles']) {
                 foreach (ADMIN_CSS_JS['styles'] as $item) {
-                    $this->styles[] = PATH . ADMIN_TEMPLATE. trim($item, '/');
+                    $this->styles[] = PATH . ADMIN_TEMPLATE . trim($item, '/');
                 }
             }
 

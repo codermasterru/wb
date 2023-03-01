@@ -39,7 +39,7 @@ abstract class BaseUser extends BaseController
     }
 
 
-    protected function img($img = '')
+    protected function img($img = '', $tag = false)
     {
         if (!$img && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . DEFAULT_IMAGE_DIRECTORY)) {
 
@@ -48,6 +48,11 @@ abstract class BaseUser extends BaseController
             $imgArr = preg_grep('/' . $this->getController() . '\./i', $dir) ?: preg_grep('/default\./i', $dir);
 
             $imgArr && $img = array_shift($imgArr);
+
+        }
+
+        if($img){
+
 
         }
 
