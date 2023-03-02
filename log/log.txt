@@ -7068,3 +7068,39 @@ Fault:01-03-2023 14:31:39 - Не верное имя файла для подк�
 file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
 In line 64
 
+Fault:02-03-2023 11:16:25 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 11:16:25 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 11:17:15 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 14:12:39 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 14:12:39 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 14:12:40 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 14:12:40 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 18:36:49 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+
+Fault:02-03-2023 18:36:49 - Не верное имя файла для подключения - core/user/controllers/AssetsController
+file C:\OSPanel\domains\wb\core\base\settings\internal_settings.php
+In line 64
+

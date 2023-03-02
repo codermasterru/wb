@@ -47,16 +47,25 @@ abstract class BaseUser extends BaseController
 
             $imgArr = preg_grep('/' . $this->getController() . '\./i', $dir) ?: preg_grep('/default\./i', $dir);
 
-            $imgArr && $img = array_shift($imgArr);
+            $imgArr && $img = DEFAULT_IMAGE_DIRECTORY . '/' . array_shift($imgArr);
 
         }
 
-        if($img){
+        if ($img) {
 
+            $path = PATH . UPLOAD_DIR . $img;
+
+            if (!$tag) {
+
+                return $path;
+
+            }
+
+            echo '<img src="' . $path . '" alt="image" tutle="image">';
 
         }
 
-        return  $img;
+        return '';
 
     }
 
