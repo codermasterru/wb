@@ -41,6 +41,7 @@ abstract class BaseUser extends BaseController
 
     protected function img($img = '', $tag = false)
     {
+        // Если не пришло из-е и есть ли такая директория
         if (!$img && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . DEFAULT_IMAGE_DIRECTORY)) {
 
             $dir = scandir($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . DEFAULT_IMAGE_DIRECTORY);
@@ -61,7 +62,7 @@ abstract class BaseUser extends BaseController
 
             }
 
-            echo '<img src="' . $path . '" alt="image" tutle="image">';
+            echo '<img src="' . $path . '" alt="image" title="image">';
 
         }
 
