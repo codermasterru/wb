@@ -12,7 +12,9 @@ class IndexController extends BaseUser
     {
         parent::inputData();
 
-        $res = $this->img();
+        $alias = '';
+
+        $res = $this->alias(['catalog' => 'auto'], '?page=2');
 
         $a = 1;
 

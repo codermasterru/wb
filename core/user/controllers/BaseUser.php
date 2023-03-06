@@ -70,6 +70,92 @@ abstract class BaseUser extends BaseController
 
     }
 
+    protected function alias($alias = '', $queryString = '')
+    {
+
+        $str = '';
+
+        if ($queryString) {
+
+            if (is_array($queryString)) {
+
+                foreach ($queryString as $key => $item) {
+
+                    $str .= (!$str ? '?' : '&');
+
+                    if (is_array($item)) {
+
+                        $key .= '[]';
+
+                        foreach ($item as $v)
+                            $str .= $key . '=' . $v;
+
+                    } else {
+
+                        $str .= $key . '=' . $item;
+
+                    }
+
+
+                }
+
+
+            } else {
+
+                if (strpos($queryString, '?' === false))
+                    $str = '?' . $str;
+                $str .= $queryString;
+
+
+            }
+
+            // Если alias массив, то
+            if (is_array($alias)) {
+
+                $aliasStr = '';
+
+                foreach ($alias as $key => $item) {
+
+                    if (!is_numeric($key) && $item) {
+
+                        $aliasStr .= $key . '/' . $item . '/';
+
+                    } elseif ($item) {
+
+                        $aliasStr .= $item . '/';
+
+                    }
+
+                }
+
+                $alias = trim($aliasStr, '/');
+
+            }
+        }
+
+
+        if (!$alias || $alias = '/')
+            return PATH . $str;
+
+        if (preg_match('/^\s*https?:\/\//i', $alias))
+            return $alias . $str;
+
+        return preg_replace('/\/{2,}', '/', PATH . $alias . END_SLASH . $str);
+
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 

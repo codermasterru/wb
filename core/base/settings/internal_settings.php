@@ -27,6 +27,8 @@ const COOKIE_TIME = '60';
 //Время блокировки злоумышленника (защита перебора паролей)
 const  BLOCK_TIME = 3;
 
+const END_SLASH = '/';
+
 //Константа для постраничной навигации
 const QTY_LINKS = 3;
 
