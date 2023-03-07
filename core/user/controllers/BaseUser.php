@@ -134,13 +134,13 @@ abstract class BaseUser extends BaseController
         }
 
 
-        if (!$alias || $alias = '/')
+        if (!$alias || $alias === '/')
             return PATH . $str;
 
         if (preg_match('/^\s*https?:\/\//i', $alias))
             return $alias . $str;
-
-        return preg_replace('/\/{2,}', '/', PATH . $alias . END_SLASH . $str);
+//$a = preg_replace('/\/{2,}/', '/', PATH . $alias . END_SLASH . $str);
+        return preg_replace('/\/{2,}/', '/', PATH . $alias . END_SLASH . $str);
 
     }
 

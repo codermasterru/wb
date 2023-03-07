@@ -14,7 +14,7 @@ class IndexController extends BaseUser
 
         $alias = '';
 
-        $res = $this->alias(['catalog' => 'auto'], '?page=2');
+        $res = $this->alias(['catalog'=>'auto'], '?page=2');
 
         $a = 1;
 
