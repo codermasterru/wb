@@ -42,8 +42,8 @@ class Settings
     private $defaultTable = 'goods';
 
     private $templateArr = [
-        'text' => ['name'],
-        'textarea' => ['keywords', 'content', [1, 2, 3, 4]],
+        'text' => ['name', 'phone', 'email'],
+        'textarea' => ['keywords', 'content', 'address', 'description'],
         'radio' => ['visible'],
         'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
@@ -71,7 +71,11 @@ class Settings
     private $translate = [
         'name' => ['Название', 'Не более 100 символов'],
         'keywords' => ['Ключевые слова'],
-        'content' => ['Контент'],
+        'content' => ['Описание'],
+        'description' => ['SEO описание'],
+        'phone' => ['Телефон'],
+        'email' => ['Email'],
+        'address' => ['Адрес'],
         'menu_position' => ['Позиция'],
         'img' => ['Изображение'],
         'gallery_img' => ['Галерея изображений']
@@ -85,9 +89,9 @@ class Settings
 
     private $projectTables = [
         'articles' => ['name' => 'Статьи'],
-        'pages' => ['name' => 'Страницы'],
         'goods' => ['name' => 'Товары', 'img' => 'pages.png'],
-        'filters' => ['name' => 'Фильтры']
+        'filters' => ['name' => 'Фильтры'],
+        'settings' => ['name' => 'Настройки системы']
     ];
 
     private $validation = [

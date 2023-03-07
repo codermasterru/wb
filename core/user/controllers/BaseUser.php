@@ -12,6 +12,8 @@ abstract class BaseUser extends BaseController
 
     protected $table;
 
+    protected $set;
+
 
     protected function inputData()
     {
@@ -19,6 +21,15 @@ abstract class BaseUser extends BaseController
         $this->init();
 
         !$this->model && $this->model = Model::instance();
+
+        $this->set = $this->model->get('settings', [
+            'order' => ['id'],
+            'limit' => 1
+        ]);
+
+        $this->set && $this->set = $this->set[0];
+
+        $s = $this->set;
     }
 
     protected function outputData()
@@ -139,7 +150,7 @@ abstract class BaseUser extends BaseController
 
         if (preg_match('/^\s*https?:\/\//i', $alias))
             return $alias . $str;
-//$a = preg_replace('/\/{2,}/', '/', PATH . $alias . END_SLASH . $str);
+
         return preg_replace('/\/{2,}/', '/', PATH . $alias . END_SLASH . $str);
 
     }
